@@ -9,7 +9,22 @@ namespace CS1_Projekt_OOP2
 {
     public class OrderLine
     {
-        public Product Product { get; set; }
-        public int Count { get; set; }
+        private Product _product;
+        private int _count;
+        public OrderLine(Product p, int c)
+        {
+            _product = p;
+            _count = c;
+        }
+
+        public Product Product { 
+            get { return _product; }
+            set { _product = value; }
+        }
+
+        public int Count { 
+            get { return _count; }
+            set { _count = value; } 
+        }
     }
 }
