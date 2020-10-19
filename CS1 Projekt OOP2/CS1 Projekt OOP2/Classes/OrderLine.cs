@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace CS1_Projekt_OOP2
 {
-    public class OrderLine : IOrderLine
+    public class OrderLine
     {
+        Product Product { get; set; }
+        int Count { get; set; }
     }
 }
