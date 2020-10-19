@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace CS1_Projekt_OOP2
 {
-    public class Customer : ICustomer
+    public class Customer
     {
-        int Number { get; set; }
-        string Name { get; set; }
-        string Phone { get; set; }
-        string Email { get; set; }
+        public int Number { get; set; }
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; } //hej 
+        
     }
 }

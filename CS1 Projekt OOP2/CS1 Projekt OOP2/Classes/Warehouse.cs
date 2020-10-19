@@ -9,6 +9,5 @@ namespace CS1_Projekt_OOP2.Classes
 {
     class Warehouse : IWarehouse
     {
-
     }
 }

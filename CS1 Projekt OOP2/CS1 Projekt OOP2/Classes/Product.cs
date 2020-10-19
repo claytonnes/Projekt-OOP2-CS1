@@ -8,6 +8,7 @@ namespace CS1_Projekt_OOP2
 {
     public class Product
     {
+
         private int _code; //får inte vara mindre än 0
         private string _name; // får inte vara null or empty
         private double _price; //får inte vara mindre än 0
