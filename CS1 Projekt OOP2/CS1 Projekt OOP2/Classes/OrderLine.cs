@@ -9,7 +9,7 @@ namespace CS1_Projekt_OOP2
 {
     public class OrderLine
     {
-        Product Product { get; set; }
-        int Count { get; set; }
+        public Product Product { get; set; }
+        public int Count { get; set; }
     }
 }

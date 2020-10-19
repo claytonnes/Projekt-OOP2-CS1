@@ -8,13 +8,13 @@ namespace CS1_Projekt_OOP2
 {
     public class Order
     {
-        int Number { get; set; }
-        Customer Customer { get; set; }
-        DateTime OrderDate { get; set; }
-        string DeliveryAddress { get; set; }
-        bool PaymentCompleted { get; set; }
-        bool PaymentRefunded { get; set; }
-        bool Distpatched { get; set; }
-        List<OrderLine> Items { get; set; }
+        public int Number { get; set; }
+        public Customer Customer { get; set; }
+        public DateTime OrderDate { get; set; }
+        public string DeliveryAddress { get; set; }
+        public bool PaymentCompleted { get; set; }
+        public bool PaymentRefunded { get; set; }
+        public bool Distpatched { get; set; }
+        public List<OrderLine> Items { get; set; }
     }
 }

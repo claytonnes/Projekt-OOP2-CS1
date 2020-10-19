@@ -9,6 +9,12 @@ namespace CS1_Projekt_OOP2.Classes
 {
     class Warehouse : IWarehouse
     {
+        public List<Product> Products;
+        public List<Customer> Customers;
 
+        public Warehouse()
+        {
+
+        }
     }
 }
