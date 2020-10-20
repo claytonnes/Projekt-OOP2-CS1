@@ -15,27 +15,25 @@ namespace CS1_Projekt_OOP2
         private string _name;   // non-empty value
         private string _phone;  // non-empty value
         private string _email;  // non-empty value
-        private int v1;
-        private bool v2;
+        private int v1;         // what is this member for?
+        private bool v2;        // what is this member for?
 
-        public Customer(int v1, bool v2)
+        public Customer(int v1, bool v2) //what is this constructor for?
         {
             this.v1 = v1;
             this.v2 = v2;
         }
 
-        public Customer(int _number, string _name, string _phone, string _email)
+        public Customer(int nmb, string nm, string phn, string em)
         {
-            Number = _number; Name = _name;
-            Phone = _phone; Email = _email;
+            Number = nmb; Name = nm;
+            Phone = phn; Email = em;
         }
-
         public int Number 
         {
             get { return _number; }
             set { _number = (value < 0) ? throw new ArgumentOutOfRangeException() : value; } 
         }
-
         public string Name {
             get { return _name; }
             set
@@ -68,11 +66,6 @@ namespace CS1_Projekt_OOP2
                     _email = value;
             }
         }
-        /*public void AddNewCustomer();
-        public void UpdateCustomerName(int id, string name);
-        public void UpdateCustomerPhone(int id, string phone);
-        public void UpdateCustomerEmail(int id, string email);*/
-        
         public override string ToString()
         {
             return $"ID:{Number} Customer name:{Name} Customer phone:{Phone} Customer email:{Email}";
