@@ -9,14 +9,17 @@ namespace CS1_Projekt_OOP2
 {
     public class Customer
     {
-        public int _number;    // set value is unique and non-negative
-        public string _name;   // non-empty value
-        public string _phone;  // non-empty value
-        public string _email;  // non-empty value
+        private static int numberOfCustomersCount; // Increases every time a new customer is created
 
-        public Customer()
+        private int _number;    // set value is unique and non-negative
+        private string _name;   // non-empty value
+        private string _phone;  // non-empty value
+        private string _email;  // non-empty value
+
+        public Customer(int _number, string _name, string _phone, string _email)
         {
-          
+            Number = _number; Name = _name;
+            Phone = _phone; Email = _email;
         }
 
         public int Number 
@@ -25,22 +28,19 @@ namespace CS1_Projekt_OOP2
             set { _number = (value < 0) ? throw new ArgumentOutOfRangeException() : value; } 
         }
 
-        public string Name 
-        {
+        public string Name {
             get { return _name; }
-
-            set {
+            set
+            {
                 if (_name == null || _name == "")
                     throw new NullValueException(" Name cannot be null ");
                 else
-                        _name = value;
+                    _name = value;
             }
         }
-
         public string Phone 
         {
             get { return _phone; }
-
             set
             {
                 if (_phone == null || _phone == "")
@@ -52,7 +52,6 @@ namespace CS1_Projekt_OOP2
         public string Email 
         {
             get { return _email; }
-
             set
             {
                 if (_email == null || _email == "")
@@ -60,6 +59,15 @@ namespace CS1_Projekt_OOP2
                 else
                     _email = value;
             }
+        }
+        /*public void AddNewCustomer();
+        public void UpdateCustomerName(int id, string name);
+        public void UpdateCustomerPhone(int id, string phone);
+        public void UpdateCustomerEmail(int id, string email);*/
+        
+        public override string ToString()
+        {
+            return $"ID:{Number} Customer name:{Name} Customer phone:{Phone} Customer email:{Email}";
         }
     }
 
@@ -69,15 +77,12 @@ namespace CS1_Projekt_OOP2
         public NullValueException()
         {
         }
-
         public NullValueException(string message) : base(message)
         {
         }
-
         public NullValueException(string message, Exception innerException) : base(message, innerException)
         {
         }
-
         protected NullValueException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
