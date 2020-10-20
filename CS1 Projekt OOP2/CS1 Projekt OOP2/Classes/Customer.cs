@@ -9,12 +9,20 @@ namespace CS1_Projekt_OOP2
 {
     public class Customer
     {
-        private static int numberOfCustomersCount; // Increases every time a new customer is created
+        internal static int Count; // Increases every time a new customer is created
 
         private int _number;    // set value is unique and non-negative
         private string _name;   // non-empty value
         private string _phone;  // non-empty value
         private string _email;  // non-empty value
+        private int v1;
+        private bool v2;
+
+        public Customer(int v1, bool v2)
+        {
+            this.v1 = v1;
+            this.v2 = v2;
+        }
 
         public Customer(int _number, string _name, string _phone, string _email)
         {
@@ -68,6 +76,11 @@ namespace CS1_Projekt_OOP2
         public override string ToString()
         {
             return $"ID:{Number} Customer name:{Name} Customer phone:{Phone} Customer email:{Email}";
+        }
+
+        internal static int Max(Func<object, object> p)
+        {
+            throw new NotImplementedException();
         }
     }
 
