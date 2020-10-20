@@ -21,8 +21,8 @@ namespace CS1_Projekt_OOP2.Interfaces
         void UpdateCustomerName(int id, string name);
         void UpdateCustomerPhone(int id, string phone);
         void UpdateCustomerEmail(int id, string email);
-        IEnumerable<Order> ReturnArchivedOrders(int customerID);
-        IEnumerable<Order> ReturnActiveOrders(int customerID);
+        IEnumerable<Order> ReturnUserArchivedOrders(int customerID);
+        IEnumerable<Order> ReturnUserActiveOrders(int customerID);
         void AddNewProduct(int code, string name, double price, int stock);
         void UpdateProductName(int code, string name);
         void UpdateProductPrice(int code, double price);

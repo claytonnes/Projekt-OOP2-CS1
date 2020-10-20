@@ -43,24 +43,21 @@ namespace CS1_Projekt_OOP2.Classes
             }
         }
 
-        public IEnumerable<Order> ReturnActiveOrders()
+        public IEnumerable<Order> ReturnUserActiveOrders(int customerID)
         {
-            throw new NotImplementedException();
+            IEnumerable<Order> activeUserOrders = Orders.Where
+                (o => o.Dispatched == false
+                || o.OrderDate.Subtract(DateTime.Now).TotalDays < 30);
+            return activeUserOrders;
         }
 
-        public IEnumerable<Order> ReturnActiveOrders(int customerID)
+        public IEnumerable<Order> ReturnUserArchivedOrders(int customerID)
         {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Order> ReturnArchivedOrders()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Order> ReturnArchivedOrders(int customerID)
-        {
-            throw new NotImplementedException();
+            IEnumerable<Order> archivedUserOrders = Orders.Where
+                (o => o.Dispatched == true
+                && o.Customer.Number == customerID
+                && o.OrderDate.Subtract(DateTime.Now).TotalDays > 30);
+            return archivedUserOrders;
         }
 
         public IEnumerable<Order> ReturnDispatchedOrders()
