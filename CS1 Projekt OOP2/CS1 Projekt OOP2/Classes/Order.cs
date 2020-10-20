@@ -32,24 +32,26 @@ namespace CS1_Projekt_OOP2
             PaymentCompleted = paymentCompleted;
             PaymentRefunded = false;
             Dispatched = false;
-            Items = items;
         }
 
         //Ej unikt. Unikt genereras i Warehouse?
-        public int Number { get
-            { return _number; }
+        public int Number { 
+            get { return _number; }
             set { _number = (value < 0) ? throw new ArgumentOutOfRangeException("Faulty order number") : value; }
         }
+
         public Customer Customer
         {
             get { return _customer; }
             set { _customer = value; }
         }
+
         public DateTime OrderDate
         {
-            get{ return _orderDate; }
+            get { return _orderDate; }
             set { _orderDate = value; }
         }
+
         public string DeliveryAddress
         {
             get { return _deliveryAddress; }
@@ -60,22 +62,25 @@ namespace CS1_Projekt_OOP2
                 else _deliveryAddress = value;
             }
         }
+
         public bool PaymentCompleted
         {
-            get
-            { return _paymentCompleted; }
+            get { return _paymentCompleted; }
             set { _paymentCompleted = value; }
         }
-        public bool PaymentRefunded { get
-            { return _paymentRefunded; }
+
+        public bool PaymentRefunded { 
+            get { return _paymentRefunded; }
             set { _paymentRefunded = value; }
         }
-        public bool Dispatched { get
-            { return _dispatched; }
+
+        public bool Dispatched { 
+            get { return _dispatched; }
             set { _dispatched = value; }
         }
-        public List<OrderLine> Items { get
-            { return _items; }
+
+        public List<OrderLine> Items { 
+            get { return _items; }
             set { _items = Items; } }
     }
 }

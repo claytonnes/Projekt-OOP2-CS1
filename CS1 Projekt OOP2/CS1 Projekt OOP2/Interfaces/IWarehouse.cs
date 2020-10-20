@@ -13,11 +13,11 @@ namespace CS1_Projekt_OOP2.Interfaces
         List<Product> Products { get; set; }
         List<Order> Orders { get; set; }
         List<Customer> Customers { get; set; }
-        void AddNewOrder(List<OrderLine> orderLines, Customer customer, string deliveryAddress);
+        void AddNewOrder(Customer customer, string deliveryAddress, List<OrderLine> orderLines, bool paymentCompleted);
         void ProcessOrders();
         IEnumerable<Order> ReturnDispatchedOrders();
         IEnumerable<Order> ReturnPendingOrders();
-        void AddNewCustomer();
+        void AddNewCustomer(int id, string name, string phone, string email);
         void UpdateCustomerName(int id, string name);
         void UpdateCustomerPhone(int id, string phone);
         void UpdateCustomerEmail(int id, string email);
