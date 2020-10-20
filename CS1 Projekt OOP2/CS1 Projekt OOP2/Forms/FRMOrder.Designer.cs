@@ -33,6 +33,7 @@
             this.BTNDpendingOrders = new System.Windows.Forms.Button();
             this.BTNDispatchedOrders = new System.Windows.Forms.Button();
             this.BTNCustomers = new System.Windows.Forms.Button();
+            this.BTNClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,11 +86,22 @@
             this.BTNCustomers.UseVisualStyleBackColor = true;
             this.BTNCustomers.Click += new System.EventHandler(this.BTNCustomers_Click);
             // 
+            // BTNClose
+            // 
+            this.BTNClose.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.BTNClose.Location = new System.Drawing.Point(1016, 601);
+            this.BTNClose.Name = "BTNClose";
+            this.BTNClose.Size = new System.Drawing.Size(93, 30);
+            this.BTNClose.TabIndex = 6;
+            this.BTNClose.Text = "Close";
+            this.BTNClose.UseVisualStyleBackColor = true;
+            // 
             // FRMOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1143, 656);
+            this.Controls.Add(this.BTNClose);
             this.Controls.Add(this.BTNCustomers);
             this.Controls.Add(this.BTNDispatchedOrders);
             this.Controls.Add(this.BTNDpendingOrders);
@@ -110,5 +122,6 @@
         private System.Windows.Forms.Button BTNDpendingOrders;
         private System.Windows.Forms.Button BTNDispatchedOrders;
         private System.Windows.Forms.Button BTNCustomers;
+        private System.Windows.Forms.Button BTNClose;
     }
 }

@@ -30,6 +30,7 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.LBLPendingOrders = new System.Windows.Forms.Label();
+            this.BTNClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,11 +53,22 @@
             this.LBLPendingOrders.TabIndex = 1;
             this.LBLPendingOrders.Text = "Pending Orders";
             // 
+            // BTNClose
+            // 
+            this.BTNClose.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.BTNClose.Location = new System.Drawing.Point(1007, 559);
+            this.BTNClose.Name = "BTNClose";
+            this.BTNClose.Size = new System.Drawing.Size(83, 32);
+            this.BTNClose.TabIndex = 2;
+            this.BTNClose.Text = "Close";
+            this.BTNClose.UseVisualStyleBackColor = true;
+            // 
             // FRMPendingOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1119, 603);
+            this.Controls.Add(this.BTNClose);
             this.Controls.Add(this.LBLPendingOrders);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FRMPendingOrders";
@@ -72,5 +84,6 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label LBLPendingOrders;
+        private System.Windows.Forms.Button BTNClose;
     }
 }

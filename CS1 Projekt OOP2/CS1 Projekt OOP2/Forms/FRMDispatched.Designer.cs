@@ -30,6 +30,7 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.LBLDispatch = new System.Windows.Forms.Label();
+            this.BTNClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,11 +54,22 @@
             this.LBLDispatch.Text = "Dispatched Orders";
             this.LBLDispatch.Click += new System.EventHandler(this.LBLDispatch_Click);
             // 
+            // BTNClose
+            // 
+            this.BTNClose.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.BTNClose.Location = new System.Drawing.Point(952, 568);
+            this.BTNClose.Name = "BTNClose";
+            this.BTNClose.Size = new System.Drawing.Size(84, 32);
+            this.BTNClose.TabIndex = 3;
+            this.BTNClose.Text = "Close";
+            this.BTNClose.UseVisualStyleBackColor = true;
+            // 
             // FRMDispatched
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1071, 621);
+            this.Controls.Add(this.BTNClose);
             this.Controls.Add(this.LBLDispatch);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FRMDispatched";
@@ -73,5 +85,6 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label LBLDispatch;
+        private System.Windows.Forms.Button BTNClose;
     }
 }
