@@ -2,9 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace CS1_Projekt_OOP2.Classes
 {
@@ -33,7 +36,7 @@ namespace CS1_Projekt_OOP2.Classes
         public void ProcessOrders()
         {
             IEnumerable<Order> readyForDisptach = Orders.Where(a => a.PaymentCompleted == true && a.Items.Any(o => o.Product.Stock < o.Count)).OrderBy(a => a.OrderDate);
-            foreach(Order order in readyForDisptach)
+            foreach (Order order in readyForDisptach)
             {
                 order.Dispatched = true;
                 AdjustStock(order.Items);
@@ -62,12 +65,14 @@ namespace CS1_Projekt_OOP2.Classes
 
         public IEnumerable<Order> ReturnDispatchedOrders()
         {
-            throw new NotImplementedException();
+            IEnumerable<Order> dispatchedOrders = Orders.Where(o => o.Dispatched == true);
+            return dispatchedOrders;
         }
 
         public IEnumerable<Order> ReturnPendingOrders()
         {
-            throw new NotImplementedException();
+            IEnumerable<Order> dispatchedOrders = Orders.Where(o => o.Dispatched == false);
+            return dispatchedOrders;
         }
 
         public IEnumerable<Product> ReturnStockZero()
@@ -116,7 +121,7 @@ namespace CS1_Projekt_OOP2.Classes
             if (Orders.Count < 1)
                 return 1;
             else
-                return Orders.Max(a => a.Number)+1;
+                return Orders.Max(a => a.Number) + 1;
         }
         //Checks the highest customer number in the customer list and returns a new unique ordernumber (max+1)
         public int GenerateUniqueCustomerNumber()
@@ -130,7 +135,7 @@ namespace CS1_Projekt_OOP2.Classes
         //Method called when dispatching items. Reduces stock (has already been checked if stock is enough) by the count of the OrderLine.
         public void AdjustStock(List<OrderLine> order)
         {
-            foreach(OrderLine orderLine in order)
+            foreach (OrderLine orderLine in order)
             {
                 orderLine.Product.Stock -= orderLine.Count;
             }
