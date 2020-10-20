@@ -22,6 +22,19 @@ namespace CS1_Projekt_OOP2
         {
         }
 
+        public Order(int number, Customer customer, string deliveryAddress, List<OrderLine> items, bool paymentCompleted)
+        {
+            Number = number;
+            Customer = customer;
+            OrderDate = DateTime.Now;
+            DeliveryAddress = deliveryAddress;
+            Items = Items;
+            PaymentCompleted = paymentCompleted;
+            PaymentRefunded = false;
+            Dispatched = false;
+            Items = items;
+        }
+
         //Ej unikt. Unikt genereras i Warehouse?
         public int Number { get
             { return _number; }
@@ -57,7 +70,7 @@ namespace CS1_Projekt_OOP2
             { return _paymentRefunded; }
             set { _paymentRefunded = value; }
         }
-        public bool Distpatched { get
+        public bool Dispatched { get
             { return _dispatched; }
             set { _dispatched = value; }
         }
