@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace CS1_Projekt_OOP2
 {
-    public partial class Form4 : Form
+   
+    public partial class FRMDispatched : Form
     {
-        public Form4()
+        public FRMDispatched()
         {
             InitializeComponent();
+        }
+
+        private void LBLDispatch_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

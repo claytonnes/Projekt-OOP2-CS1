@@ -1,6 +1,6 @@
 ﻿namespace CS1_Projekt_OOP2
 {
-    partial class Form1
+    partial class FRMMain
     {
         /// <summary>
         /// Required designer variable.
@@ -93,7 +93,7 @@
             this.BTNNewOrder.UseVisualStyleBackColor = true;
             this.BTNNewOrder.Click += new System.EventHandler(this.BTNNewOrder_Click);
             // 
-            // Form1
+            // FRMMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -104,8 +104,10 @@
             this.Controls.Add(this.BTNChange);
             this.Controls.Add(this.BTNAdd);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "Form1";
+            this.Name = "FRMMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FRMMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

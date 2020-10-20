@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace CS1_Projekt_OOP2
 {
-   
-    public partial class Form3 : Form
+    public partial class FRMPendingOrders : Form
     {
-        public Form3()
+        public FRMPendingOrders()
         {
             InitializeComponent();
-        }
-
-        private void LBLDispatch_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

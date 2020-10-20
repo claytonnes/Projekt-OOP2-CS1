@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CS1_Projekt_OOP2
 {
-    public partial class Form5 : Form
+    public partial class FRMCustomers : Form
     {
-        public Form5()
+        public FRMCustomers()
         {
             InitializeComponent();
         }

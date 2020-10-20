@@ -1,6 +1,6 @@
 ﻿namespace CS1_Projekt_OOP2
 {
-    partial class Form2
+    partial class FRMOrder
     {
         /// <summary>
         /// Required designer variable.
@@ -85,7 +85,7 @@
             this.BTNCustomers.UseVisualStyleBackColor = true;
             this.BTNCustomers.Click += new System.EventHandler(this.BTNCustomers_Click);
             // 
-            // Form2
+            // FRMOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -95,7 +95,8 @@
             this.Controls.Add(this.BTNDpendingOrders);
             this.Controls.Add(this.BTNDispatch);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "Form2";
+            this.Name = "FRMOrder";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form2";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

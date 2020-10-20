@@ -28,7 +28,7 @@ namespace CS1_Projekt_OOP2
             Customer = customer;
             OrderDate = DateTime.Now;
             DeliveryAddress = deliveryAddress;
-            Items = Items;
+            Items = items;
             PaymentCompleted = paymentCompleted;
             PaymentRefunded = false;
             Dispatched = false;
@@ -81,6 +81,6 @@ namespace CS1_Projekt_OOP2
 
         public List<OrderLine> Items { 
             get { return _items; }
-            set { _items = Items; } }
+            set { _items = value; } }
     }
 }

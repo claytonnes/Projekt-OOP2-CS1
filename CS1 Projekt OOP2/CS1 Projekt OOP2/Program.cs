@@ -17,7 +17,7 @@ namespace CS1_Projekt_OOP2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FRMMain());
         }
     }
 }

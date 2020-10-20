@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace CS1_Projekt_OOP2
 {
-    public partial class Form2 : Form
+    public partial class FRMOrder : Form
     {
-        Form3 GUIDispatchedOrders = new Form3();
-        Form4 GUIPendingOrders = new Form4();
-        Form5 CustomersInformation = new Form5();
-        public Form2()
+        FRMDispatched GUIDispatchedOrders = new FRMDispatched();
+        FRMPendingOrders GUIPendingOrders = new FRMPendingOrders();
+        FRMCustomers CustomersInformation = new FRMCustomers();
+        public FRMOrder()
         {
             InitializeComponent();
         }
@@ -24,17 +24,17 @@ namespace CS1_Projekt_OOP2
 
         private void BTNDispatchedOrders_Click(object sender, EventArgs e)
         {
-            GUIDispatchedOrders.Show();
+            GUIDispatchedOrders.ShowDialog();
         }
 
         private void BTNDpendingOrders_Click(object sender, EventArgs e)
         {
-            GUIPendingOrders.Show();
+            GUIPendingOrders.ShowDialog();
         }
 
         private void BTNCustomers_Click(object sender, EventArgs e)
         {
-            CustomersInformation.Show();
+            CustomersInformation.ShowDialog();
         }
     }
 }

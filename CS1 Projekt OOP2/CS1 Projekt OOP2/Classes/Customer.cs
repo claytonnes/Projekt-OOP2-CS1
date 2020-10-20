@@ -40,7 +40,7 @@ namespace CS1_Projekt_OOP2
             get { return _name; }
             set
             {
-                if (_name == null || _name == "")
+                if (value == null || value == "")
                     throw new NullValueException(" Name cannot be null ");
                 else
                     _name = value;
@@ -51,7 +51,7 @@ namespace CS1_Projekt_OOP2
             get { return _phone; }
             set
             {
-                if (_phone == null || _phone == "")
+                if (value == null || value == "")
                     throw new NullValueException(" Phone cannot be null ");
                 else
                     _phone = value;
@@ -62,7 +62,7 @@ namespace CS1_Projekt_OOP2
             get { return _email; }
             set
             {
-                if (_email == null || _email == "")
+                if (value == null || value == "")
                     throw new NullValueException(" Email cannot be null ");
                 else
                     _email = value;

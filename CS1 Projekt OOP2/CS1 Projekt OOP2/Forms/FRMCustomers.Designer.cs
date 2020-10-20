@@ -1,6 +1,6 @@
 ﻿namespace CS1_Projekt_OOP2
 {
-    partial class Form5
+    partial class FRMCustomers
     {
         /// <summary>
         /// Required designer variable.
@@ -33,6 +33,7 @@
             this.BTNUpdate = new System.Windows.Forms.Button();
             this.BTNArchivedOrders = new System.Windows.Forms.Button();
             this.BTNActiveOrders = new System.Windows.Forms.Button();
+            this.BTNClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,17 +83,29 @@
             this.BTNActiveOrders.Text = "View Active Orders";
             this.BTNActiveOrders.UseVisualStyleBackColor = true;
             // 
-            // Form5
+            // BTNClose
+            // 
+            this.BTNClose.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.BTNClose.Location = new System.Drawing.Point(1030, 633);
+            this.BTNClose.Name = "BTNClose";
+            this.BTNClose.Size = new System.Drawing.Size(92, 31);
+            this.BTNClose.TabIndex = 5;
+            this.BTNClose.Text = "Close";
+            this.BTNClose.UseVisualStyleBackColor = true;
+            // 
+            // FRMCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 692);
+            this.Controls.Add(this.BTNClose);
             this.Controls.Add(this.BTNActiveOrders);
             this.Controls.Add(this.BTNArchivedOrders);
             this.Controls.Add(this.BTNUpdate);
             this.Controls.Add(this.BTNAdd);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "Form5";
+            this.Name = "FRMCustomers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form5";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -106,5 +119,6 @@
         private System.Windows.Forms.Button BTNUpdate;
         private System.Windows.Forms.Button BTNArchivedOrders;
         private System.Windows.Forms.Button BTNActiveOrders;
+        private System.Windows.Forms.Button BTNClose;
     }
 }

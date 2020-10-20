@@ -76,56 +76,56 @@
   <ItemGroup>
     <Compile Include="Classes\Customer.cs" />
     <Compile Include="Classes\Warehouse.cs" />
-    <Compile Include="Forms\Form5.cs">
+    <Compile Include="Forms\FRMCustomers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form5.Designer.cs">
-      <DependentUpon>Form5.cs</DependentUpon>
+    <Compile Include="Forms\FRMCustomers.Designer.cs">
+      <DependentUpon>FRMCustomers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form1.cs">
+    <Compile Include="Forms\FRMMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\FRMMain.Designer.cs">
+      <DependentUpon>FRMMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Order.cs" />
     <Compile Include="Classes\OrderLine.cs" />
     <Compile Include="Classes\Product.cs" />
-    <Compile Include="Forms\Form2.cs">
+    <Compile Include="Forms\FRMOrder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="Forms\FRMOrder.Designer.cs">
+      <DependentUpon>FRMOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form3.cs">
+    <Compile Include="Forms\FRMDispatched.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form3.Designer.cs">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <Compile Include="Forms\FRMDispatched.Designer.cs">
+      <DependentUpon>FRMDispatched.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form4.cs">
+    <Compile Include="Forms\FRMPendingOrders.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form4.Designer.cs">
-      <DependentUpon>Form4.cs</DependentUpon>
+    <Compile Include="Forms\FRMPendingOrders.Designer.cs">
+      <DependentUpon>FRMPendingOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IWarehouse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Form5.resx">
-      <DependentUpon>Form5.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FRMCustomers.resx">
+      <DependentUpon>FRMCustomers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FRMMain.resx">
+      <DependentUpon>FRMMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FRMOrder.resx">
+      <DependentUpon>FRMOrder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form3.resx">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FRMDispatched.resx">
+      <DependentUpon>FRMDispatched.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form4.resx">
-      <DependentUpon>Form4.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FRMPendingOrders.resx">
+      <DependentUpon>FRMPendingOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
