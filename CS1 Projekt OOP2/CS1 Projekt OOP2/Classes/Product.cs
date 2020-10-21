@@ -46,6 +46,7 @@ namespace CS1_Projekt_OOP2
                 }
         }
         
+        //Ask Christer
         public DateTime FirstAvailable { get; set; }
         public DateTime NextStocking { get; set; }
 

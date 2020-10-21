@@ -9,19 +9,16 @@ namespace CS1_Projekt_OOP2
 {
     public class Customer
     {
+        //Ask Christer
         internal static int Count; // Increases every time a new customer is created
 
         private int _number;    // set value is unique and non-negative
         private string _name;   // non-empty value
         private string _phone;  // non-empty value
         private string _email;  // non-empty value
-        private int v1;         // what is this member for?
-        private bool v2;        // what is this member for?
 
-        public Customer(int v1, bool v2) //what is this constructor for?
+        public Customer() //what is this constructor for?
         {
-            this.v1 = v1;
-            this.v2 = v2;
         }
 
         public Customer(int nmb, string nm, string phn, string em)
