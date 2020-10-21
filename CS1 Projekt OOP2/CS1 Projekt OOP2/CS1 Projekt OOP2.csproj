@@ -76,6 +76,12 @@
   <ItemGroup>
     <Compile Include="Classes\Customer.cs" />
     <Compile Include="Classes\Warehouse.cs" />
+    <Compile Include="Forms\FRMCreateNewOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FRMCreateNewOrder.Designer.cs">
+      <DependentUpon>FRMCreateNewOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FRMCustomers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,12 @@
     <Compile Include="Classes\Order.cs" />
     <Compile Include="Classes\OrderLine.cs" />
     <Compile Include="Classes\Product.cs" />
+    <Compile Include="Forms\FRMManageCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FRMManageCustomers.Designer.cs">
+      <DependentUpon>FRMManageCustomers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FRMOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,11 +124,17 @@
     <Compile Include="Interfaces\IWarehouse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FRMCreateNewOrder.resx">
+      <DependentUpon>FRMCreateNewOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FRMCustomers.resx">
       <DependentUpon>FRMCustomers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FRMMain.resx">
       <DependentUpon>FRMMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FRMManageCustomers.resx">
+      <DependentUpon>FRMManageCustomers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FRMOrder.resx">
       <DependentUpon>FRMOrder.cs</DependentUpon>

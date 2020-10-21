@@ -7,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Text.Json;
 
 namespace CS1_Projekt_OOP2.Classes
 {
+
+    public delegate void ChangeHandler();
+
     class Warehouse : IWarehouse
     {
         public List<Product> Products { get; set; }
@@ -23,9 +25,24 @@ namespace CS1_Projekt_OOP2.Classes
             Orders = new List<Order>();
             Customers = new List<Customer>();
         }
+
+        public event ChangeHandler WarehouseChanged;
+
+        public void RaiseWarehouseChanged()
+        {
+            WarehouseChanged?.Invoke();
+        }
+
+
+        public Customer GetCustomerById(int id)
+        {
+            return Customers.Find(x => x.Number == id);
+        }
+
         public void AddNewCustomer(string _name, string _phone, string _email)
         {
             Customers.Add(new Customer(Customers.Count, _name, _phone, _email));
+            RaiseWarehouseChanged();
         }
 
         public void AddNewOrder(Customer customer, string deliveryAddress, List<OrderLine> orderLines, bool paymentCompleted)
@@ -49,7 +66,7 @@ namespace CS1_Projekt_OOP2.Classes
             }
         }
 
-        public IEnumerable<Order> ReturnUserActiveOrders(int customerID)
+        public IEnumerable<Order> ReturnCustomersActiveOrders(int customerID)
         {
             IEnumerable<Order> activeUserOrders = Orders.Where
                 (o => o.Dispatched == false
@@ -57,7 +74,7 @@ namespace CS1_Projekt_OOP2.Classes
             return activeUserOrders;
         }
 
-        public IEnumerable<Order> ReturnUserArchivedOrders(int customerID)
+        public IEnumerable<Order> ReturnCustomersArchivedOrders(int customerID)
         {
             IEnumerable<Order> archivedUserOrders = Orders.Where
                 (o => o.Dispatched == true
@@ -88,9 +105,15 @@ namespace CS1_Projekt_OOP2.Classes
 
         }
 
-        public void UpdateCustomerInformation(string name, string phone, string email)
+        public void UpdateCustomerInformation(int id, string name, string phone, string email)
         {
+            Customer c = GetCustomerById(id);
 
+            c.Name = name;
+            c.Phone = phone;
+            c.Email = email;
+
+            RaiseWarehouseChanged();
         }
 
         //Method called when dispatching items. Reduces stock (has already been checked if stock is enough) by the count of the OrderLine.
@@ -101,5 +124,6 @@ namespace CS1_Projekt_OOP2.Classes
                 orderLine.Product.Stock -= orderLine.Count;
             }
         }
+
     }
 }

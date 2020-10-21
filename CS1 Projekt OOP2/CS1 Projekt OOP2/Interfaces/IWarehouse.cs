@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CS1_Projekt_OOP2.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,17 +14,31 @@ namespace CS1_Projekt_OOP2.Interfaces
         List<Product> Products { get; set; }
         List<Order> Orders { get; set; }
         List<Customer> Customers { get; set; }
-        void AddNewOrder(Customer customer, string deliveryAddress, List<OrderLine> orderLines, bool paymentCompleted);
+
+
+        event ChangeHandler WarehouseChanged;
+        void RaiseWarehouseChanged();
+
         void ProcessOrders();
+
+        void AddNewOrder(Customer customer, string deliveryAddress, List<OrderLine> orderLines, bool paymentCompleted);
         IEnumerable<Order> ReturnDispatchedOrders();
         IEnumerable<Order> ReturnPendingOrders();
+
+
+
+        Customer  GetCustomerById(int id);
         void AddNewCustomer(string name, string phone, string email);
-        IEnumerable<Order> ReturnUserArchivedOrders(int customerID);
-        IEnumerable<Order> ReturnUserActiveOrders(int customerID);
+        void UpdateCustomerInformation(int id, string name, string phone, string email);
+        IEnumerable<Order> ReturnCustomersArchivedOrders(int customerID);
+        IEnumerable<Order> ReturnCustomersActiveOrders(int customerID);
+
+
+
         void AddNewProduct(int code, string name, double price, int stock);
+        void UpdateProductInformation(string name, double price, int stock);
         IEnumerable<Product> ReturnStockZero();
-        void UpdateProductInformation();
-        void UpdateCustomerInformation();
+
 
 
 
