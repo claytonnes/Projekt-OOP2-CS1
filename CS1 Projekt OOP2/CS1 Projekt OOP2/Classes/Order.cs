@@ -34,7 +34,6 @@ namespace CS1_Projekt_OOP2
             Dispatched = false;
         }
 
-        //Ej unikt. Unikt genereras i Warehouse?
         public int Number { 
             get { return _number; }
             set { _number = (value < 0) ? throw new ArgumentOutOfRangeException("Faulty order number") : value; }

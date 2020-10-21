@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CS1_Projekt_OOP2.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,38 +13,35 @@ namespace CS1_Projekt_OOP2
 {
     public partial class FRMMain : Form
     {
-        List<Order> orders = new List<Order>();
+        private IWarehouse wh;
 
-
-        FRMOrder GUIOrders = new FRMOrder(); 
-
-        public FRMMain()
+        public FRMMain(IWarehouse wh)
         {
+            this.wh = wh;
             InitializeComponent();
         }
 
         private void BTNNewOrder_Click(object sender, EventArgs e)
         {
+            FRMOrder GUIOrders = new FRMOrder(wh);
             GUIOrders.ShowDialog();
         }
 
         private void FRMMain_Load(object sender, EventArgs e)
         {
-
             // Test-data
             Product product = new Product();
             product.Name = "Balsam";
             product.Price = 123;
             product.Stock = 100;
 
-            Customer customer = new Customer(1, "Moa", "012-34567", "test@test.com");
+            wh.AddNewCustomer("Moa", "012-34567", "test@test.com");
             List<OrderLine> items = new List<OrderLine>();
             OrderLine item = new OrderLine(product, 123);
             items.Add(item);
-            Order order = new Order(1, customer, "Hemmavägen 1", items, false);
-            orders.Add(order);
+            wh.AddNewOrder(wh.Customers[0], "Leveransvägen 1", items, true);
 
-            dataGridView1.DataSource = orders;
+            dataGridView1.DataSource = wh.Orders;
         }
     }
 }

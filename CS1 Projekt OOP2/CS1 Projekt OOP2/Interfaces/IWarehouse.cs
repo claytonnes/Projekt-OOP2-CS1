@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CS1_Projekt_OOP2.Interfaces
 {
-    interface IWarehouse
+    public interface IWarehouse
     {
         List<Product> Products { get; set; }
         List<Order> Orders { get; set; }
@@ -17,7 +17,7 @@ namespace CS1_Projekt_OOP2.Interfaces
         void ProcessOrders();
         IEnumerable<Order> ReturnDispatchedOrders();
         IEnumerable<Order> ReturnPendingOrders();
-        void AddNewCustomer(int id, string name, string phone, string email);
+        void AddNewCustomer(string name, string phone, string email);
         void UpdateCustomerName(int id, string name);
         void UpdateCustomerPhone(int id, string phone);
         void UpdateCustomerEmail(int id, string email);

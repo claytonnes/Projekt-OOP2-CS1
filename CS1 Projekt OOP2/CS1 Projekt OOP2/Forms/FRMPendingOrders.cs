@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CS1_Projekt_OOP2.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,10 @@ namespace CS1_Projekt_OOP2
 {
     public partial class FRMPendingOrders : Form
     {
-        public FRMPendingOrders()
+        private IWarehouse wh;
+        public FRMPendingOrders(IWarehouse wh)
         {
+            this.wh = wh;
             InitializeComponent();
         }
     }

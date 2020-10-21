@@ -17,7 +17,13 @@ namespace CS1_Projekt_OOP2.Classes
         public List<Order> Orders { get; set; }
         public List<Customer> Customers { get; set; }
 
-        public void AddNewCustomer(int _number, string _name, string _phone, string _email)
+        public Warehouse()
+        {
+            Products = new List<Product>();
+            Orders = new List<Order>();
+            Customers = new List<Customer>();
+        }
+        public void AddNewCustomer(string _name, string _phone, string _email)
         {
             Customers.Add(new Customer(GenerateUniqueCustomerNumber(), _name, _phone, _email));
         }

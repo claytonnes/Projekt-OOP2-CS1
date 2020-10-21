@@ -28,39 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.orderGridView = new System.Windows.Forms.DataGridView();
             this.BTNDispatch = new System.Windows.Forms.Button();
             this.BTNDpendingOrders = new System.Windows.Forms.Button();
             this.BTNDispatchedOrders = new System.Windows.Forms.Button();
             this.BTNCustomers = new System.Windows.Forms.Button();
             this.BTNClose = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // orderGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(71, 100);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(637, 381);
-            this.dataGridView1.TabIndex = 0;
+            this.orderGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.orderGridView.Location = new System.Drawing.Point(47, 65);
+            this.orderGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.orderGridView.Name = "orderGridView";
+            this.orderGridView.RowHeadersWidth = 62;
+            this.orderGridView.RowTemplate.Height = 28;
+            this.orderGridView.Size = new System.Drawing.Size(425, 248);
+            this.orderGridView.TabIndex = 0;
             // 
             // BTNDispatch
             // 
-            this.BTNDispatch.Location = new System.Drawing.Point(71, 527);
+            this.BTNDispatch.Location = new System.Drawing.Point(47, 343);
+            this.BTNDispatch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BTNDispatch.Name = "BTNDispatch";
-            this.BTNDispatch.Size = new System.Drawing.Size(169, 61);
+            this.BTNDispatch.Size = new System.Drawing.Size(113, 40);
             this.BTNDispatch.TabIndex = 1;
             this.BTNDispatch.Text = "Dispach Order";
             this.BTNDispatch.UseVisualStyleBackColor = true;
             // 
             // BTNDpendingOrders
             // 
-            this.BTNDpendingOrders.Location = new System.Drawing.Point(756, 200);
+            this.BTNDpendingOrders.Location = new System.Drawing.Point(504, 130);
+            this.BTNDpendingOrders.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BTNDpendingOrders.Name = "BTNDpendingOrders";
-            this.BTNDpendingOrders.Size = new System.Drawing.Size(169, 61);
+            this.BTNDpendingOrders.Size = new System.Drawing.Size(113, 40);
             this.BTNDpendingOrders.TabIndex = 3;
             this.BTNDpendingOrders.Text = "View Pending Orders";
             this.BTNDpendingOrders.UseVisualStyleBackColor = true;
@@ -68,9 +71,10 @@
             // 
             // BTNDispatchedOrders
             // 
-            this.BTNDispatchedOrders.Location = new System.Drawing.Point(756, 100);
+            this.BTNDispatchedOrders.Location = new System.Drawing.Point(504, 65);
+            this.BTNDispatchedOrders.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BTNDispatchedOrders.Name = "BTNDispatchedOrders";
-            this.BTNDispatchedOrders.Size = new System.Drawing.Size(169, 61);
+            this.BTNDispatchedOrders.Size = new System.Drawing.Size(113, 40);
             this.BTNDispatchedOrders.TabIndex = 4;
             this.BTNDispatchedOrders.Text = "View Dispatched Orders";
             this.BTNDispatchedOrders.UseVisualStyleBackColor = true;
@@ -78,9 +82,10 @@
             // 
             // BTNCustomers
             // 
-            this.BTNCustomers.Location = new System.Drawing.Point(756, 305);
+            this.BTNCustomers.Location = new System.Drawing.Point(504, 198);
+            this.BTNCustomers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BTNCustomers.Name = "BTNCustomers";
-            this.BTNCustomers.Size = new System.Drawing.Size(169, 61);
+            this.BTNCustomers.Size = new System.Drawing.Size(113, 40);
             this.BTNCustomers.TabIndex = 5;
             this.BTNCustomers.Text = "Customers Information";
             this.BTNCustomers.UseVisualStyleBackColor = true;
@@ -89,35 +94,38 @@
             // BTNClose
             // 
             this.BTNClose.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.BTNClose.Location = new System.Drawing.Point(1016, 601);
+            this.BTNClose.Location = new System.Drawing.Point(677, 391);
+            this.BTNClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BTNClose.Name = "BTNClose";
-            this.BTNClose.Size = new System.Drawing.Size(93, 30);
+            this.BTNClose.Size = new System.Drawing.Size(62, 19);
             this.BTNClose.TabIndex = 6;
             this.BTNClose.Text = "Close";
             this.BTNClose.UseVisualStyleBackColor = true;
             // 
             // FRMOrder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1143, 656);
+            this.ClientSize = new System.Drawing.Size(762, 426);
             this.Controls.Add(this.BTNClose);
             this.Controls.Add(this.BTNCustomers);
             this.Controls.Add(this.BTNDispatchedOrders);
             this.Controls.Add(this.BTNDpendingOrders);
             this.Controls.Add(this.BTNDispatch);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.orderGridView);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FRMOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form2";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.FRMOrder_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.orderGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView orderGridView;
         private System.Windows.Forms.Button BTNDispatch;
         private System.Windows.Forms.Button BTNDpendingOrders;
         private System.Windows.Forms.Button BTNDispatchedOrders;
