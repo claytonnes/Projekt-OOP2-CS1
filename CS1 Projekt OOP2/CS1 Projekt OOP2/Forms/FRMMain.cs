@@ -41,6 +41,10 @@ namespace CS1_Projekt_OOP2
             items.Add(item);
             wh.AddNewOrder(wh.Customers[0], "Leveransvägen 1", items, true);
 
+            //Testdata för att visa att pending/dispatched-sorteringen fungerar.
+            wh.AddNewOrder(wh.Customers[0], "Vägvägen11", items, true);
+            wh.Orders[1].Dispatched = true;
+
             dataGridView1.DataSource = wh.Orders;
         }
     }

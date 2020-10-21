@@ -19,5 +19,10 @@ namespace CS1_Projekt_OOP2
             this.wh = wh;
             InitializeComponent();
         }
+
+        private void FRMPendingOrders_Load(object sender, EventArgs e)
+        {
+            pendingDataGrid.DataSource = wh.ReturnPendingOrders().ToList();
+        }
     }
 }

@@ -28,53 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.pendingDataGrid = new System.Windows.Forms.DataGridView();
             this.LBLPendingOrders = new System.Windows.Forms.Label();
             this.BTNClose = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pendingDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // pendingDataGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(32, 124);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(511, 364);
-            this.dataGridView1.TabIndex = 0;
+            this.pendingDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.pendingDataGrid.Location = new System.Drawing.Point(21, 81);
+            this.pendingDataGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pendingDataGrid.Name = "pendingDataGrid";
+            this.pendingDataGrid.RowHeadersWidth = 62;
+            this.pendingDataGrid.RowTemplate.Height = 28;
+            this.pendingDataGrid.Size = new System.Drawing.Size(341, 237);
+            this.pendingDataGrid.TabIndex = 0;
             // 
             // LBLPendingOrders
             // 
             this.LBLPendingOrders.AutoSize = true;
-            this.LBLPendingOrders.Location = new System.Drawing.Point(28, 89);
+            this.LBLPendingOrders.Location = new System.Drawing.Point(19, 58);
+            this.LBLPendingOrders.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LBLPendingOrders.Name = "LBLPendingOrders";
-            this.LBLPendingOrders.Size = new System.Drawing.Size(119, 20);
+            this.LBLPendingOrders.Size = new System.Drawing.Size(80, 13);
             this.LBLPendingOrders.TabIndex = 1;
             this.LBLPendingOrders.Text = "Pending Orders";
             // 
             // BTNClose
             // 
             this.BTNClose.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.BTNClose.Location = new System.Drawing.Point(1007, 559);
+            this.BTNClose.Location = new System.Drawing.Point(671, 363);
+            this.BTNClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BTNClose.Name = "BTNClose";
-            this.BTNClose.Size = new System.Drawing.Size(83, 32);
+            this.BTNClose.Size = new System.Drawing.Size(55, 21);
             this.BTNClose.TabIndex = 2;
             this.BTNClose.Text = "Close";
             this.BTNClose.UseVisualStyleBackColor = true;
             // 
             // FRMPendingOrders
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1119, 603);
+            this.ClientSize = new System.Drawing.Size(746, 392);
             this.Controls.Add(this.BTNClose);
             this.Controls.Add(this.LBLPendingOrders);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.pendingDataGrid);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FRMPendingOrders";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form4";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.FRMPendingOrders_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pendingDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -82,7 +87,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView pendingDataGrid;
         private System.Windows.Forms.Label LBLPendingOrders;
         private System.Windows.Forms.Button BTNClose;
     }

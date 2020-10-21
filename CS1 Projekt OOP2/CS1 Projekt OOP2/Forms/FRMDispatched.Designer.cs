@@ -28,54 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dispatchedDataGrid = new System.Windows.Forms.DataGridView();
             this.LBLDispatch = new System.Windows.Forms.Label();
             this.BTNClose = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dispatchedDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dispatchedDataGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(40, 125);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(459, 358);
-            this.dataGridView1.TabIndex = 0;
+            this.dispatchedDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dispatchedDataGrid.Location = new System.Drawing.Point(27, 81);
+            this.dispatchedDataGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dispatchedDataGrid.Name = "dispatchedDataGrid";
+            this.dispatchedDataGrid.RowHeadersWidth = 62;
+            this.dispatchedDataGrid.RowTemplate.Height = 28;
+            this.dispatchedDataGrid.Size = new System.Drawing.Size(306, 233);
+            this.dispatchedDataGrid.TabIndex = 0;
             // 
             // LBLDispatch
             // 
             this.LBLDispatch.AutoSize = true;
-            this.LBLDispatch.Location = new System.Drawing.Point(36, 85);
+            this.LBLDispatch.Location = new System.Drawing.Point(24, 55);
+            this.LBLDispatch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LBLDispatch.Name = "LBLDispatch";
-            this.LBLDispatch.Size = new System.Drawing.Size(142, 20);
+            this.LBLDispatch.Size = new System.Drawing.Size(95, 13);
             this.LBLDispatch.TabIndex = 2;
             this.LBLDispatch.Text = "Dispatched Orders";
-            this.LBLDispatch.Click += new System.EventHandler(this.LBLDispatch_Click);
             // 
             // BTNClose
             // 
             this.BTNClose.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.BTNClose.Location = new System.Drawing.Point(952, 568);
+            this.BTNClose.Location = new System.Drawing.Point(635, 369);
+            this.BTNClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BTNClose.Name = "BTNClose";
-            this.BTNClose.Size = new System.Drawing.Size(84, 32);
+            this.BTNClose.Size = new System.Drawing.Size(56, 21);
             this.BTNClose.TabIndex = 3;
             this.BTNClose.Text = "Close";
             this.BTNClose.UseVisualStyleBackColor = true;
             // 
             // FRMDispatched
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1071, 621);
+            this.ClientSize = new System.Drawing.Size(714, 404);
             this.Controls.Add(this.BTNClose);
             this.Controls.Add(this.LBLDispatch);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dispatchedDataGrid);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FRMDispatched";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form3";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.FRMDispatched_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dispatchedDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,7 +87,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dispatchedDataGrid;
         private System.Windows.Forms.Label LBLDispatch;
         private System.Windows.Forms.Button BTNClose;
     }
