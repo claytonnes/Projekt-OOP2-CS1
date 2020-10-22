@@ -63,14 +63,23 @@ namespace CS1_Projekt_OOP2.Classes
         }
 
         //Metod för att uppfylla Order:3
+        //Fungerar ej just nu
         public void ProcessOrders()
         {
-            IEnumerable<Order> readyForDisptach = Orders.Where(a => a.PaymentCompleted == true && a.Items.Any(o => o.Product.Stock < o.Count)).OrderBy(a => a.OrderDate);
-            foreach (Order order in readyForDisptach)
+            IEnumerable<Order> paymentCompleted = Orders.Where(
+                a => a.PaymentCompleted == true 
+                && a.Dispatched == false).OrderBy(a => a.OrderDate);
+
+            foreach (Order order in paymentCompleted)
             {
-                order.Dispatched = true;
-                AdjustStock(order.Items);
+                if(order.Items.All(o => o.Count < o.Product.Stock))
+                {
+                    order.Dispatched = true;
+                    AdjustStock(order.Items);
+                }
+                
             }
+            RaiseWarehouseChanged();
         }
 
         public IEnumerable<Order> ReturnCustomersActiveOrders(int customerID)

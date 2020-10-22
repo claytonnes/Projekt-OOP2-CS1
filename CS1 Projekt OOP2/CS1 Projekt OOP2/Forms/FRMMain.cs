@@ -52,7 +52,7 @@ namespace CS1_Projekt_OOP2
 
             wh.AddNewCustomer("Moa", "012-34567", "test@test.com");
             List<OrderLine> items = new List<OrderLine>();
-            OrderLine item = new OrderLine(wh.Products[0], 123);
+            OrderLine item = new OrderLine(wh.Products[0], 11);
             items.Add(item);
             wh.AddNewOrder(wh.Customers[0], "Leveransvägen 1", items, true);
 
@@ -101,6 +101,21 @@ namespace CS1_Projekt_OOP2
             BindingSource source = new BindingSource();
             source.DataSource = wh.Orders;
             OrdersGridView.DataSource = source;
+        }
+
+        private void BTN_ShowPending_Click(object sender, EventArgs e)
+        {
+            OrdersGridView.DataSource = wh.ReturnPendingOrders().ToList();
+        }
+
+        private void BTN_ShowDispatched_Click(object sender, EventArgs e)
+        {
+            OrdersGridView.DataSource = wh.ReturnDispatchedOrders().ToList();
+        }
+
+        private void BTN_ProcessOrders_Click(object sender, EventArgs e)
+        {
+            wh.ProcessOrders();
         }
     }
 }
