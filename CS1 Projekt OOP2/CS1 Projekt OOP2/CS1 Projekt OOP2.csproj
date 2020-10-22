@@ -109,23 +109,11 @@
     <Compile Include="Forms\FRMManageProducts.Designer.cs">
       <DependentUpon>FRMManageProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FRMOrder.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FRMOrder.Designer.cs">
-      <DependentUpon>FRMOrder.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FRMDispatched.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FRMDispatched.Designer.cs">
       <DependentUpon>FRMDispatched.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FRMPendingOrders.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FRMPendingOrders.Designer.cs">
-      <DependentUpon>FRMPendingOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IWarehouse.cs" />
     <Compile Include="Program.cs" />
@@ -145,14 +133,8 @@
     <EmbeddedResource Include="Forms\FRMManageProducts.resx">
       <DependentUpon>FRMManageProducts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FRMOrder.resx">
-      <DependentUpon>FRMOrder.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FRMDispatched.resx">
       <DependentUpon>FRMDispatched.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FRMPendingOrders.resx">
-      <DependentUpon>FRMPendingOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
