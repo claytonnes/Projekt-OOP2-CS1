@@ -28,30 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.OrdersGridView = new System.Windows.Forms.DataGridView();
             this.BTNProducts = new System.Windows.Forms.Button();
             this.BTNChange = new System.Windows.Forms.Button();
             this.BTNZeroStock = new System.Windows.Forms.Button();
             this.BTNClosestDate = new System.Windows.Forms.Button();
             this.BTNNewOrder = new System.Windows.Forms.Button();
             this.BTN_OpenFRMCustomers = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // OrdersGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(46, 55);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(523, 235);
-            this.dataGridView1.TabIndex = 0;
+            this.OrdersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.OrdersGridView.Location = new System.Drawing.Point(36, 86);
+            this.OrdersGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.OrdersGridView.Name = "OrdersGridView";
+            this.OrdersGridView.RowHeadersWidth = 62;
+            this.OrdersGridView.RowTemplate.Height = 28;
+            this.OrdersGridView.Size = new System.Drawing.Size(698, 253);
+            this.OrdersGridView.TabIndex = 0;
             // 
             // BTNProducts
             // 
-            this.BTNProducts.Location = new System.Drawing.Point(595, 148);
+            this.BTNProducts.Location = new System.Drawing.Point(453, 29);
             this.BTNProducts.Margin = new System.Windows.Forms.Padding(2);
             this.BTNProducts.Name = "BTNProducts";
             this.BTNProducts.Size = new System.Drawing.Size(120, 40);
@@ -62,7 +62,7 @@
             // 
             // BTNChange
             // 
-            this.BTNChange.Location = new System.Drawing.Point(46, 312);
+            this.BTNChange.Location = new System.Drawing.Point(157, 372);
             this.BTNChange.Margin = new System.Windows.Forms.Padding(2);
             this.BTNChange.Name = "BTNChange";
             this.BTNChange.Size = new System.Drawing.Size(122, 43);
@@ -72,7 +72,7 @@
             // 
             // BTNZeroStock
             // 
-            this.BTNZeroStock.Location = new System.Drawing.Point(172, 312);
+            this.BTNZeroStock.Location = new System.Drawing.Point(338, 372);
             this.BTNZeroStock.Margin = new System.Windows.Forms.Padding(2);
             this.BTNZeroStock.Name = "BTNZeroStock";
             this.BTNZeroStock.Size = new System.Drawing.Size(122, 43);
@@ -82,7 +82,7 @@
             // 
             // BTNClosestDate
             // 
-            this.BTNClosestDate.Location = new System.Drawing.Point(298, 312);
+            this.BTNClosestDate.Location = new System.Drawing.Point(514, 372);
             this.BTNClosestDate.Margin = new System.Windows.Forms.Padding(2);
             this.BTNClosestDate.Name = "BTNClosestDate";
             this.BTNClosestDate.Size = new System.Drawing.Size(122, 43);
@@ -92,7 +92,7 @@
             // 
             // BTNNewOrder
             // 
-            this.BTNNewOrder.Location = new System.Drawing.Point(595, 55);
+            this.BTNNewOrder.Location = new System.Drawing.Point(178, 29);
             this.BTNNewOrder.Margin = new System.Windows.Forms.Padding(2);
             this.BTNNewOrder.Name = "BTNNewOrder";
             this.BTNNewOrder.Size = new System.Drawing.Size(120, 40);
@@ -103,7 +103,7 @@
             // 
             // BTN_OpenFRMCustomers
             // 
-            this.BTN_OpenFRMCustomers.Location = new System.Drawing.Point(595, 103);
+            this.BTN_OpenFRMCustomers.Location = new System.Drawing.Point(314, 29);
             this.BTN_OpenFRMCustomers.Name = "BTN_OpenFRMCustomers";
             this.BTN_OpenFRMCustomers.Size = new System.Drawing.Size(120, 40);
             this.BTN_OpenFRMCustomers.TabIndex = 6;
@@ -122,20 +122,20 @@
             this.Controls.Add(this.BTNZeroStock);
             this.Controls.Add(this.BTNChange);
             this.Controls.Add(this.BTNProducts);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.OrdersGridView);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FRMMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FRMMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView OrdersGridView;
         private System.Windows.Forms.Button BTNProducts;
         private System.Windows.Forms.Button BTNChange;
         private System.Windows.Forms.Button BTNZeroStock;

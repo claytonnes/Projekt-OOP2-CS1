@@ -51,9 +51,6 @@ namespace CS1_Projekt_OOP2.Forms
             CustomerGridView.Columns.Add("Col2", "Name");
             CustomerGridView.Columns.Add("Col3", "Phone");
             CustomerGridView.Columns.Add("Col4", "Email");
-
-
-
             foreach (Customer c in warehouse.Customers)
             {
                 CustomerGridView.Rows.Add(c.Number, c.Name, c.Phone, c.Email);

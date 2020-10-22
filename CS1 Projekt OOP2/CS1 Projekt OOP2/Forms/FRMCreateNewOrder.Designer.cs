@@ -44,14 +44,16 @@
             this.TXTProductCount = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.LSTSelected = new System.Windows.Forms.ListBox();
+            this.LST_Selected = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.TXT_Delivery = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.BTN_CompleteOrder = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.BOX_CompletedPay = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -203,14 +205,16 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.BOX_CompletedPay);
             this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.LSTSelected);
+            this.groupBox3.Controls.Add(this.LST_Selected);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.TXT_Delivery);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.button3);
+            this.groupBox3.Controls.Add(this.BTN_CompleteOrder);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.label3);
@@ -233,31 +237,31 @@
             this.label9.TabIndex = 19;
             this.label9.Text = "Selected products";
             // 
-            // LSTSelected
+            // LST_Selected
             // 
-            this.LSTSelected.FormattingEnabled = true;
-            this.LSTSelected.ItemHeight = 16;
-            this.LSTSelected.Location = new System.Drawing.Point(21, 258);
-            this.LSTSelected.Name = "LSTSelected";
-            this.LSTSelected.Size = new System.Drawing.Size(321, 196);
-            this.LSTSelected.TabIndex = 10;
+            this.LST_Selected.FormattingEnabled = true;
+            this.LST_Selected.ItemHeight = 16;
+            this.LST_Selected.Location = new System.Drawing.Point(21, 258);
+            this.LST_Selected.Name = "LST_Selected";
+            this.LST_Selected.Size = new System.Drawing.Size(321, 196);
+            this.LST_Selected.TabIndex = 10;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(32, 186);
+            this.label5.Location = new System.Drawing.Point(32, 167);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 13);
             this.label5.TabIndex = 18;
             this.label5.Text = "Deliver at:";
             // 
-            // textBox2
+            // TXT_Delivery
             // 
-            this.textBox2.Location = new System.Drawing.Point(113, 183);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(189, 23);
-            this.textBox2.TabIndex = 17;
+            this.TXT_Delivery.Location = new System.Drawing.Point(104, 162);
+            this.TXT_Delivery.Name = "TXT_Delivery";
+            this.TXT_Delivery.Size = new System.Drawing.Size(189, 23);
+            this.TXT_Delivery.TabIndex = 17;
             // 
             // label8
             // 
@@ -289,15 +293,35 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "<name>";
             // 
-            // button3
+            // BTN_CompleteOrder
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(113, 470);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(108, 47);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Complete order";
-            this.button3.UseVisualStyleBackColor = true;
+            this.BTN_CompleteOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_CompleteOrder.Location = new System.Drawing.Point(113, 470);
+            this.BTN_CompleteOrder.Name = "BTN_CompleteOrder";
+            this.BTN_CompleteOrder.Size = new System.Drawing.Size(108, 47);
+            this.BTN_CompleteOrder.TabIndex = 13;
+            this.BTN_CompleteOrder.Text = "Complete order";
+            this.BTN_CompleteOrder.UseVisualStyleBackColor = true;
+            this.BTN_CompleteOrder.Click += new System.EventHandler(this.BTN_CompleteOrder_Click);
+            // 
+            // BOX_CompletedPay
+            // 
+            this.BOX_CompletedPay.AutoSize = true;
+            this.BOX_CompletedPay.Location = new System.Drawing.Point(162, 202);
+            this.BOX_CompletedPay.Name = "BOX_CompletedPay";
+            this.BOX_CompletedPay.Size = new System.Drawing.Size(15, 14);
+            this.BOX_CompletedPay.TabIndex = 20;
+            this.BOX_CompletedPay.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(32, 202);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(124, 13);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Completed payment?";
             // 
             // FRMCreateNewOrder
             // 
@@ -337,12 +361,14 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button BTN_CompleteOrder;
         private System.Windows.Forms.Button BTN_manageCustomers;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ListBox LSTSelected;
+        private System.Windows.Forms.ListBox LST_Selected;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox TXT_Delivery;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox BOX_CompletedPay;
     }
 }

@@ -42,18 +42,35 @@ namespace CS1_Projekt_OOP2.Forms
 
         private void LST_customers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Customer c = LST_customers.SelectedItem as Customer;
-            label6.Text = c.Name;
-            label7.Text = c.Phone;
-            label8.Text = c.Email;
+            if(LST_customers.SelectedItem != null)
+            {
+                Customer c = LST_customers.SelectedItem as Customer;
+                label6.Text = c.Name;
+                label7.Text = c.Phone;
+                label8.Text = c.Email;
+            }      
         }
 
         private void BTN_addProductToOrder_Click(object sender, EventArgs e)
         {
             Product p = LST_products.SelectedItem as Product;
             int productCount = Int32.Parse(TXTProductCount.Text);
-            LSTSelected.Items.Add(new OrderLine(p, productCount));
+            LST_Selected.Items.Add(new OrderLine(p, productCount));
+        }
 
+        private void BTN_CompleteOrder_Click(object sender, EventArgs e)
+        {
+            Customer customer = LST_customers.SelectedItem as Customer;
+            string deliveryAddress = TXT_Delivery.Text;
+            List<OrderLine> products = new List<OrderLine>();
+            bool payment = BOX_CompletedPay.Checked ? true : false; 
+            foreach(OrderLine ol in LST_Selected.Items)
+            {
+                products.Add(ol);
+            }
+            warehouse.AddNewOrder(customer, deliveryAddress, products, payment);
+            MessageBox.Show("Order added!");
+            this.Close();
         }
     }
 }

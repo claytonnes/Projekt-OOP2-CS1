@@ -53,6 +53,7 @@ namespace CS1_Projekt_OOP2.Classes
         public void AddNewOrder(Customer customer, string deliveryAddress, List<OrderLine> orderLines, bool paymentCompleted)
         {
             Orders.Add(new Order(Orders.Count, customer, deliveryAddress, orderLines, paymentCompleted));
+            RaiseWarehouseChanged();
         }
 
         public void AddNewProduct(string name, double price, int stock)

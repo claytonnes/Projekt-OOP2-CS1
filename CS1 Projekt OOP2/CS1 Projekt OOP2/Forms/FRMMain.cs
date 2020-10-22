@@ -1,4 +1,5 @@
-﻿using CS1_Projekt_OOP2.Forms;
+﻿using CS1_Projekt_OOP2.Classes;
+using CS1_Projekt_OOP2.Forms;
 using CS1_Projekt_OOP2.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -17,17 +18,31 @@ namespace CS1_Projekt_OOP2
         private IWarehouse wh;
         private FRMManageCustomers customerForm;
         private FRMManageProducts productForm;
+        private FRMCreateNewOrder newOrderForm;
 
         public FRMMain(IWarehouse wh)
         {
-            this.wh = wh;
             InitializeComponent();
+            this.wh = wh;
+            wh.WarehouseChanged += UpdateTable;
+            UpdateTable();
+            OrdersGridView.RowHeadersVisible = false;
+            OrdersGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void BTNNewOrder_Click(object sender, EventArgs e)
         {
-            FRMCreateNewOrder GUIOrders = new FRMCreateNewOrder(wh);
-            GUIOrders.ShowDialog();
+            if (newOrderForm != null)
+            {
+                newOrderForm.WindowState = FormWindowState.Normal;
+                newOrderForm.Focus();
+            }
+            else
+            {
+                newOrderForm = new FRMCreateNewOrder(wh);
+                newOrderForm.FormClosed += (o, ea) => newOrderForm = null;
+                newOrderForm.Show();
+            }
         }
 
         private void FRMMain_Load(object sender, EventArgs e)
@@ -44,8 +59,6 @@ namespace CS1_Projekt_OOP2
             //Testdata för att visa att pending/dispatched-sorteringen fungerar.
             wh.AddNewOrder(wh.Customers[0], "Vägvägen11", items, true);
             wh.Orders[1].Dispatched = true;
-
-            dataGridView1.DataSource = wh.Orders;
         }
 
         private void BTN_OpenFRMCustomers_Click(object sender, EventArgs e)
@@ -81,6 +94,13 @@ namespace CS1_Projekt_OOP2
                 productForm.FormClosed += (o, ea) => productForm = null;
                 productForm.Show();
             }
+        }
+
+        private void UpdateTable()
+        {
+            BindingSource source = new BindingSource();
+            source.DataSource = wh.Orders;
+            OrdersGridView.DataSource = source;
         }
     }
 }
