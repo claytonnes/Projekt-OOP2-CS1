@@ -19,6 +19,14 @@ namespace CS1_Projekt_OOP2
 
         }
 
+        public Product(int code, string name, double price, int stock)
+        {
+            _code = code;
+            _name = name;
+            _price = price;
+            _stock = stock;
+        }
+
         public int Code
         {
             get { return _code; }
@@ -46,6 +54,10 @@ namespace CS1_Projekt_OOP2
                 }
         }
         
+        public override string ToString()
+        {
+            return Name;
+        }
         //Ask Christer
         public DateTime FirstAvailable { get; set; }
         public DateTime NextStocking { get; set; }

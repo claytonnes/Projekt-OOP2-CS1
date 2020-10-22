@@ -78,7 +78,6 @@ namespace CS1_Projekt_OOP2.Forms
 
         private void BTN_updateCustomerInfo_Click_1(object sender, EventArgs e)
         {
-
             foreach (DataGridViewRow row in CustomerGridView.SelectedRows)
             {
                 if (row.Cells[0].Value != null)
@@ -89,9 +88,7 @@ namespace CS1_Projekt_OOP2.Forms
                     string updatedEmail = TXT_editEmail.Text;
                     warehouse.UpdateCustomerInformation(customerId, updatedName, updatedPhone, updatedEmail);
                 }
-
             }
-
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -41,16 +41,17 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TXTProductCount = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.LSTSelected = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -64,6 +65,7 @@
             this.LST_customers.Name = "LST_customers";
             this.LST_customers.Size = new System.Drawing.Size(188, 388);
             this.LST_customers.TabIndex = 0;
+            this.LST_customers.SelectedIndexChanged += new System.EventHandler(this.LST_customers_SelectedIndexChanged);
             // 
             // LST_products
             // 
@@ -143,7 +145,7 @@
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.LST_products);
             this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.TXTProductCount);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(301, 39);
             this.groupBox2.Name = "groupBox2";
@@ -161,6 +163,7 @@
             this.BTN_addProductToOrder.TabIndex = 13;
             this.BTN_addProductToOrder.Text = "Add product to order";
             this.BTN_addProductToOrder.UseVisualStyleBackColor = true;
+            this.BTN_addProductToOrder.Click += new System.EventHandler(this.BTN_addProductToOrder_Click);
             // 
             // button4
             // 
@@ -191,17 +194,17 @@
             this.button1.Text = "-";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // TXTProductCount
             // 
-            this.textBox1.Location = new System.Drawing.Point(114, 453);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(66, 23);
-            this.textBox1.TabIndex = 10;
+            this.TXTProductCount.Location = new System.Drawing.Point(114, 453);
+            this.TXTProductCount.Name = "TXTProductCount";
+            this.TXTProductCount.Size = new System.Drawing.Size(66, 23);
+            this.TXTProductCount.TabIndex = 10;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.listBox3);
+            this.groupBox3.Controls.Add(this.LSTSelected);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.textBox2);
             this.groupBox3.Controls.Add(this.label8);
@@ -230,14 +233,14 @@
             this.label9.TabIndex = 19;
             this.label9.Text = "Selected products";
             // 
-            // listBox3
+            // LSTSelected
             // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 16;
-            this.listBox3.Location = new System.Drawing.Point(21, 258);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(321, 196);
-            this.listBox3.TabIndex = 10;
+            this.LSTSelected.FormattingEnabled = true;
+            this.LSTSelected.ItemHeight = 16;
+            this.LSTSelected.Location = new System.Drawing.Point(21, 258);
+            this.LSTSelected.Name = "LSTSelected";
+            this.LSTSelected.Size = new System.Drawing.Size(321, 196);
+            this.LSTSelected.TabIndex = 10;
             // 
             // label5
             // 
@@ -329,7 +332,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TXTProductCount;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -337,8 +340,9 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button BTN_manageCustomers;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.ListBox LSTSelected;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

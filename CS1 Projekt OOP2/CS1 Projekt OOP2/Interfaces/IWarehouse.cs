@@ -35,8 +35,8 @@ namespace CS1_Projekt_OOP2.Interfaces
 
 
 
-        void AddNewProduct(int code, string name, double price, int stock);
-        void UpdateProductInformation(string name, double price, int stock);
+        void AddNewProduct(string name, double price, int stock);
+        void UpdateProductInformation(int id, string name, double price, int stock);
         IEnumerable<Product> ReturnStockZero();
 
 

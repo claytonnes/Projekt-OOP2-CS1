@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.BTNAdd = new System.Windows.Forms.Button();
+            this.BTNProducts = new System.Windows.Forms.Button();
             this.BTNChange = new System.Windows.Forms.Button();
             this.BTNZeroStock = new System.Windows.Forms.Button();
             this.BTNClosestDate = new System.Windows.Forms.Button();
@@ -49,19 +49,20 @@
             this.dataGridView1.Size = new System.Drawing.Size(523, 235);
             this.dataGridView1.TabIndex = 0;
             // 
-            // BTNAdd
+            // BTNProducts
             // 
-            this.BTNAdd.Location = new System.Drawing.Point(46, 341);
-            this.BTNAdd.Margin = new System.Windows.Forms.Padding(2);
-            this.BTNAdd.Name = "BTNAdd";
-            this.BTNAdd.Size = new System.Drawing.Size(122, 43);
-            this.BTNAdd.TabIndex = 1;
-            this.BTNAdd.Text = "Add Product";
-            this.BTNAdd.UseVisualStyleBackColor = true;
+            this.BTNProducts.Location = new System.Drawing.Point(595, 148);
+            this.BTNProducts.Margin = new System.Windows.Forms.Padding(2);
+            this.BTNProducts.Name = "BTNProducts";
+            this.BTNProducts.Size = new System.Drawing.Size(120, 40);
+            this.BTNProducts.TabIndex = 1;
+            this.BTNProducts.Text = "Manage Products";
+            this.BTNProducts.UseVisualStyleBackColor = true;
+            this.BTNProducts.Click += new System.EventHandler(this.BTNProducts_Click);
             // 
             // BTNChange
             // 
-            this.BTNChange.Location = new System.Drawing.Point(181, 341);
+            this.BTNChange.Location = new System.Drawing.Point(46, 312);
             this.BTNChange.Margin = new System.Windows.Forms.Padding(2);
             this.BTNChange.Name = "BTNChange";
             this.BTNChange.Size = new System.Drawing.Size(122, 43);
@@ -71,7 +72,7 @@
             // 
             // BTNZeroStock
             // 
-            this.BTNZeroStock.Location = new System.Drawing.Point(314, 341);
+            this.BTNZeroStock.Location = new System.Drawing.Point(172, 312);
             this.BTNZeroStock.Margin = new System.Windows.Forms.Padding(2);
             this.BTNZeroStock.Name = "BTNZeroStock";
             this.BTNZeroStock.Size = new System.Drawing.Size(122, 43);
@@ -81,7 +82,7 @@
             // 
             // BTNClosestDate
             // 
-            this.BTNClosestDate.Location = new System.Drawing.Point(447, 341);
+            this.BTNClosestDate.Location = new System.Drawing.Point(298, 312);
             this.BTNClosestDate.Margin = new System.Windows.Forms.Padding(2);
             this.BTNClosestDate.Name = "BTNClosestDate";
             this.BTNClosestDate.Size = new System.Drawing.Size(122, 43);
@@ -94,17 +95,17 @@
             this.BTNNewOrder.Location = new System.Drawing.Point(595, 55);
             this.BTNNewOrder.Margin = new System.Windows.Forms.Padding(2);
             this.BTNNewOrder.Name = "BTNNewOrder";
-            this.BTNNewOrder.Size = new System.Drawing.Size(122, 43);
+            this.BTNNewOrder.Size = new System.Drawing.Size(120, 40);
             this.BTNNewOrder.TabIndex = 5;
-            this.BTNNewOrder.Text = "New Order";
+            this.BTNNewOrder.Text = "Add New Order";
             this.BTNNewOrder.UseVisualStyleBackColor = true;
             this.BTNNewOrder.Click += new System.EventHandler(this.BTNNewOrder_Click);
             // 
             // BTN_OpenFRMCustomers
             // 
-            this.BTN_OpenFRMCustomers.Location = new System.Drawing.Point(595, 141);
+            this.BTN_OpenFRMCustomers.Location = new System.Drawing.Point(595, 103);
             this.BTN_OpenFRMCustomers.Name = "BTN_OpenFRMCustomers";
-            this.BTN_OpenFRMCustomers.Size = new System.Drawing.Size(122, 52);
+            this.BTN_OpenFRMCustomers.Size = new System.Drawing.Size(120, 40);
             this.BTN_OpenFRMCustomers.TabIndex = 6;
             this.BTN_OpenFRMCustomers.Text = "Manage Customers";
             this.BTN_OpenFRMCustomers.UseVisualStyleBackColor = true;
@@ -120,7 +121,7 @@
             this.Controls.Add(this.BTNClosestDate);
             this.Controls.Add(this.BTNZeroStock);
             this.Controls.Add(this.BTNChange);
-            this.Controls.Add(this.BTNAdd);
+            this.Controls.Add(this.BTNProducts);
             this.Controls.Add(this.dataGridView1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FRMMain";
@@ -135,7 +136,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button BTNAdd;
+        private System.Windows.Forms.Button BTNProducts;
         private System.Windows.Forms.Button BTNChange;
         private System.Windows.Forms.Button BTNZeroStock;
         private System.Windows.Forms.Button BTNClosestDate;

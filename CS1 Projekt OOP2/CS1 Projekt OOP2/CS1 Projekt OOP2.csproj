@@ -103,6 +103,12 @@
     <Compile Include="Forms\FRMManageCustomers.Designer.cs">
       <DependentUpon>FRMManageCustomers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FRMManageProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FRMManageProducts.Designer.cs">
+      <DependentUpon>FRMManageProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FRMOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FRMManageCustomers.resx">
       <DependentUpon>FRMManageCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FRMManageProducts.resx">
+      <DependentUpon>FRMManageProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FRMOrder.resx">
       <DependentUpon>FRMOrder.cs</DependentUpon>

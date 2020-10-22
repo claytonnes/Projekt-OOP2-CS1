@@ -39,6 +39,11 @@ namespace CS1_Projekt_OOP2.Classes
             return Customers.Find(x => x.Number == id);
         }
 
+        public Product GetProductById(int id)
+        {
+            return Products.Find(x => x.Code == id);
+        }
+
         public void AddNewCustomer(string _name, string _phone, string _email)
         {
             Customers.Add(new Customer(Customers.Count, _name, _phone, _email));
@@ -50,9 +55,10 @@ namespace CS1_Projekt_OOP2.Classes
             Orders.Add(new Order(Orders.Count, customer, deliveryAddress, orderLines, paymentCompleted));
         }
 
-        public void AddNewProduct(int code, string name, double price, int stock)
+        public void AddNewProduct(string name, double price, int stock)
         {
-            throw new NotImplementedException();
+            Products.Add(new Product(Products.Count, name, price, stock));
+            RaiseWarehouseChanged();
         }
 
         //Metod för att uppfylla Order:3
@@ -100,9 +106,15 @@ namespace CS1_Projekt_OOP2.Classes
             throw new NotImplementedException();
         }
 
-        public void UpdateProductInformation(string name, double price, int stock)
+        public void UpdateProductInformation(int id, string name, double price, int stock)
         {
+            Product p = GetProductById(id);
 
+            p.Name = name;
+            p.Price = price;
+            p.Stock = stock;
+
+            RaiseWarehouseChanged();
         }
 
         public void UpdateCustomerInformation(int id, string name, string phone, string email)

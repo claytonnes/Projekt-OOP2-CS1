@@ -26,5 +26,10 @@ namespace CS1_Projekt_OOP2
             get { return _count; }
             set { _count = value; } 
         }
+
+        public override string ToString()
+        {
+            return $"{Count}x {Product}";
+        }
     }
 }
