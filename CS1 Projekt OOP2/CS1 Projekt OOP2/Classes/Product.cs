@@ -30,18 +30,18 @@ namespace CS1_Projekt_OOP2
         public int Code
         {
             get { return _code; }
-            set { _code = (value < 0) ? throw new ArgumentOutOfRangeException() : value; }
+            set { _code = (value < 0) ? throw new ArgumentException("Product code invalid") : value; }
         }
 
         public double Price
         {
             get { return _price; }
-            set { _price = (value < 0) ? throw new ArgumentOutOfRangeException() : value; }
+            set { _price = (value < 0) ? throw new ArgumentException("Price cannot be negative") : value; }
         }
         public int Stock
         {
             get { return _stock; }
-            set { _stock = (value < 0) ? throw new ArgumentOutOfRangeException("You can't add a negative stock value") : value; }
+            set { _stock = (value < 0) ? throw new ArgumentException("You can't add a negative stock value") : value; }
         }
 
 
@@ -49,8 +49,8 @@ namespace CS1_Projekt_OOP2
         {
             get { return _name; }
             set {
-                    if (value == "" || value == null) throw new ArgumentException();
-                    else _name = value;
+                    if (value == "" || value == null) throw new ArgumentException("Please enter a name");
+                        else _name = value;
                 }
         }
         

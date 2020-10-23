@@ -36,7 +36,7 @@ namespace CS1_Projekt_OOP2
 
         public int Number { 
             get { return _number; }
-            set { _number = (value < 0) ? throw new ArgumentOutOfRangeException("Faulty order number") : value; }
+            set { _number = (value < 0) ? throw new ArgumentException("Faulty order number") : value; }
         }
 
         public Customer Customer

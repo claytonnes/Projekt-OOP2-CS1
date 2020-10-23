@@ -85,13 +85,38 @@ namespace CS1_Projekt_OOP2.Forms
             }
         }
 
-        //FELHANTERING EJ IMPLEMENTERAD
         private void BTN_createNewCustomer_Click(object sender, EventArgs e)
         {
+            bool inputCorrect = true;
             string productName = TXT_newName.Text;
-            double productPrice = Double.Parse(TXT_newPrice.Text);
-            int productStock = Int32.Parse(TXT_newStock.Text);
-            warehouse.AddNewProduct(productName, productPrice, productStock);
+            double productPrice;
+            int productStock;
+
+            if (!double.TryParse(TXT_newPrice.Text, out productPrice))
+            {
+                inputCorrect = false;
+                MessageBox.Show("Please enter a numeric value as a price");
+            }
+
+            if(!int.TryParse(TXT_newStock.Text, out productStock))
+            {
+                inputCorrect = false;
+                MessageBox.Show("Please enter a number in the Stock field");
+            }
+
+            if (inputCorrect)
+            {
+                try
+                {
+                    warehouse.AddNewProduct(productName, productPrice, productStock);
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                }
+            }
+            
+            
         }
 
         private void BTN_StockZero_Click(object sender, EventArgs e)
