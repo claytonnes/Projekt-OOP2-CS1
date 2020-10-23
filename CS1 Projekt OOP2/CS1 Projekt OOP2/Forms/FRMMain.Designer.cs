@@ -28,34 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.OrdersGridView = new System.Windows.Forms.DataGridView();
+            this.PendingOrdersGridView = new System.Windows.Forms.DataGridView();
             this.BTNProducts = new System.Windows.Forms.Button();
-            this.BTN_ShowPending = new System.Windows.Forms.Button();
             this.BTN_ProcessOrders = new System.Windows.Forms.Button();
             this.BTNNewOrder = new System.Windows.Forms.Button();
             this.BTN_OpenFRMCustomers = new System.Windows.Forms.Button();
-            this.LBL_Filter = new System.Windows.Forms.Label();
-            this.BTN_ShowDispatched = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).BeginInit();
+            this.DispatchedOrdersGridView = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.PendingOrdersGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DispatchedOrdersGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // OrdersGridView
+            // PendingOrdersGridView
             // 
-            this.OrdersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.OrdersGridView.Location = new System.Drawing.Point(36, 86);
-            this.OrdersGridView.Margin = new System.Windows.Forms.Padding(2);
-            this.OrdersGridView.MultiSelect = false;
-            this.OrdersGridView.Name = "OrdersGridView";
-            this.OrdersGridView.ReadOnly = true;
-            this.OrdersGridView.RowHeadersWidth = 62;
-            this.OrdersGridView.RowTemplate.Height = 28;
-            this.OrdersGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.OrdersGridView.Size = new System.Drawing.Size(698, 253);
-            this.OrdersGridView.TabIndex = 0;
+            this.PendingOrdersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PendingOrdersGridView.Location = new System.Drawing.Point(51, 111);
+            this.PendingOrdersGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.PendingOrdersGridView.MultiSelect = false;
+            this.PendingOrdersGridView.Name = "PendingOrdersGridView";
+            this.PendingOrdersGridView.ReadOnly = true;
+            this.PendingOrdersGridView.RowHeadersWidth = 62;
+            this.PendingOrdersGridView.RowTemplate.Height = 28;
+            this.PendingOrdersGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.PendingOrdersGridView.Size = new System.Drawing.Size(698, 253);
+            this.PendingOrdersGridView.TabIndex = 0;
             // 
             // BTNProducts
             // 
-            this.BTNProducts.Location = new System.Drawing.Point(453, 29);
+            this.BTNProducts.Location = new System.Drawing.Point(638, 29);
             this.BTNProducts.Margin = new System.Windows.Forms.Padding(2);
             this.BTNProducts.Name = "BTNProducts";
             this.BTNProducts.Size = new System.Drawing.Size(120, 40);
@@ -64,20 +65,9 @@
             this.BTNProducts.UseVisualStyleBackColor = true;
             this.BTNProducts.Click += new System.EventHandler(this.BTNProducts_Click);
             // 
-            // BTN_ShowPending
-            // 
-            this.BTN_ShowPending.Location = new System.Drawing.Point(36, 367);
-            this.BTN_ShowPending.Margin = new System.Windows.Forms.Padding(2);
-            this.BTN_ShowPending.Name = "BTN_ShowPending";
-            this.BTN_ShowPending.Size = new System.Drawing.Size(122, 22);
-            this.BTN_ShowPending.TabIndex = 2;
-            this.BTN_ShowPending.Text = "Pending Orders";
-            this.BTN_ShowPending.UseVisualStyleBackColor = true;
-            this.BTN_ShowPending.Click += new System.EventHandler(this.BTN_ShowPending_Click);
-            // 
             // BTN_ProcessOrders
             // 
-            this.BTN_ProcessOrders.Location = new System.Drawing.Point(314, 357);
+            this.BTN_ProcessOrders.Location = new System.Drawing.Point(51, 28);
             this.BTN_ProcessOrders.Margin = new System.Windows.Forms.Padding(2);
             this.BTN_ProcessOrders.Name = "BTN_ProcessOrders";
             this.BTN_ProcessOrders.Size = new System.Drawing.Size(122, 43);
@@ -88,7 +78,7 @@
             // 
             // BTNNewOrder
             // 
-            this.BTNNewOrder.Location = new System.Drawing.Point(178, 29);
+            this.BTNNewOrder.Location = new System.Drawing.Point(388, 29);
             this.BTNNewOrder.Margin = new System.Windows.Forms.Padding(2);
             this.BTNNewOrder.Name = "BTNNewOrder";
             this.BTNNewOrder.Size = new System.Drawing.Size(120, 40);
@@ -99,7 +89,7 @@
             // 
             // BTN_OpenFRMCustomers
             // 
-            this.BTN_OpenFRMCustomers.Location = new System.Drawing.Point(314, 29);
+            this.BTN_OpenFRMCustomers.Location = new System.Drawing.Point(513, 29);
             this.BTN_OpenFRMCustomers.Name = "BTN_OpenFRMCustomers";
             this.BTN_OpenFRMCustomers.Size = new System.Drawing.Size(120, 40);
             this.BTN_OpenFRMCustomers.TabIndex = 6;
@@ -107,45 +97,58 @@
             this.BTN_OpenFRMCustomers.UseVisualStyleBackColor = true;
             this.BTN_OpenFRMCustomers.Click += new System.EventHandler(this.BTN_OpenFRMCustomers_Click_1);
             // 
-            // LBL_Filter
+            // DispatchedOrdersGridView
             // 
-            this.LBL_Filter.AutoSize = true;
-            this.LBL_Filter.Location = new System.Drawing.Point(33, 352);
-            this.LBL_Filter.Name = "LBL_Filter";
-            this.LBL_Filter.Size = new System.Drawing.Size(63, 13);
-            this.LBL_Filter.TabIndex = 7;
-            this.LBL_Filter.Text = "Filter Orders";
+            this.DispatchedOrdersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DispatchedOrdersGridView.Location = new System.Drawing.Point(51, 402);
+            this.DispatchedOrdersGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.DispatchedOrdersGridView.MultiSelect = false;
+            this.DispatchedOrdersGridView.Name = "DispatchedOrdersGridView";
+            this.DispatchedOrdersGridView.ReadOnly = true;
+            this.DispatchedOrdersGridView.RowHeadersWidth = 62;
+            this.DispatchedOrdersGridView.RowTemplate.Height = 28;
+            this.DispatchedOrdersGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DispatchedOrdersGridView.Size = new System.Drawing.Size(698, 253);
+            this.DispatchedOrdersGridView.TabIndex = 9;
             // 
-            // BTN_ShowDispatched
+            // label1
             // 
-            this.BTN_ShowDispatched.Location = new System.Drawing.Point(36, 393);
-            this.BTN_ShowDispatched.Margin = new System.Windows.Forms.Padding(2);
-            this.BTN_ShowDispatched.Name = "BTN_ShowDispatched";
-            this.BTN_ShowDispatched.Size = new System.Drawing.Size(122, 22);
-            this.BTN_ShowDispatched.TabIndex = 8;
-            this.BTN_ShowDispatched.Text = "Dispatched Orders";
-            this.BTN_ShowDispatched.UseVisualStyleBackColor = true;
-            this.BTN_ShowDispatched.Click += new System.EventHandler(this.BTN_ShowDispatched_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(48, 96);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Pending Orders";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(48, 387);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(95, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Dispatched Orders";
             // 
             // FRMMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(767, 459);
-            this.Controls.Add(this.BTN_ShowDispatched);
-            this.Controls.Add(this.LBL_Filter);
+            this.ClientSize = new System.Drawing.Size(803, 691);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.DispatchedOrdersGridView);
             this.Controls.Add(this.BTN_OpenFRMCustomers);
             this.Controls.Add(this.BTNNewOrder);
             this.Controls.Add(this.BTN_ProcessOrders);
-            this.Controls.Add(this.BTN_ShowPending);
             this.Controls.Add(this.BTNProducts);
-            this.Controls.Add(this.OrdersGridView);
+            this.Controls.Add(this.PendingOrdersGridView);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FRMMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FRMMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PendingOrdersGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DispatchedOrdersGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,14 +156,14 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView OrdersGridView;
+        private System.Windows.Forms.DataGridView PendingOrdersGridView;
         private System.Windows.Forms.Button BTNProducts;
-        private System.Windows.Forms.Button BTN_ShowPending;
         private System.Windows.Forms.Button BTN_ProcessOrders;
         private System.Windows.Forms.Button BTNNewOrder;
         private System.Windows.Forms.Button BTN_OpenFRMCustomers;
-        private System.Windows.Forms.Label LBL_Filter;
-        private System.Windows.Forms.Button BTN_ShowDispatched;
+        private System.Windows.Forms.DataGridView DispatchedOrdersGridView;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

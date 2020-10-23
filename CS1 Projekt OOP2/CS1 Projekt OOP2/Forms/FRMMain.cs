@@ -24,10 +24,23 @@ namespace CS1_Projekt_OOP2
         {
             InitializeComponent();
             this.wh = wh;
-            wh.WarehouseChanged += UpdateTable;
-            UpdateTable();
-            OrdersGridView.RowHeadersVisible = false;
-            OrdersGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            wh.WarehouseChanged += UpdateTables;
+            PendingOrdersGridView.RowHeadersVisible = false;
+            PendingOrdersGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Test-data
+            wh.AddNewProduct("Shampoo", 43.50, 20);
+
+            wh.AddNewCustomer("Moa", "012-34567", "test@test.com");
+            List<OrderLine> items = new List<OrderLine>();
+            OrderLine item = new OrderLine(wh.Products[0], 11);
+            items.Add(item);
+            wh.AddNewOrder(wh.Customers[0], "Leveransvägen 1", items, true);
+
+            //Testdata för att visa att pending/dispatched-sorteringen fungerar.
+            wh.AddNewOrder(wh.Customers[0], "Vägvägen11", items, true);
+            wh.Orders[1].Dispatched = true;
+            UpdateTables();
         }
 
         private void BTNNewOrder_Click(object sender, EventArgs e)
@@ -47,18 +60,6 @@ namespace CS1_Projekt_OOP2
 
         private void FRMMain_Load(object sender, EventArgs e)
         {
-            // Test-data
-            wh.AddNewProduct("Shampoo", 43.50, 20);
-
-            wh.AddNewCustomer("Moa", "012-34567", "test@test.com");
-            List<OrderLine> items = new List<OrderLine>();
-            OrderLine item = new OrderLine(wh.Products[0], 11);
-            items.Add(item);
-            wh.AddNewOrder(wh.Customers[0], "Leveransvägen 1", items, true);
-
-            //Testdata för att visa att pending/dispatched-sorteringen fungerar.
-            wh.AddNewOrder(wh.Customers[0], "Vägvägen11", items, true);
-            wh.Orders[1].Dispatched = true;
         }
 
         private void BTN_OpenFRMCustomers_Click(object sender, EventArgs e)
@@ -96,26 +97,16 @@ namespace CS1_Projekt_OOP2
             }
         }
 
-        private void UpdateTable()
+        private void UpdateTables()
         {
-            BindingSource source = new BindingSource();
-            source.DataSource = wh.Orders;
-            OrdersGridView.DataSource = source;
-        }
-
-        private void BTN_ShowPending_Click(object sender, EventArgs e)
-        {
-            OrdersGridView.DataSource = wh.ReturnPendingOrders().ToList();
-        }
-
-        private void BTN_ShowDispatched_Click(object sender, EventArgs e)
-        {
-            OrdersGridView.DataSource = wh.ReturnDispatchedOrders().ToList();
+            PendingOrdersGridView.DataSource = wh.ReturnPendingOrders().ToList();
+            DispatchedOrdersGridView.DataSource = wh.ReturnDispatchedOrders().ToList();
         }
 
         private void BTN_ProcessOrders_Click(object sender, EventArgs e)
         {
             wh.ProcessOrders();
         }
+
     }
 }
