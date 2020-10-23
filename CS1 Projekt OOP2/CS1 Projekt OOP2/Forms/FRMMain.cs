@@ -58,15 +58,6 @@ namespace CS1_Projekt_OOP2
             }
         }
 
-        private void FRMMain_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void BTN_OpenFRMCustomers_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void BTN_OpenFRMCustomers_Click_1(object sender, EventArgs e)
         {
             if (customerForm != null)

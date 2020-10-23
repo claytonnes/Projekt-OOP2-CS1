@@ -146,7 +146,6 @@
             this.Name = "FRMMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.FRMMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PendingOrdersGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DispatchedOrdersGridView)).EndInit();
             this.ResumeLayout(false);
