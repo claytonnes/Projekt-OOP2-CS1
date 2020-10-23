@@ -42,7 +42,12 @@ namespace CS1_Projekt_OOP2
         public Customer Customer
         {
             get { return _customer; }
-            set { _customer = value; }
+            set 
+            {
+                if (value == null)
+                    throw new ArgumentException("Please choose a customer");
+                else _customer = value;
+            }
         }
 
         public DateTime OrderDate

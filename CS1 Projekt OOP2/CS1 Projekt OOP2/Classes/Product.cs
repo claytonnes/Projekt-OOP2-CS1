@@ -21,10 +21,10 @@ namespace CS1_Projekt_OOP2
 
         public Product(int code, string name, double price, int stock)
         {
-            _code = code;
-            _name = name;
-            _price = price;
-            _stock = stock;
+            Code = code;
+            Name = name;
+            Price = price;
+            Stock = stock;
         }
 
         public int Code
@@ -41,7 +41,7 @@ namespace CS1_Projekt_OOP2
         public int Stock
         {
             get { return _stock; }
-            set { _stock = (value < 0) ? throw new ArgumentOutOfRangeException() : value; }
+            set { _stock = (value < 0) ? throw new ArgumentOutOfRangeException("You can't add a negative stock value") : value; }
         }
 
 

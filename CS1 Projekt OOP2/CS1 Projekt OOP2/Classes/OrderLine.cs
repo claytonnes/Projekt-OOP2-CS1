@@ -13,8 +13,8 @@ namespace CS1_Projekt_OOP2
         private int _count;
         public OrderLine(Product p, int c)
         {
-            _product = p;
-            _count = c;
+            Product = p;
+            Count = c;
         }
 
         public Product Product { 
@@ -24,7 +24,9 @@ namespace CS1_Projekt_OOP2
 
         public int Count { 
             get { return _count; }
-            set { _count = value; } 
+            set {
+                _count = (value < 1) ? throw new ArgumentOutOfRangeException("You need to add atleast one of a product") : value;
+            }
         }
 
         public override string ToString()

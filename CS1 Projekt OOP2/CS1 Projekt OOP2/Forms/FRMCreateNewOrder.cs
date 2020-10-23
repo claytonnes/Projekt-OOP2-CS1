@@ -53,24 +53,47 @@ namespace CS1_Projekt_OOP2.Forms
 
         private void BTN_addProductToOrder_Click(object sender, EventArgs e)
         {
-            Product p = LST_products.SelectedItem as Product;
-            int productCount = Int32.Parse(TXTProductCount.Text);
-            LST_Selected.Items.Add(new OrderLine(p, productCount));
+            try 
+            {
+                Product p = LST_products.SelectedItem as Product;
+                int productCount = Int32.Parse(TXTProductCount.Text);
+                LST_Selected.Items.Add(new OrderLine(p, productCount));              
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            
         }
 
         private void BTN_CompleteOrder_Click(object sender, EventArgs e)
         {
-            Customer customer = LST_customers.SelectedItem as Customer;
-            string deliveryAddress = TXT_Delivery.Text;
+            try
+            {
+                Customer customer = LST_customers.SelectedItem as Customer;
+                string deliveryAddress = TXT_Delivery.Text;
+                bool payment = BOX_CompletedPay.Checked ? true : false;
+                warehouse.AddNewOrder(customer, deliveryAddress, GetOrderlinesFromLST(), payment);
+                MessageBox.Show("Order added!");
+                this.Close();
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            
+            
+        }
+
+        //Method for getting added OrderLines from listbox.
+        private List<OrderLine> GetOrderlinesFromLST()
+        {
             List<OrderLine> products = new List<OrderLine>();
-            bool payment = BOX_CompletedPay.Checked ? true : false; 
-            foreach(OrderLine ol in LST_Selected.Items)
+            foreach (OrderLine ol in LST_Selected.Items)
             {
                 products.Add(ol);
             }
-            warehouse.AddNewOrder(customer, deliveryAddress, products, payment);
-            MessageBox.Show("Order added!");
-            this.Close();
+            return products;
         }
     }
 }

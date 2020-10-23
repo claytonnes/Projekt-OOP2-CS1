@@ -98,7 +98,6 @@ namespace CS1_Projekt_OOP2.Forms
         {
             IEnumerable<Product> zeroStockProducts = warehouse.ReturnStockZero();
             UpdateTable(zeroStockProducts);
-
         }
     }
 }
