@@ -185,6 +185,7 @@
             this.BTN_increment.TabIndex = 12;
             this.BTN_increment.Text = "+";
             this.BTN_increment.UseVisualStyleBackColor = true;
+            this.BTN_increment.Click += new System.EventHandler(this.BTN_increment_Click);
             // 
             // BTN_decrement
             // 
@@ -195,6 +196,7 @@
             this.BTN_decrement.TabIndex = 11;
             this.BTN_decrement.Text = "-";
             this.BTN_decrement.UseVisualStyleBackColor = true;
+            this.BTN_decrement.Click += new System.EventHandler(this.BTN_decrement_Click);
             // 
             // TXTProductCount
             // 
@@ -202,6 +204,7 @@
             this.TXTProductCount.Name = "TXTProductCount";
             this.TXTProductCount.Size = new System.Drawing.Size(66, 23);
             this.TXTProductCount.TabIndex = 10;
+            this.TXTProductCount.Text = "0";
             // 
             // groupBox3
             // 

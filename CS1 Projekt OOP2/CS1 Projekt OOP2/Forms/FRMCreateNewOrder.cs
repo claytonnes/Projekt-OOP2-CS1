@@ -1,26 +1,38 @@
-﻿using CS1_Projekt_OOP2.Interfaces;
+﻿using CS1_Projekt_OOP2.Classes;
+using CS1_Projekt_OOP2.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CS1_Projekt_OOP2.Forms
 {
+    
+
     public partial class FRMCreateNewOrder : Form
     {
+        
+        int productCount;
         private IWarehouse warehouse;
+
         public FRMCreateNewOrder(IWarehouse wh)
         { 
             InitializeComponent();
             warehouse = wh;
             UpdateCustomerList();
             UpdateProductList();
+            productCount = 0;
         }
+
+       
+
+
 
         private void UpdateCustomerList()
         {
@@ -56,7 +68,7 @@ namespace CS1_Projekt_OOP2.Forms
             try 
             {
                 Product p = LST_products.SelectedItem as Product;
-                int productCount = Int32.Parse(TXTProductCount.Text);
+                productCount = Int32.Parse(TXTProductCount.Text);
                 LST_Selected.Items.Add(new OrderLine(p, productCount));              
             }
             catch(Exception exception)
@@ -96,6 +108,17 @@ namespace CS1_Projekt_OOP2.Forms
             return products;
         }
 
-        
+        private void BTN_increment_Click(object sender, EventArgs e)
+        {
+            productCount++;
+            TXTProductCount.Text = productCount.ToString();
+
+        }
+
+        private void BTN_decrement_Click(object sender, EventArgs e)
+        {
+            productCount--;
+            TXTProductCount.Text = productCount.ToString();
+        }
     }
 }
