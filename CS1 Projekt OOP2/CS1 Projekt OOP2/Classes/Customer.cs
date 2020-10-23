@@ -17,7 +17,7 @@ namespace CS1_Projekt_OOP2
         private string _phone;  // non-empty value
         private string _email;  // non-empty value
 
-        public Customer() //what is this constructor for?
+        public Customer() 
         {
         }
 
