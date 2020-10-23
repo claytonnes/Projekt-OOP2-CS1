@@ -46,6 +46,8 @@
             this.TXT_newStock = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.BTN_StockZero = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -145,7 +147,7 @@
             this.ProductGridView.ReadOnly = true;
             this.ProductGridView.RowHeadersVisible = false;
             this.ProductGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ProductGridView.Size = new System.Drawing.Size(613, 441);
+            this.ProductGridView.Size = new System.Drawing.Size(769, 457);
             this.ProductGridView.TabIndex = 15;
             // 
             // groupBox1
@@ -222,11 +224,32 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Name";
             // 
+            // BTN_StockZero
+            // 
+            this.BTN_StockZero.Location = new System.Drawing.Point(647, 499);
+            this.BTN_StockZero.Name = "BTN_StockZero";
+            this.BTN_StockZero.Size = new System.Drawing.Size(116, 31);
+            this.BTN_StockZero.TabIndex = 17;
+            this.BTN_StockZero.Text = "Filter";
+            this.BTN_StockZero.UseVisualStyleBackColor = true;
+            this.BTN_StockZero.Click += new System.EventHandler(this.BTN_StockZero_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(644, 480);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(137, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Show products out of stock";
+            // 
             // FRMManageProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 681);
+            this.ClientSize = new System.Drawing.Size(793, 679);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.BTN_StockZero);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.ProductGridView);
             this.Controls.Add(this.groupBox1);
@@ -238,6 +261,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -261,5 +285,7 @@
         private System.Windows.Forms.TextBox TXT_newStock;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button BTN_StockZero;
+        private System.Windows.Forms.Label label7;
     }
 }

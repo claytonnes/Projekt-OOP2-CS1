@@ -47,9 +47,24 @@ namespace CS1_Projekt_OOP2.Forms
             ProductGridView.Columns.Add("Col1", "Product ID");
             ProductGridView.Columns.Add("Col2", "Product name");
             ProductGridView.Columns.Add("Col3", "Price");
-            ProductGridView.Columns.Add("Col4", "Sotck");
+            ProductGridView.Columns.Add("Col4", "Stock");
 
             foreach (Product p in warehouse.Products)
+            {
+                ProductGridView.Rows.Add(p.Code, p.Name, p.Price, p.Stock);
+            }
+        }
+        public void UpdateTable(IEnumerable<Product> products)
+        {
+            ProductGridView.Rows.Clear();
+            ProductGridView.Columns.Clear();
+
+            ProductGridView.Columns.Add("Col1", "Product ID");
+            ProductGridView.Columns.Add("Col2", "Product name");
+            ProductGridView.Columns.Add("Col3", "Price");
+            ProductGridView.Columns.Add("Col4", "Stock");
+
+            foreach (Product p in products)
             {
                 ProductGridView.Rows.Add(p.Code, p.Name, p.Price, p.Stock);
             }
@@ -77,6 +92,13 @@ namespace CS1_Projekt_OOP2.Forms
             double productPrice = Double.Parse(TXT_newPrice.Text);
             int productStock = Int32.Parse(TXT_newStock.Text);
             warehouse.AddNewProduct(productName, productPrice, productStock);
+        }
+
+        private void BTN_StockZero_Click(object sender, EventArgs e)
+        {
+            IEnumerable<Product> zeroStockProducts = warehouse.ReturnStockZero();
+            UpdateTable(zeroStockProducts);
+
         }
     }
 }

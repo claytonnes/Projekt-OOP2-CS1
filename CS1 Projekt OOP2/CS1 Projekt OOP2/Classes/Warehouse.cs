@@ -63,7 +63,6 @@ namespace CS1_Projekt_OOP2.Classes
         }
 
         //Metod för att uppfylla Order:3
-        //Fungerar ej just nu
         public void ProcessOrders()
         {
             IEnumerable<Order> paymentCompleted = Orders.Where(
@@ -113,7 +112,8 @@ namespace CS1_Projekt_OOP2.Classes
 
         public IEnumerable<Product> ReturnStockZero()
         {
-            throw new NotImplementedException();
+            IEnumerable<Product> stockZeroProducts = Products.Where(p => p.Stock == 0);
+            return stockZeroProducts;
         }
 
         public void UpdateProductInformation(int id, string name, double price, int stock)
