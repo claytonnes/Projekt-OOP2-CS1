@@ -24,6 +24,7 @@ namespace CS1_Projekt_OOP2.Classes
             Products = new List<Product>();
             Orders = new List<Order>();
             Customers = new List<Customer>();
+            AddTestData();
         }
 
         public event ChangeHandler WarehouseChanged;
@@ -75,8 +76,7 @@ namespace CS1_Projekt_OOP2.Classes
                 {
                     order.Dispatched = true;
                     AdjustStock(order.Items);
-                }
-                
+                }    
             }
             RaiseWarehouseChanged();
         }
@@ -100,13 +100,13 @@ namespace CS1_Projekt_OOP2.Classes
 
         public IEnumerable<Order> ReturnDispatchedOrders()
         {
-            IEnumerable<Order> dispatchedOrders = Orders.Where(o => o.Dispatched == true);
+            IEnumerable<Order> dispatchedOrders = Orders.Where(o => o.Dispatched == true).OrderBy(o => o.OrderDate);
             return dispatchedOrders;
         }
 
         public IEnumerable<Order> ReturnPendingOrders()
         {
-            IEnumerable<Order> dispatchedOrders = Orders.Where(o => o.Dispatched == false);
+            IEnumerable<Order> dispatchedOrders = Orders.Where(o => o.Dispatched == false).OrderBy(o => o.OrderDate);
             return dispatchedOrders;
         }
 
@@ -145,6 +145,22 @@ namespace CS1_Projekt_OOP2.Classes
             {
                 orderLine.Product.Stock -= orderLine.Count;
             }
+        }
+
+        public void AddTestData()
+        {
+            // Test-data
+            AddNewProduct("Shampoo", 43.50, 20);
+
+            AddNewCustomer("Moa", "012-34567", "test@test.com");
+            List<OrderLine> items = new List<OrderLine>();
+            OrderLine item = new OrderLine(Products[0], 11);
+            items.Add(item);
+            AddNewOrder(Customers[0], "Leveransvägen 1", items, true);
+
+            //Testdata för att visa att pending/dispatched-sorteringen fungerar.
+            AddNewOrder(Customers[0], "Vägvägen11", items, true);
+            Orders[1].Dispatched = true;
         }
 
     }

@@ -26,20 +26,9 @@ namespace CS1_Projekt_OOP2
             this.wh = wh;
             wh.WarehouseChanged += UpdateTables;
             PendingOrdersGridView.RowHeadersVisible = false;
+            DispatchedOrdersGridView.RowHeadersVisible = false;
+            DispatchedOrdersGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             PendingOrdersGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            // Test-data
-            wh.AddNewProduct("Shampoo", 43.50, 20);
-
-            wh.AddNewCustomer("Moa", "012-34567", "test@test.com");
-            List<OrderLine> items = new List<OrderLine>();
-            OrderLine item = new OrderLine(wh.Products[0], 11);
-            items.Add(item);
-            wh.AddNewOrder(wh.Customers[0], "Leveransvägen 1", items, true);
-
-            //Testdata för att visa att pending/dispatched-sorteringen fungerar.
-            wh.AddNewOrder(wh.Customers[0], "Vägvägen11", items, true);
-            wh.Orders[1].Dispatched = true;
             UpdateTables();
         }
 

@@ -30,10 +30,6 @@ namespace CS1_Projekt_OOP2.Forms
             productCount = 0;
         }
 
-       
-
-
-
         private void UpdateCustomerList()
         {
             LST_customers.Items.Clear();

@@ -63,7 +63,15 @@ namespace CS1_Projekt_OOP2.Forms
             string newPhone = TXT_newPhone.Text;
             string newEmail = TXT_newEmail.Text;
 
-            warehouse.AddNewCustomer(newName, newPhone, newEmail);
+            try 
+            { 
+                warehouse.AddNewCustomer(newName, newPhone, newEmail);
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+            
         }
 
         private void BTN_updateCustomerInfo_Click(object sender, EventArgs e)

@@ -1,0 +1,16 @@
+﻿Todo:
+
+Felhantering ManageCustomer - N
+Kontrollera felhantering i CreateNewOrder - M
+Felhantering ManageProducts - M
+ManageCustomer-knapp i FRMCreateNewOrder ska fixas så den leder till customersida. ej duplicering - M
+Filterknappen ska kunna togglas - V
+DateTime i Product ska fixas + processOrders - Vikt
+Customerspecifik ordervy, uppdelat mellan active/archived. - Jens
+
+>>>Dubbelkolla så alla GUI-updates beror på event<<< - Viktor
+
+Lägga till alla kombo av testdata (Finns funktion i Warehouse, använd){
+Random av alla sorter och alla kombinationer så vi kan testa allt. Lägg till i AddTestData (Warehouse-klassen) -- N
+
+JSON fixa på måndag.
