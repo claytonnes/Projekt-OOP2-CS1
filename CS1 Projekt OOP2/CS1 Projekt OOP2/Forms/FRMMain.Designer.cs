@@ -44,9 +44,12 @@
             this.OrdersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OrdersGridView.Location = new System.Drawing.Point(36, 86);
             this.OrdersGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.OrdersGridView.MultiSelect = false;
             this.OrdersGridView.Name = "OrdersGridView";
+            this.OrdersGridView.ReadOnly = true;
             this.OrdersGridView.RowHeadersWidth = 62;
             this.OrdersGridView.RowTemplate.Height = 28;
+            this.OrdersGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.OrdersGridView.Size = new System.Drawing.Size(698, 253);
             this.OrdersGridView.TabIndex = 0;
             // 
