@@ -24,6 +24,9 @@ namespace CS1_Projekt_OOP2.Forms
             ProductGridView.RowHeadersVisible = false;
             ProductGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ProductGridView.CellClick += new DataGridViewCellEventHandler(ProductGridView_CellClick);
+
+            Bitmap bmp = CS1_Projekt_OOP2.Properties.Resources.packages;
+            this.Icon = Icon.FromHandle(bmp.GetHicon());
         }
 
         public void ProductGridView_CellClick(object sender, EventArgs e)
@@ -120,7 +123,7 @@ namespace CS1_Projekt_OOP2.Forms
 
         private void BTN_StockZero_Click(object sender, EventArgs e)
         {
-            IEnumerable<Product> zeroStockProducts = warehouse.ReturnStockZero();
+            IEnumerable<Product> zeroStockProducts = warehouse.ReturnAllProductsWithZeroStock();
             UpdateTable(zeroStockProducts);
         }
     }

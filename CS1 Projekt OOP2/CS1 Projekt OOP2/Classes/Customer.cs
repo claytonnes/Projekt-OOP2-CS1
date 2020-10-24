@@ -65,7 +65,7 @@ namespace CS1_Projekt_OOP2
         }
         public override string ToString()
         {
-            return $"ID:{Number}: {Name}";
+            return Name;
         }
 
         internal static int Max(Func<object, object> p)

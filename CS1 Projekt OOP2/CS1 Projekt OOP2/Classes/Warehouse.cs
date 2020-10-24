@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,85 +36,18 @@ namespace CS1_Projekt_OOP2.Classes
         }
 
 
-        public Customer GetCustomerById(int id)
-        {
-            return Customers.Find(x => x.Number == id);
-        }
+
+        #region Product-related methods
 
         public Product GetProductById(int id)
         {
             return Products.Find(x => x.Code == id);
         }
 
-        public void AddNewCustomer(string _name, string _phone, string _email)
-        {
-            Customers.Add(new Customer(Customers.Count, _name, _phone, _email));
-            RaiseWarehouseChanged();
-        }
-
-        public void AddNewOrder(Customer customer, string deliveryAddress, List<OrderLine> orderLines, bool paymentCompleted)
-        {
-            Orders.Add(new Order(Orders.Count, customer, deliveryAddress, orderLines, paymentCompleted));
-            RaiseWarehouseChanged();
-        }
-
         public void AddNewProduct(string name, double price, int stock)
         {
             Products.Add(new Product(Products.Count, name, price, stock));
             RaiseWarehouseChanged();
-        }
-
-        //Metod för att uppfylla Order:3
-        public void ProcessOrders()
-        {
-            IEnumerable<Order> paymentCompleted = Orders.Where(
-                a => a.PaymentCompleted == true 
-                && a.Dispatched == false).OrderBy(a => a.OrderDate);
-
-            foreach (Order order in paymentCompleted)
-            {
-                if(order.Items.All(o => o.Count < o.Product.Stock))
-                {
-                    order.Dispatched = true;
-                    AdjustStock(order.Items);
-                }    
-            }
-            RaiseWarehouseChanged();
-        }
-
-        public IEnumerable<Order> ReturnCustomersActiveOrders(int customerID)
-        {
-            IEnumerable<Order> activeUserOrders = Orders.Where
-                (o => o.Dispatched == false
-                || o.OrderDate.Subtract(DateTime.Now).TotalDays < 30);
-            return activeUserOrders;
-        }
-
-        public IEnumerable<Order> ReturnCustomersArchivedOrders(int customerID)
-        {
-            IEnumerable<Order> archivedUserOrders = Orders.Where
-                (o => o.Dispatched == true
-                && o.Customer.Number == customerID
-                && o.OrderDate.Subtract(DateTime.Now).TotalDays > 30);
-            return archivedUserOrders;
-        }
-
-        public IEnumerable<Order> ReturnDispatchedOrders()
-        {
-            IEnumerable<Order> dispatchedOrders = Orders.Where(o => o.Dispatched == true).OrderBy(o => o.OrderDate);
-            return dispatchedOrders;
-        }
-
-        public IEnumerable<Order> ReturnPendingOrders()
-        {
-            IEnumerable<Order> dispatchedOrders = Orders.Where(o => o.Dispatched == false).OrderBy(o => o.OrderDate);
-            return dispatchedOrders;
-        }
-
-        public IEnumerable<Product> ReturnStockZero()
-        {
-            IEnumerable<Product> stockZeroProducts = Products.Where(p => p.Stock == 0);
-            return stockZeroProducts;
         }
 
         public void UpdateProductInformation(int id, string name, double price, int stock)
@@ -127,6 +61,37 @@ namespace CS1_Projekt_OOP2.Classes
             RaiseWarehouseChanged();
         }
 
+        public void DeductOrderLineCountFromProductStock(List<OrderLine> order)
+        {
+            foreach (OrderLine orderLine in order)
+            {
+                orderLine.Product.Stock -= orderLine.Count;
+            }
+        }
+
+        public IEnumerable<Product> ReturnAllProductsWithZeroStock()
+        {
+            IEnumerable<Product> stockZeroProducts = Products.Where(p => p.Stock == 0);
+            return stockZeroProducts;
+        }
+
+        #endregion
+
+
+
+        #region Customer-related methods
+
+        public Customer GetCustomerById(int id)
+        {
+            return Customers.Find(x => x.Number == id);
+        }
+
+        public void AddNewCustomer(string _name, string _phone, string _email)
+        {
+            Customers.Add(new Customer(Customers.Count, _name, _phone, _email));
+            RaiseWarehouseChanged();
+        }
+
         public void UpdateCustomerInformation(int id, string name, string phone, string email)
         {
             Customer c = GetCustomerById(id);
@@ -137,22 +102,132 @@ namespace CS1_Projekt_OOP2.Classes
 
             RaiseWarehouseChanged();
         }
+        #endregion
+
+
+
+        #region Order-related methods
+
+        public Order GetOrderById(int id)
+        {
+            return Orders.Find(x => x.Number == id);
+        }
+
+        public void AddNewOrder(Customer customer, string deliveryAddress, List<OrderLine> orderLines, bool paymentCompleted)
+        {
+            Orders.Add(new Order(Orders.Count, customer, deliveryAddress, orderLines, paymentCompleted));
+            RaiseWarehouseChanged();
+        }
+
+        public void ProcessOrders()
+        {
+            IEnumerable<Order> paymentCompleted = Orders.Where(
+                a => a.PaymentCompleted == true
+                && a.Dispatched == false).OrderBy(a => a.OrderDate);
+
+            foreach (Order order in paymentCompleted)
+            {
+                if (order.Items.All(o => o.Count < o.Product.Stock))
+                {
+                    order.Dispatched = true;
+                    DeductOrderLineCountFromProductStock(order.Items);
+                }
+            }
+            RaiseWarehouseChanged();
+        }
+
+        public IEnumerable<Order> ReturnCustomersActiveOrders(int customerID)
+        {
+            IEnumerable<Order> activeUserOrders = Orders.Where
+                (o => o.Customer.Number == customerID &&
+                (o.Dispatched == false || o.OrderDate.Subtract(DateTime.Now).TotalDays < 30));
+
+            return activeUserOrders;
+        }
+
+        public IEnumerable<Order> ReturnCustomersArchivedOrders(int customerID)
+        {
+            IEnumerable<Order> archivedUserOrders = Orders.Where
+                (o => o.Customer.Number == customerID &&
+                (o.Dispatched == true && o.OrderDate.Subtract(DateTime.Now).TotalDays >= 30));
+            return archivedUserOrders;
+        }
+        public IEnumerable<Order> ReturnDispatchedOrders()
+        {
+            IEnumerable<Order> dispatchedOrders = Orders.Where(o => o.Dispatched == true).OrderBy(o => o.OrderDate);
+            return dispatchedOrders;
+        }
+
+        public IEnumerable<Order> ReturnPendingOrders()
+        {
+            IEnumerable<Order> dispatchedOrders = Orders.Where(o => o.Dispatched == false).OrderBy(o => o.OrderDate);
+            return dispatchedOrders;
+        }
+
+        #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //Metod för att uppfylla Order:3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //Method called when dispatching items. Reduces stock (has already been checked if stock is enough) by the count of the OrderLine.
-        public void AdjustStock(List<OrderLine> order)
-        {
-            foreach (OrderLine orderLine in order)
-            {
-                orderLine.Product.Stock -= orderLine.Count;
-            }
-        }
+
 
         public void AddTestData()
         {
             // Test-data
-            AddNewProduct("Shampoo", 43.50, 20);
+            AddNewProduct("Shampoo", 24.99, 21);
+            AddNewProduct("Conditioner", 24.99, 22);
+            AddNewProduct("Toilet paper", 34.99, 41);
+            AddNewProduct("Canned tuna", 11.49, 34);
+            AddNewProduct("Beer can", 12.99, 24);
+            AddNewProduct("Chocolate bar", 9.99, 15);
+            AddNewProduct("Bag of avocados", 239.99, 3);
+            AddNewProduct("Milk carton", 10.99, 4);
 
-            AddNewCustomer("Moa", "012-34567", "test@test.com");
+
+
+
+            AddNewCustomer("Moa", "018-34567", "mosis@test.com");
+            AddNewCustomer("Jens", "018-34135", "jensis@test.com");
+            AddNewCustomer("Victor", "018-15123", "virre@test.com");
+            AddNewCustomer("Nazgul", "018-18736", "naz@test.com");
+            AddNewCustomer("Christer", "018-18254", "christer@stuxnet.com");
+            AddNewCustomer("Stefan", "018-34651", "steffecool@regeringen.se");
+            AddNewCustomer("Bruce", "018-75345", "batman@wayneenterprises.com");
+            AddNewCustomer("Joakim", "018-24572", "getdatmoney@jva.com");
+
+
+
+
+
             List<OrderLine> items = new List<OrderLine>();
             OrderLine item = new OrderLine(Products[0], 11);
             items.Add(item);

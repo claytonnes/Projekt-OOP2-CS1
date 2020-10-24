@@ -28,6 +28,9 @@ namespace CS1_Projekt_OOP2.Forms
             UpdateCustomerList();
             UpdateProductList();
             productCount = 0;
+
+            Bitmap bmp = CS1_Projekt_OOP2.Properties.Resources.plus;
+            this.Icon = Icon.FromHandle(bmp.GetHicon());
         }
 
         private void UpdateCustomerList()
@@ -115,6 +118,12 @@ namespace CS1_Projekt_OOP2.Forms
         {
             productCount--;
             TXTProductCount.Text = productCount.ToString();
+        }
+
+        private void LST_products_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TXTProductCount.Text = "0";
+            productCount = 0;
         }
     }
 }

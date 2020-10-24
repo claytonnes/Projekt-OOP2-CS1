@@ -25,12 +25,29 @@ namespace CS1_Projekt_OOP2
             InitializeComponent();
             this.wh = wh;
             wh.WarehouseChanged += UpdateTables;
+
+
+            UpdateTables();
+
+
+
+        }
+
+        private void FRMMain_Load(object sender, EventArgs e)
+        {
+
             PendingOrdersGridView.RowHeadersVisible = false;
             DispatchedOrdersGridView.RowHeadersVisible = false;
+
             DispatchedOrdersGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             PendingOrdersGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            UpdateTables();
+
+
+
         }
+
+
+
 
         private void BTNNewOrder_Click(object sender, EventArgs e)
         {
@@ -79,14 +96,52 @@ namespace CS1_Projekt_OOP2
 
         private void UpdateTables()
         {
+
             PendingOrdersGridView.DataSource = wh.ReturnPendingOrders().ToList();
             DispatchedOrdersGridView.DataSource = wh.ReturnDispatchedOrders().ToList();
+            ChangeRowColor();
         }
 
-        private void BTN_ProcessOrders_Click(object sender, EventArgs e)
+
+
+        private void ChangeRowColor()
+        {
+            foreach(DataGridViewRow row in DispatchedOrdersGridView.Rows)
+            {
+                row.DefaultCellStyle.BackColor = Color.LightGray;
+            }
+        }
+
+        private void PendingOrdersGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            foreach (DataGridViewRow row in PendingOrdersGridView.SelectedRows)
+            {
+                if (row.Cells[0].Value != null)
+                {
+                    int orderId = (int)row.Cells[0].Value;
+                    FRMViewOrder viewOrder = new FRMViewOrder(wh.GetOrderById(orderId));
+                    viewOrder.Show();
+                }
+            }
+        }
+
+
+        private void DispatchedOrdersGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            foreach (DataGridViewRow row in DispatchedOrdersGridView.SelectedRows)
+            {
+                if (row.Cells[0].Value != null)
+                {
+                    int orderId = (int)row.Cells[0].Value;
+                    FRMViewOrder viewOrder = new FRMViewOrder(wh.GetOrderById(orderId));
+                    viewOrder.Show();
+                }
+            }
+        }
+
+        private void BTNProcessOrders_Click(object sender, EventArgs e)
         {
             wh.ProcessOrders();
         }
-
     }
 }
