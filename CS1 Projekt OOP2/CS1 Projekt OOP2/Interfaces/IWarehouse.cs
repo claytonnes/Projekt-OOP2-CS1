@@ -21,6 +21,8 @@ namespace CS1_Projekt_OOP2.Interfaces
 
         void ProcessOrders();
 
+
+        Order GetOrderById(int id);
         void AddNewOrder(Customer customer, string deliveryAddress, List<OrderLine> orderLines, bool paymentCompleted);
         IEnumerable<Order> ReturnDispatchedOrders();
         IEnumerable<Order> ReturnPendingOrders();
@@ -34,10 +36,10 @@ namespace CS1_Projekt_OOP2.Interfaces
         IEnumerable<Order> ReturnCustomersActiveOrders(int customerID);
 
 
-
+        Product GetProductById(int id);
         void AddNewProduct(string name, double price, int stock);
         void UpdateProductInformation(int id, string name, double price, int stock);
-        IEnumerable<Product> ReturnStockZero();
+        IEnumerable<Product> ReturnAllProductsWithZeroStock();
 
 
 

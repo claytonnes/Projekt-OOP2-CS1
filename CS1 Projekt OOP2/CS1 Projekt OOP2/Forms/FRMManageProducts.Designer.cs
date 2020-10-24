@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BTN_updateProductInfo = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.TXT_editName = new System.Windows.Forms.TextBox();
             this.TXT_editPrice = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,7 +56,6 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.BTN_updateProductInfo);
-            this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.TXT_editName);
             this.groupBox2.Controls.Add(this.TXT_editPrice);
             this.groupBox2.Controls.Add(this.label4);
@@ -65,7 +64,7 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Location = new System.Drawing.Point(298, 480);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(327, 170);
+            this.groupBox2.Size = new System.Drawing.Size(258, 170);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Select product from list to edit";
@@ -79,16 +78,6 @@
             this.BTN_updateProductInfo.Text = "Update";
             this.BTN_updateProductInfo.UseVisualStyleBackColor = true;
             this.BTN_updateProductInfo.Click += new System.EventHandler(this.BTN_updateProductInfo_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.LightCoral;
-            this.button2.Location = new System.Drawing.Point(169, 119);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(101, 31);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = false;
             // 
             // TXT_editName
             // 
@@ -140,7 +129,18 @@
             // 
             // ProductGridView
             // 
+            this.ProductGridView.AllowUserToAddRows = false;
+            this.ProductGridView.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProductGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ProductGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ProductGridView.EnableHeadersVisualStyles = false;
             this.ProductGridView.Location = new System.Drawing.Point(12, 17);
             this.ProductGridView.MultiSelect = false;
             this.ProductGridView.Name = "ProductGridView";
@@ -254,7 +254,7 @@
             this.Controls.Add(this.ProductGridView);
             this.Controls.Add(this.groupBox1);
             this.Name = "FRMManageProducts";
-            this.Text = "FRMManageProducts";
+            this.Text = "Product Management";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).EndInit();
@@ -269,7 +269,6 @@
 
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button BTN_updateProductInfo;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox TXT_editName;
         private System.Windows.Forms.TextBox TXT_editPrice;
         private System.Windows.Forms.Label label4;

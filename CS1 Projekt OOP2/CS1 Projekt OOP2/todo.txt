@@ -8,6 +8,9 @@ Filterknappen ska kunna togglas - V
 DateTime i Product ska fixas + processOrders - Vikt
 Customerspecifik ordervy, uppdelat mellan active/archived. - Jens
 
+Enhetliga funktionsnamn: Get/Find/ReturnSomething() - Jens
+
+
 >>>Dubbelkolla så alla GUI-updates beror på event<<< - Viktor
 
 Lägga till alla kombo av testdata (Finns funktion i Warehouse, använd){
