@@ -89,7 +89,7 @@ namespace CS1_Projekt_OOP2.Forms
             }
             catch(Exception exception)
             {
-                MessageBox.Show("Nedd");
+                MessageBox.Show("Add number of products");
             }
             
         }

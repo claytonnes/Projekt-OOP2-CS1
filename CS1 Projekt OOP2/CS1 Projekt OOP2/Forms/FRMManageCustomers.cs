@@ -222,5 +222,10 @@ namespace CS1_Projekt_OOP2.Forms
         {
             BTN_updateCustomerInfo.Enabled = true;
         }
+
+        private void ActiveOrdersGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
