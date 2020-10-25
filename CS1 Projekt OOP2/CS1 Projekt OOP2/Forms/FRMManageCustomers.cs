@@ -151,9 +151,9 @@ namespace CS1_Projekt_OOP2.Forms
             { 
                 warehouse.AddNewCustomer(newName, newPhone, newEmail);
             }
-            catch(Exception exc)
+            catch(Exception)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show("Please enter name, phone and email.");
             }
             
         }

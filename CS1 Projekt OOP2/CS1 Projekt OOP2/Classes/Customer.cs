@@ -36,7 +36,7 @@ namespace CS1_Projekt_OOP2
             set
             {
                 if (value == null || value == "")
-                    throw new NullValueException(" Name cannot be null ");
+                    throw new NullValueException(" Pleas enter your name.");
                 else
                     _name = value;
             }
@@ -47,7 +47,7 @@ namespace CS1_Projekt_OOP2
             set
             {
                 if (value == null || value == "")
-                    throw new NullValueException(" Phone cannot be null ");
+                    throw new NullValueException("Please enter phone number.");
                 else
                     _phone = value;
             }
@@ -58,7 +58,7 @@ namespace CS1_Projekt_OOP2
             set
             {
                 if (value == null || value == "")
-                    throw new NullValueException(" Email cannot be null ");
+                    throw new NullValueException(" Please enter email. ");
                 else
                     _email = value;
             }
