@@ -111,16 +111,17 @@ namespace CS1_Projekt_OOP2.Forms
             ArchivedOrdersGridView.Columns.Add("Col5", "Refunded");
             ArchivedOrdersGridView.Columns.Add("Col6", "Dispatched");
 
+            if(activeOrders != null)
+                foreach (Order o in activeOrders)
+                {
+                    ActiveOrdersGridView.Rows.Add(o.Number, o.OrderDate, o.DeliveryAddress, o.PaymentCompleted, o.PaymentRefunded, o.Dispatched);
+                }
 
-            foreach (Order o in activeOrders)
-            {
-                ActiveOrdersGridView.Rows.Add(o.Number, o.OrderDate, o.DeliveryAddress, o.PaymentCompleted, o.PaymentRefunded, o.Dispatched);
-            }
-
-            foreach (Order o in archivedOrders)
-            {
-                ArchivedOrdersGridView.Rows.Add(o.Number, o.OrderDate, o.DeliveryAddress, o.PaymentCompleted, o.PaymentRefunded, o.Dispatched);
-            }
+            if(archivedOrders != null)
+                foreach (Order o in archivedOrders)
+                {
+                    ArchivedOrdersGridView.Rows.Add(o.Number, o.OrderDate, o.DeliveryAddress, o.PaymentCompleted, o.PaymentRefunded, o.Dispatched);
+                }
         }
 
 

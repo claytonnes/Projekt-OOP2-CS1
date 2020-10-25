@@ -24,7 +24,6 @@ namespace CS1_Projekt_OOP2.Forms
             ProductGridView.RowHeadersVisible = false;
             ProductGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ProductGridView.CellClick += new DataGridViewCellEventHandler(ProductGridView_CellClick);
-
             Bitmap bmp = CS1_Projekt_OOP2.Properties.Resources.packages;
             this.Icon = Icon.FromHandle(bmp.GetHicon());
         }
@@ -57,6 +56,7 @@ namespace CS1_Projekt_OOP2.Forms
                 ProductGridView.Rows.Add(p.Code, p.Name, p.Price, p.Stock);
             }
         }
+
         public void UpdateTable(IEnumerable<Product> products)
         {
             ProductGridView.Rows.Clear();
@@ -117,14 +117,21 @@ namespace CS1_Projekt_OOP2.Forms
                 {
                     MessageBox.Show(exception.Message);
                 }
-            }        
-            
+            }              
         }
 
         private void BTN_StockZero_Click(object sender, EventArgs e)
         {
             IEnumerable<Product> zeroStockProducts = warehouse.ReturnAllProductsWithZeroStock();
             UpdateTable(zeroStockProducts);
+        }
+
+        private void filterBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (filterBox1.Checked)
+                UpdateTable(warehouse.ReturnAllProductsWithZeroStock());
+            else 
+                UpdateTable();
         }
     }
 }

@@ -4,14 +4,14 @@ Felhantering ManageCustomer - N
 Kontrollera felhantering i CreateNewOrder - M
 Felhantering ManageProducts - M
 ManageCustomer-knapp i FRMCreateNewOrder ska fixas så den leder till customersida. ej duplicering - M
-Filterknappen ska kunna togglas - V
-DateTime i Product ska fixas + processOrders - Vikt
+Filterknappen ska kunna togglas - V **KLAR**
+DateTime i Product ska fixas + processOrders - Vikt **KLAR**
 Customerspecifik ordervy, uppdelat mellan active/archived. - Jens
 
 Enhetliga funktionsnamn: Get/Find/ReturnSomething() - Jens
 
 
->>>Dubbelkolla så alla GUI-updates beror på event<<< - Viktor
+>>>Dubbelkolla så alla GUI-updates beror på event<<< - Viktor **KLART**
 
 Lägga till alla kombo av testdata (Finns funktion i Warehouse, använd){
 Random av alla sorter och alla kombinationer så vi kan testa allt. Lägg till i AddTestData (Warehouse-klassen) -- N

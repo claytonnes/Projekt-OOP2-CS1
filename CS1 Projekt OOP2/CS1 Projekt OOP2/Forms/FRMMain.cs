@@ -26,28 +26,17 @@ namespace CS1_Projekt_OOP2
             this.wh = wh;
             wh.WarehouseChanged += UpdateTables;
 
-
             UpdateTables();
-
-
-
         }
 
         private void FRMMain_Load(object sender, EventArgs e)
         {
-
             PendingOrdersGridView.RowHeadersVisible = false;
             DispatchedOrdersGridView.RowHeadersVisible = false;
 
             DispatchedOrdersGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             PendingOrdersGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-
-
         }
-
-
-
 
         private void BTNNewOrder_Click(object sender, EventArgs e)
         {

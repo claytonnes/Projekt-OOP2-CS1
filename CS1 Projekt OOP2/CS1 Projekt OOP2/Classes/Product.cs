@@ -16,7 +16,6 @@ namespace CS1_Projekt_OOP2
 
         public Product()
         {
-
         }
 
         public Product(int code, string name, double price, int stock)
@@ -25,9 +24,8 @@ namespace CS1_Projekt_OOP2
             Name = name;
             Price = price;
             Stock = stock;
-            //fixa testdata
-            //Sätt värdet nu + 1 vecka på nextstock
-            //sätt värdet på 8 dagar på FirstAvailable
+            NextStocking = DateTime.Now.AddDays(7);
+            FirstAvailable = NextStocking.AddDays(1);
         }
 
         public int Code
@@ -62,11 +60,10 @@ namespace CS1_Projekt_OOP2
             return Name;
         }
 
+        //Hårdkodad data
         public DateTime FirstAvailable { get; set; }
-        public DateTime NextStocking { get; 
-            //HÅRDKODA SKITEN
-            //Sätt också FirstAvailabe nextstocking + 1 dag DateTime add day funcion
-            set; }
+        //Hårdkodad data
+        public DateTime NextStocking { get; set; }
 
     }
 }

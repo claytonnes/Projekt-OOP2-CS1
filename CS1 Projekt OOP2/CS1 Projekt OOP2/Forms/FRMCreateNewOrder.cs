@@ -28,6 +28,8 @@ namespace CS1_Projekt_OOP2.Forms
             UpdateCustomerList();
             UpdateProductList();
             productCount = 0;
+            warehouse.WarehouseChanged += UpdateCustomerList;
+            warehouse.WarehouseChanged += UpdateProductList;
 
             Bitmap bmp = CS1_Projekt_OOP2.Properties.Resources.plus;
             this.Icon = Icon.FromHandle(bmp.GetHicon());
@@ -39,6 +41,12 @@ namespace CS1_Projekt_OOP2.Forms
             foreach (Customer c in warehouse.Customers)
             {
                 LST_customers.Items.Add(c);
+                label6.Text = "";
+                label7.Text = "";
+                label8.Text = "";
+                TXT_Delivery.Clear();
+                LST_Selected.Items.Clear();
+                BOX_CompletedPay.Checked = false;
             }
         }
 
@@ -86,7 +94,6 @@ namespace CS1_Projekt_OOP2.Forms
                 bool payment = BOX_CompletedPay.Checked ? true : false;
                 warehouse.AddNewOrder(customer, deliveryAddress, GetOrderlinesFromLST(), payment);
                 MessageBox.Show("Order added!");
-                this.Close();
             }
             catch(Exception exception)
             {

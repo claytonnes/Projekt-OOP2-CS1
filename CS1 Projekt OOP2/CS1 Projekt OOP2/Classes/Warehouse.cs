@@ -123,6 +123,7 @@ namespace CS1_Projekt_OOP2.Classes
         {
             IEnumerable<Order> paymentCompleted = Orders.Where(
                 a => a.PaymentCompleted == true
+                && a.Items.All(b => b.Product.FirstAvailable <= DateTime.Now)
                 && a.Dispatched == false).OrderBy(a => a.OrderDate);
 
             foreach (Order order in paymentCompleted)
@@ -133,6 +134,7 @@ namespace CS1_Projekt_OOP2.Classes
                     DeductOrderLineCountFromProductStock(order.Items);
                 }
             }
+
             RaiseWarehouseChanged();
         }
 
@@ -166,40 +168,6 @@ namespace CS1_Projekt_OOP2.Classes
 
         #endregion
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //Metod för att uppfylla Order:3
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //Method called when dispatching items. Reduces stock (has already been checked if stock is enough) by the count of the OrderLine.
-
-
         public void AddTestData()
         {
             // Test-data
@@ -230,6 +198,7 @@ namespace CS1_Projekt_OOP2.Classes
 
             List<OrderLine> items = new List<OrderLine>();
             OrderLine item = new OrderLine(Products[0], 11);
+            Products[0].FirstAvailable = new DateTime(2020, 6, 3, 22, 15,0);
             items.Add(item);
             AddNewOrder(Customers[0], "Leveransvägen 1", items, true);
 

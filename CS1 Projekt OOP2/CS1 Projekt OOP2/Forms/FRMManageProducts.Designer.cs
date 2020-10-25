@@ -46,11 +46,13 @@
             this.TXT_newStock = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.BTN_StockZero = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.filterBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -62,7 +64,7 @@
             this.groupBox2.Controls.Add(this.TXT_editStock);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(298, 480);
+            this.groupBox2.Location = new System.Drawing.Point(279, 480);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(258, 170);
             this.groupBox2.TabIndex = 16;
@@ -224,32 +226,33 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Name";
             // 
-            // BTN_StockZero
+            // groupBox3
             // 
-            this.BTN_StockZero.Location = new System.Drawing.Point(647, 499);
-            this.BTN_StockZero.Name = "BTN_StockZero";
-            this.BTN_StockZero.Size = new System.Drawing.Size(116, 31);
-            this.BTN_StockZero.TabIndex = 17;
-            this.BTN_StockZero.Text = "Filter";
-            this.BTN_StockZero.UseVisualStyleBackColor = true;
-            this.BTN_StockZero.Click += new System.EventHandler(this.BTN_StockZero_Click);
+            this.groupBox3.Controls.Add(this.filterBox1);
+            this.groupBox3.Location = new System.Drawing.Point(554, 481);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(227, 169);
+            this.groupBox3.TabIndex = 17;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Filters";
             // 
-            // label7
+            // filterBox1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(644, 480);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(137, 13);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Show products out of stock";
+            this.filterBox1.AutoSize = true;
+            this.filterBox1.Location = new System.Drawing.Point(6, 19);
+            this.filterBox1.Name = "filterBox1";
+            this.filterBox1.Size = new System.Drawing.Size(84, 17);
+            this.filterBox1.TabIndex = 0;
+            this.filterBox1.Text = "Out of stock";
+            this.filterBox1.UseVisualStyleBackColor = true;
+            this.filterBox1.CheckedChanged += new System.EventHandler(this.filterBox1_CheckedChanged);
             // 
             // FRMManageProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 679);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.BTN_StockZero);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.ProductGridView);
             this.Controls.Add(this.groupBox1);
@@ -260,8 +263,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -284,7 +288,8 @@
         private System.Windows.Forms.TextBox TXT_newStock;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button BTN_StockZero;
-        private System.Windows.Forms.Label label7;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox filterBox1;
     }
 }

@@ -103,12 +103,6 @@
     <Compile Include="Forms\FRMManageProducts.Designer.cs">
       <DependentUpon>FRMManageProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FRMDispatched.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FRMDispatched.Designer.cs">
-      <DependentUpon>FRMDispatched.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FRMViewOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,9 +123,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FRMManageProducts.resx">
       <DependentUpon>FRMManageProducts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FRMDispatched.resx">
-      <DependentUpon>FRMDispatched.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FRMViewOrder.resx">
       <DependentUpon>FRMViewOrder.cs</DependentUpon>
