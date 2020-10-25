@@ -79,11 +79,38 @@ namespace CS1_Projekt_OOP2.Forms
             {
                 if (row.Cells[0].Value != null)
                 {
+                    bool inputCorrect = true;
+
+
                     int productId = int.Parse(row.Cells[0].Value.ToString());
                     string updatedName = TXT_editName.Text;
-                    double updatedPrice = Double.Parse(TXT_editPrice.Text);
-                    int updatedStock = Int32.Parse(TXT_editStock.Text);
-                    warehouse.UpdateProductInformation(productId, updatedName, updatedPrice, updatedStock);
+                    double updatedPrice;
+                    int updatedStock;
+                   
+                   
+                    if (!double.TryParse(TXT_editPrice.Text, out updatedPrice))
+                    {
+                        inputCorrect = false;
+                        MessageBox.Show("Please enter a numeric value as a price");
+                    }
+
+                    if (!int.TryParse(TXT_editStock.Text, out updatedStock))
+                    {
+                        inputCorrect = false;
+                        MessageBox.Show("Please enter a number in the Stock field");
+                    }
+
+                    if (inputCorrect)
+                    {
+                        try
+                        {
+                            warehouse.UpdateProductInformation(productId, updatedName, updatedPrice, updatedStock);
+                        }
+                        catch (Exception exception)
+                        {
+                            MessageBox.Show(exception.Message);
+                        }
+                    }
                 }
             }
         }
@@ -132,6 +159,11 @@ namespace CS1_Projekt_OOP2.Forms
                 UpdateTable(warehouse.ReturnAllProductsWithZeroStock());
             else 
                 UpdateTable();
+        }
+
+        private void ProductGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            BTN_updateProductInfo.Enabled = true;
         }
     }
 }

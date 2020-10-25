@@ -170,6 +170,13 @@ namespace CS1_Projekt_OOP2.Forms
                     string updatedName = TXT_editName.Text;
                     string updatedPhone = TXT_editPhone.Text;
                     string updatedEmail = TXT_editEmail.Text;
+
+                    if(string.IsNullOrEmpty(updatedName)|| string.IsNullOrEmpty(updatedPhone)|| string.IsNullOrEmpty(updatedEmail))
+                    {
+                        MessageBox.Show("Provide valid information");
+                        return;
+                    }
+
                     warehouse.UpdateCustomerInformation(customerId, updatedName, updatedPhone, updatedEmail);
                 }
             }
@@ -206,6 +213,14 @@ namespace CS1_Projekt_OOP2.Forms
             }
         }
 
-        
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CustomerGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            BTN_updateCustomerInfo.Enabled = true;
+        }
     }
 }

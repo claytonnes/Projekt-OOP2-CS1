@@ -17,11 +17,13 @@ namespace CS1_Projekt_OOP2.Forms
 
     public partial class FRMCreateNewOrder : Form
     {
-        
+        private IWarehouse wh;
+        private FRMManageCustomers customerForm;
         int productCount;
         private IWarehouse warehouse;
+        private FRMMain FrmMain; 
 
-        public FRMCreateNewOrder(IWarehouse wh)
+        public FRMCreateNewOrder(FRMMain parent, IWarehouse wh)
         { 
             InitializeComponent();
             warehouse = wh;
@@ -30,6 +32,7 @@ namespace CS1_Projekt_OOP2.Forms
             productCount = 0;
             warehouse.WarehouseChanged += UpdateCustomerList;
             warehouse.WarehouseChanged += UpdateProductList;
+            this.FrmMain = parent; 
 
             Bitmap bmp = CS1_Projekt_OOP2.Properties.Resources.plus;
             this.Icon = Icon.FromHandle(bmp.GetHicon());
@@ -75,12 +78,18 @@ namespace CS1_Projekt_OOP2.Forms
             try 
             {
                 Product p = LST_products.SelectedItem as Product;
+                if(p == null)
+                {
+                    MessageBox.Show("Choose a product");
+                    return;
+                }
+
                 productCount = Int32.Parse(TXTProductCount.Text);
                 LST_Selected.Items.Add(new OrderLine(p, productCount));              
             }
             catch(Exception exception)
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show("Nedd");
             }
             
         }
@@ -131,6 +140,11 @@ namespace CS1_Projekt_OOP2.Forms
         {
             TXTProductCount.Text = "0";
             productCount = 0;
+        }
+
+        private void BTN_manageCustomers_Click(object sender, EventArgs e)
+        {
+            FrmMain.OpenFRMCustomers();
         }
     }
 }

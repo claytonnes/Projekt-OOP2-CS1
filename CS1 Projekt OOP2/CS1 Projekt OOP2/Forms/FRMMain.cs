@@ -47,15 +47,15 @@ namespace CS1_Projekt_OOP2
             }
             else
             {
-                newOrderForm = new FRMCreateNewOrder(wh);
+                newOrderForm = new FRMCreateNewOrder(this, wh);
                 newOrderForm.FormClosed += (o, ea) => newOrderForm = null;
                 newOrderForm.Show();
             }
         }
 
-        private void BTN_OpenFRMCustomers_Click_1(object sender, EventArgs e)
+        public void OpenFRMCustomers ()
         {
-            if (customerForm != null)
+        if (customerForm != null)
             {
                 customerForm.WindowState = FormWindowState.Normal;
                 customerForm.Focus();
@@ -66,6 +66,11 @@ namespace CS1_Projekt_OOP2
                 customerForm.FormClosed += (o, ea) => customerForm = null;
                 customerForm.Show();
             }
+        }
+        private void BTN_OpenFRMCustomers_Click_1(object sender, EventArgs e)
+        {
+            OpenFRMCustomers();
+
         }
 
         private void BTNProducts_Click(object sender, EventArgs e)
