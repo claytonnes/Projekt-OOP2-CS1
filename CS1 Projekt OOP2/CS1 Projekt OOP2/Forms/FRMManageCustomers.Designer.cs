@@ -63,34 +63,30 @@
             // 
             // TXT_newName
             // 
-            this.TXT_newName.Location = new System.Drawing.Point(110, 46);
-            this.TXT_newName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TXT_newName.Location = new System.Drawing.Point(73, 30);
             this.TXT_newName.Name = "TXT_newName";
-            this.TXT_newName.Size = new System.Drawing.Size(230, 26);
+            this.TXT_newName.Size = new System.Drawing.Size(155, 20);
             this.TXT_newName.TabIndex = 0;
             // 
             // TXT_newPhone
             // 
-            this.TXT_newPhone.Location = new System.Drawing.Point(110, 86);
-            this.TXT_newPhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TXT_newPhone.Location = new System.Drawing.Point(73, 56);
             this.TXT_newPhone.Name = "TXT_newPhone";
-            this.TXT_newPhone.Size = new System.Drawing.Size(230, 26);
+            this.TXT_newPhone.Size = new System.Drawing.Size(155, 20);
             this.TXT_newPhone.TabIndex = 1;
             // 
             // TXT_newEmail
             // 
-            this.TXT_newEmail.Location = new System.Drawing.Point(110, 126);
-            this.TXT_newEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TXT_newEmail.Location = new System.Drawing.Point(73, 82);
             this.TXT_newEmail.Name = "TXT_newEmail";
-            this.TXT_newEmail.Size = new System.Drawing.Size(230, 26);
+            this.TXT_newEmail.Size = new System.Drawing.Size(155, 20);
             this.TXT_newEmail.TabIndex = 2;
             // 
             // BTN_createNewCustomer
             // 
-            this.BTN_createNewCustomer.Location = new System.Drawing.Point(84, 191);
-            this.BTN_createNewCustomer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BTN_createNewCustomer.Location = new System.Drawing.Point(56, 124);
             this.BTN_createNewCustomer.Name = "BTN_createNewCustomer";
-            this.BTN_createNewCustomer.Size = new System.Drawing.Size(220, 48);
+            this.BTN_createNewCustomer.Size = new System.Drawing.Size(147, 31);
             this.BTN_createNewCustomer.TabIndex = 6;
             this.BTN_createNewCustomer.Text = "Create new customer";
             this.BTN_createNewCustomer.UseVisualStyleBackColor = true;
@@ -105,11 +101,9 @@
             this.groupBox1.Controls.Add(this.TXT_newEmail);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(94, 742);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Location = new System.Drawing.Point(63, 482);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(370, 272);
+            this.groupBox1.Size = new System.Drawing.Size(247, 177);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create new customer";
@@ -117,31 +111,27 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 137);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(20, 89);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 20);
+            this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "Email";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 97);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(20, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 20);
+            this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 11;
             this.label2.Text = "Phone";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 57);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(20, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 8;
             this.label1.Text = "Name";
             // 
@@ -160,8 +150,7 @@
             this.CustomerGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.CustomerGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CustomerGridView.EnableHeadersVisualStyles = false;
-            this.CustomerGridView.Location = new System.Drawing.Point(18, 62);
-            this.CustomerGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CustomerGridView.Location = new System.Drawing.Point(12, 40);
             this.CustomerGridView.MultiSelect = false;
             this.CustomerGridView.Name = "CustomerGridView";
             this.CustomerGridView.ReadOnly = true;
@@ -176,7 +165,7 @@
             this.CustomerGridView.RowHeadersVisible = false;
             this.CustomerGridView.RowHeadersWidth = 62;
             this.CustomerGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CustomerGridView.Size = new System.Drawing.Size(1020, 635);
+            this.CustomerGridView.Size = new System.Drawing.Size(680, 413);
             this.CustomerGridView.TabIndex = 10;
             this.CustomerGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CustomerGridView_CellClick);
             // 
@@ -189,11 +178,9 @@
             this.groupBox2.Controls.Add(this.TXT_editEmail);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(548, 742);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox2.Location = new System.Drawing.Point(365, 482);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox2.Size = new System.Drawing.Size(435, 272);
+            this.groupBox2.Size = new System.Drawing.Size(290, 177);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Edit selected customer";
@@ -201,10 +188,9 @@
             // BTN_updateCustomerInfo
             // 
             this.BTN_updateCustomerInfo.Enabled = false;
-            this.BTN_updateCustomerInfo.Location = new System.Drawing.Point(122, 191);
-            this.BTN_updateCustomerInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BTN_updateCustomerInfo.Location = new System.Drawing.Point(81, 124);
             this.BTN_updateCustomerInfo.Name = "BTN_updateCustomerInfo";
-            this.BTN_updateCustomerInfo.Size = new System.Drawing.Size(152, 48);
+            this.BTN_updateCustomerInfo.Size = new System.Drawing.Size(101, 31);
             this.BTN_updateCustomerInfo.TabIndex = 13;
             this.BTN_updateCustomerInfo.Text = "Update";
             this.BTN_updateCustomerInfo.UseVisualStyleBackColor = true;
@@ -212,55 +198,49 @@
             // 
             // TXT_editName
             // 
-            this.TXT_editName.Location = new System.Drawing.Point(122, 46);
-            this.TXT_editName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TXT_editName.Location = new System.Drawing.Point(81, 30);
             this.TXT_editName.Name = "TXT_editName";
-            this.TXT_editName.Size = new System.Drawing.Size(230, 26);
+            this.TXT_editName.Size = new System.Drawing.Size(155, 20);
             this.TXT_editName.TabIndex = 0;
             // 
             // TXT_editPhone
             // 
-            this.TXT_editPhone.Location = new System.Drawing.Point(122, 86);
-            this.TXT_editPhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TXT_editPhone.Location = new System.Drawing.Point(81, 56);
             this.TXT_editPhone.Name = "TXT_editPhone";
-            this.TXT_editPhone.Size = new System.Drawing.Size(230, 26);
+            this.TXT_editPhone.Size = new System.Drawing.Size(155, 20);
             this.TXT_editPhone.TabIndex = 1;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(42, 137);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(28, 89);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 20);
+            this.label4.Size = new System.Drawing.Size(32, 13);
             this.label4.TabIndex = 12;
             this.label4.Text = "Email";
             // 
             // TXT_editEmail
             // 
-            this.TXT_editEmail.Location = new System.Drawing.Point(122, 126);
-            this.TXT_editEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TXT_editEmail.Location = new System.Drawing.Point(81, 82);
             this.TXT_editEmail.Name = "TXT_editEmail";
-            this.TXT_editEmail.Size = new System.Drawing.Size(230, 26);
+            this.TXT_editEmail.Size = new System.Drawing.Size(155, 20);
             this.TXT_editEmail.TabIndex = 2;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(42, 97);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(28, 63);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 20);
+            this.label5.Size = new System.Drawing.Size(38, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "Phone";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(42, 57);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(28, 37);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 20);
+            this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 8;
             this.label6.Text = "Name";
             // 
@@ -279,35 +259,31 @@
             this.ActiveOrdersGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.ActiveOrdersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ActiveOrdersGridView.EnableHeadersVisualStyles = false;
-            this.ActiveOrdersGridView.Location = new System.Drawing.Point(1082, 62);
-            this.ActiveOrdersGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ActiveOrdersGridView.Location = new System.Drawing.Point(721, 40);
             this.ActiveOrdersGridView.Name = "ActiveOrdersGridView";
             this.ActiveOrdersGridView.ReadOnly = true;
             this.ActiveOrdersGridView.RowHeadersVisible = false;
             this.ActiveOrdersGridView.RowHeadersWidth = 62;
             this.ActiveOrdersGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ActiveOrdersGridView.Size = new System.Drawing.Size(974, 415);
+            this.ActiveOrdersGridView.Size = new System.Drawing.Size(649, 270);
             this.ActiveOrdersGridView.TabIndex = 14;
             this.ActiveOrdersGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ActiveOrdersGridView_CellClick);
-            this.ActiveOrdersGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ActiveOrdersGridView_CellContentClick);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1077, 37);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(718, 24);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(197, 20);
+            this.label7.Size = new System.Drawing.Size(137, 13);
             this.label7.TabIndex = 15;
             this.label7.Text = "Active orders (click to view)";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1077, 540);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(718, 351);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(215, 20);
+            this.label8.Size = new System.Drawing.Size(149, 13);
             this.label8.TabIndex = 17;
             this.label8.Text = "Archived orders (click to view)";
             // 
@@ -326,32 +302,30 @@
             this.ArchivedOrdersGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.ArchivedOrdersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ArchivedOrdersGridView.EnableHeadersVisualStyles = false;
-            this.ArchivedOrdersGridView.Location = new System.Drawing.Point(1082, 565);
-            this.ArchivedOrdersGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ArchivedOrdersGridView.Location = new System.Drawing.Point(721, 367);
             this.ArchivedOrdersGridView.Name = "ArchivedOrdersGridView";
             this.ArchivedOrdersGridView.ReadOnly = true;
             this.ArchivedOrdersGridView.RowHeadersVisible = false;
             this.ArchivedOrdersGridView.RowHeadersWidth = 62;
             this.ArchivedOrdersGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ArchivedOrdersGridView.Size = new System.Drawing.Size(974, 415);
+            this.ArchivedOrdersGridView.Size = new System.Drawing.Size(649, 270);
             this.ArchivedOrdersGridView.TabIndex = 18;
             this.ArchivedOrdersGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ArchivedOrdersGridView_CellClick);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 37);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(12, 24);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(104, 20);
+            this.label9.Size = new System.Drawing.Size(69, 13);
             this.label9.TabIndex = 19;
             this.label9.Text = "All customers";
             // 
             // FRMManageCustomers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2110, 1048);
+            this.ClientSize = new System.Drawing.Size(1407, 681);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.ArchivedOrdersGridView);
             this.Controls.Add(this.label8);
@@ -360,7 +334,6 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.CustomerGridView);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FRMManageCustomers";
             this.Text = "Customer Management";
             this.groupBox1.ResumeLayout(false);

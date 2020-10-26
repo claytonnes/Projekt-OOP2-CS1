@@ -212,20 +212,5 @@ namespace CS1_Projekt_OOP2.Forms
                 }
             }
         }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CustomerGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            BTN_updateCustomerInfo.Enabled = true;
-        }
-
-        private void ActiveOrdersGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }
