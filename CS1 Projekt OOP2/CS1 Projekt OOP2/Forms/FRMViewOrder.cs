@@ -74,10 +74,11 @@ namespace CS1_Projekt_OOP2.Forms
             ItemListGridView.Columns.Add("Col3", "Currently in stock:");
             ItemListGridView.Columns.Add("Col4", "Available on:");
 
-            foreach (OrderLine ol in order.Items)
-            {
-                ItemListGridView.Rows.Add(ol.Product.Name, ol.Count, ol.Product.Stock, ol.Product.FirstAvailable);
-            }
+            if(!order.Items.Any(a => a.Product == null))
+                foreach (OrderLine ol in order.Items)
+                {
+                    ItemListGridView.Rows.Add(ol.Product.Name, ol.Count, ol.Product.Stock, ol.Product.FirstAvailable);
+                }
         }
 
        
