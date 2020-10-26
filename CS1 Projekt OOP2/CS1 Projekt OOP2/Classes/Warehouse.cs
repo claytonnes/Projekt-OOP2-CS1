@@ -209,18 +209,7 @@ namespace CS1_Projekt_OOP2.Classes
             AddNewOrder(Customers[0], "Vägvägen11", items, true);
             Orders[1].Dispatched = true;
 
-            /* Test-data
-            AddNewProduct("Tooth brash", 12.50, 50);
-
-            AddNewCustomer("Jens", "012-09876", "test1@test1.com");
-            List<OrderLine> sanitary = new List<OrderLine>();
-            _ = new OrderLine(Products[1], 12);
-            items.Add(item);
-            AddNewOrder(Customers[1], "Statsvägen 2", items, false);
-
-            //Testdata för att visa att pending/dispatched-sorteringen fungerar.
-            AddNewOrder(Customers[1], "Strandvägen 23", items, true);
-            Orders[1].Dispatched = false; */
+            
         }
 
         public Order AdjustOrder(Order o)
