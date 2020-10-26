@@ -27,7 +27,7 @@ namespace CS1_Projekt_OOP2
             InitializeComponent();
             this.wh = wh;
             wh.WarehouseChanged += UpdateTables;
-            WatchNewOrders();
+            wh.WatchNewOrders(this);
             UpdateTables();
         }
 
@@ -138,26 +138,6 @@ namespace CS1_Projekt_OOP2
         private void BTNProcessOrders_Click(object sender, EventArgs e)
         {
             wh.ProcessOrders();
-        }
-
-        private void WatchNewOrders()
-        {
-            FileSystemWatcher fsw = new FileSystemWatcher("./neworders", "*.json");
-            fsw.SynchronizingObject = this;
-            fsw.Created += Fsw_Created;
-            fsw.EnableRaisingEvents = true;
-        }
-
-        private void Fsw_Created(object sender, FileSystemEventArgs e)
-        {
-            System.Threading.Thread.Sleep(500);
-            string json = File.ReadAllText(e.FullPath);
-            Order o = JsonSerializer.Deserialize<Order>(json);
-            Order order = wh.AdjustOrder(o);
-            wh.Orders.Add(order);
-            wh.RaiseWarehouseChanged();
-            File.Delete(e.FullPath);
-
         }
 
     }

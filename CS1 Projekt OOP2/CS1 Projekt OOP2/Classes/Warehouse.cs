@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
 namespace CS1_Projekt_OOP2.Classes
@@ -232,6 +233,25 @@ namespace CS1_Projekt_OOP2.Classes
                 ol.Product = GetProductById(ol.Product.Code);
             }
             return o;
+        }
+
+        public void WatchNewOrders(Form form)
+        {
+            FileSystemWatcher fsw = new FileSystemWatcher("./neworders", "*.json");
+            fsw.SynchronizingObject = form;
+            fsw.Created += Fsw_Created;
+            fsw.EnableRaisingEvents = true;
+        }
+
+        private void Fsw_Created(object sender, FileSystemEventArgs e)
+        {
+            System.Threading.Thread.Sleep(500);
+            string json = File.ReadAllText(e.FullPath);
+            Order o = JsonSerializer.Deserialize<Order>(json);
+            Order order = AdjustOrder(o);
+            Orders.Add(order);
+            RaiseWarehouseChanged();
+            File.Delete(e.FullPath);
         }
     }
 }
