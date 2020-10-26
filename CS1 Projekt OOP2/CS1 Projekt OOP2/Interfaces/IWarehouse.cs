@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace CS1_Projekt_OOP2.Interfaces
 {
@@ -41,6 +42,7 @@ namespace CS1_Projekt_OOP2.Interfaces
         void UpdateProductInformation(int id, string name, double price, int stock);
         IEnumerable<Product> ReturnAllProductsWithZeroStock();
         Order AdjustOrder(Order o);
+        void WatchNewOrders(System.Windows.Forms.Form form);
 
 
 
