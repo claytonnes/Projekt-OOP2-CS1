@@ -20,7 +20,7 @@ namespace CS1_Projekt_OOP2
 
         public Order()
         {
-
+            
         }
 
         public Order(int number, Customer customer, string deliveryAddress, List<OrderLine> items, bool paymentCompleted)
