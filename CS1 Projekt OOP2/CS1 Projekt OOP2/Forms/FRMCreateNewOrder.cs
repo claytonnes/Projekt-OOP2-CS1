@@ -85,7 +85,9 @@ namespace CS1_Projekt_OOP2.Forms
                 }
 
                 productCount = Int32.Parse(TXTProductCount.Text);
-                LST_Selected.Items.Add(new OrderLine(p, productCount));              
+                LST_Selected.Items.Add(new OrderLine(p, productCount));
+                productCount = 0;
+                TXTProductCount.Text = productCount.ToString();
             }
             catch(Exception exception)
             {
@@ -134,12 +136,6 @@ namespace CS1_Projekt_OOP2.Forms
         {
             productCount--;
             TXTProductCount.Text = productCount.ToString();
-        }
-
-        private void LST_products_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            TXTProductCount.Text = "0";
-            productCount = 0;
         }
 
         private void BTN_manageCustomers_Click(object sender, EventArgs e)

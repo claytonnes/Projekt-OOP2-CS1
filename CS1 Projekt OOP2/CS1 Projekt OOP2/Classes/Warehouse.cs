@@ -118,26 +118,40 @@ namespace CS1_Projekt_OOP2.Classes
 
         public void AddNewOrder(Customer customer, string deliveryAddress, List<OrderLine> orderLines, bool paymentCompleted)
         {
-            Orders.Add(new Order(Orders.Count, customer, deliveryAddress, orderLines, paymentCompleted));
+            Order o = new Order(Orders.Count, customer, deliveryAddress, orderLines, paymentCompleted);
+            Orders.Add(o);
             RaiseWarehouseChanged();
         }
 
-        public void ProcessOrders()
-        {
+        //Kolla om produkt ej finns
+        public void ProcessOrders() {
+
+            int highestProductId =
+            Products.Select(a => a.Code).Max();
+
+            IEnumerable<Order> ordersToRefund =
+                Orders.Where(a => a.Items.Any(b => b.Product.Code > highestProductId)
+                && a.PaymentCompleted == true);
+
+            foreach (Order o in ordersToRefund)
+            {
+                o.PaymentRefunded = true;
+            }
+
             IEnumerable<Order> paymentCompleted = Orders.Where(
                 a => a.PaymentCompleted == true
                 && a.Items.All(b => b.Product.FirstAvailable <= DateTime.Now)
-                && a.Dispatched == false).OrderBy(a => a.OrderDate);
+                && a.Dispatched == false
+                && a.PaymentRefunded == false).OrderBy(a => a.OrderDate);
 
             foreach (Order order in paymentCompleted)
-            {
-                if (order.Items.All(o => o.Count < o.Product.Stock))
+            { 
+                if (order.Items.All(o => o.Count <= o.Product.Stock))
                 {
                     order.Dispatched = true;
                     DeductOrderLineCountFromProductStock(order.Items);
                 }
             }
-
             RaiseWarehouseChanged();
         }
 
@@ -208,8 +222,14 @@ namespace CS1_Projekt_OOP2.Classes
 
             //Testdata för att visa att pending/dispatched-sorteringen fungerar.
             AddNewOrder(Customers[0], "Vägvägen11", items, true);
+
             Orders[1].Dispatched = true;
 
+            OrderLine items1 = new OrderLine(new Product(11, "Kanin", 299, 2), 2);
+            List <OrderLine> asd = new List<OrderLine>();
+            asd.Add(items1);
+            //Ta bort sen
+            AddNewOrder(Customers[4], "Refundvägen", asd, true);
             /* Test-data
             AddNewProduct("Tooth brash", 12.50, 50);
 
@@ -226,13 +246,19 @@ namespace CS1_Projekt_OOP2.Classes
 
         public Order AdjustOrder(Order o)
         {
-            o.Number = Orders.Max(a => a.Number) + 1;
+            TryOrderNumber(o.Number);
             o.Customer = GetCustomerById(o.Customer.Number);
             foreach (OrderLine ol in o.Items)
             {
                 ol.Product = GetProductById(ol.Product.Code);
             }
             return o;
+        }
+
+        private void TryOrderNumber(int orderNumber)
+        {
+            if (Orders.Any(o => o.Number == orderNumber))
+                throw new Exception("Error adding order from JSON-file: order number already exists.");
         }
 
         public void WatchNewOrders(Form form)
@@ -245,12 +271,19 @@ namespace CS1_Projekt_OOP2.Classes
 
         private void Fsw_Created(object sender, FileSystemEventArgs e)
         {
-            System.Threading.Thread.Sleep(500);
-            string json = File.ReadAllText(e.FullPath);
-            Order o = JsonSerializer.Deserialize<Order>(json);
-            Order order = AdjustOrder(o);
-            Orders.Add(order);
-            RaiseWarehouseChanged();
+            try
+            {
+                System.Threading.Thread.Sleep(500);
+                string json = File.ReadAllText(e.FullPath);
+                Order o = JsonSerializer.Deserialize<Order>(json);
+                Order order = AdjustOrder(o);
+                Orders.Add(order);
+                RaiseWarehouseChanged();
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }           
             File.Delete(e.FullPath);
         }
     }
