@@ -226,6 +226,11 @@ namespace CS1_Projekt_OOP2.Classes
 
         public void WatchNewOrders(Form form)
         {
+            if (!System.IO.Directory.Exists("./neworders"))
+            {
+                System.IO.Directory.CreateDirectory("./neworders");
+            }
+
             FileSystemWatcher fsw = new FileSystemWatcher("./neworders", "*.json");
             fsw.SynchronizingObject = form;
             fsw.Created += Fsw_Created;

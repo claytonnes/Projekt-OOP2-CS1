@@ -166,6 +166,7 @@ namespace CS1_Projekt_OOP2.Forms
             {
                 if (row.Cells[0].Value != null)
                 {
+                    bool inputCorrect = true;
                     int customerId = int.Parse(row.Cells[0].Value.ToString());
                     string updatedName = TXT_editName.Text;
                     string updatedPhone = TXT_editPhone.Text;
@@ -175,9 +176,17 @@ namespace CS1_Projekt_OOP2.Forms
                     {
                         MessageBox.Show("Provide valid information");
                         return;
+                    } 
+
+                    try
+                    {
+                        warehouse.UpdateCustomerInformation(customerId, updatedName, updatedPhone, updatedEmail);
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show(exception.Message);
                     }
 
-                    warehouse.UpdateCustomerInformation(customerId, updatedName, updatedPhone, updatedEmail);
                 }
             }
         }
