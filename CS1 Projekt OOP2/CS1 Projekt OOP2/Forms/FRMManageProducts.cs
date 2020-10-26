@@ -37,7 +37,7 @@ namespace CS1_Projekt_OOP2.Forms
                     TXT_editName.Text = row.Cells[1].Value.ToString();
                     TXT_editPrice.Text = row.Cells[2].Value.ToString();
                     TXT_editStock.Text = row.Cells[3].Value.ToString();
-                    
+                    BTN_updateProductInfo.Enabled = true;
                 }
             }
         }

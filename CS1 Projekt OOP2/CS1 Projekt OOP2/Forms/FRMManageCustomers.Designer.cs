@@ -199,6 +199,7 @@
             // 
             // BTN_updateCustomerInfo
             // 
+            this.BTN_updateCustomerInfo.Enabled = false;
             this.BTN_updateCustomerInfo.Location = new System.Drawing.Point(122, 191);
             this.BTN_updateCustomerInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BTN_updateCustomerInfo.Name = "BTN_updateCustomerInfo";
