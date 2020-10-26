@@ -28,7 +28,6 @@ namespace CS1_Projekt_OOP2.Classes
             Orders = new List<Order>();
             Customers = new List<Customer>();
             AddTestData();
-            WriteOrdersToFile();
         }
 
         public event ChangeHandler WarehouseChanged;
@@ -234,14 +233,5 @@ namespace CS1_Projekt_OOP2.Classes
             }
             return o;
         }
-
-        //TA BORT DENNA INNAN INSKICKNING v
-        private void WriteOrdersToFile()
-        {
-            string filename = "orders.json";
-            string contents = JsonSerializer.Serialize(Orders);
-            File.WriteAllText(filename, contents);
-        }
-
     }
 }
