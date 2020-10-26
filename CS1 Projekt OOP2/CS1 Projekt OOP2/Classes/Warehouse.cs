@@ -6,8 +6,10 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms.VisualStyles;
 
 namespace CS1_Projekt_OOP2.Classes
 {
@@ -26,6 +28,7 @@ namespace CS1_Projekt_OOP2.Classes
             Orders = new List<Order>();
             Customers = new List<Customer>();
             AddTestData();
+            WriteOrdersToFile();
         }
 
         public event ChangeHandler WarehouseChanged;
@@ -199,6 +202,7 @@ namespace CS1_Projekt_OOP2.Classes
             List<OrderLine> items = new List<OrderLine>();
             OrderLine item = new OrderLine(Products[0], 11);
             Products[0].FirstAvailable = new DateTime(2020, 6, 3, 22, 15,0);
+            Products[3].FirstAvailable = new DateTime(2020, 6, 3, 22, 15, 0);
             items.Add(item);
             AddNewOrder(Customers[0], "Leveransvägen 1", items, true);
 
@@ -218,6 +222,25 @@ namespace CS1_Projekt_OOP2.Classes
             //Testdata för att visa att pending/dispatched-sorteringen fungerar.
             AddNewOrder(Customers[1], "Strandvägen 23", items, true);
             Orders[1].Dispatched = false; */
+        }
+
+        public Order AdjustOrder(Order o)
+        {
+            o.Number = Orders.Max(a => a.Number) + 1;
+            o.Customer = GetCustomerById(o.Customer.Number);
+            foreach (OrderLine ol in o.Items)
+            {
+                ol.Product = GetProductById(ol.Product.Code);
+            }
+            return o;
+        }
+
+        //TA BORT DENNA INNAN INSKICKNING v
+        private void WriteOrdersToFile()
+        {
+            string filename = "orders.json";
+            string contents = JsonSerializer.Serialize(Orders);
+            File.WriteAllText(filename, contents);
         }
 
     }

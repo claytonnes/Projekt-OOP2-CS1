@@ -11,6 +11,10 @@ namespace CS1_Projekt_OOP2
     {
         private Product _product;
         private int _count;
+        public OrderLine()
+        {
+
+        }
         public OrderLine(Product p, int c)
         {
             Product = p;

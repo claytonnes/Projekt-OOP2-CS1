@@ -187,7 +187,6 @@
             // 
             // BTN_updateCustomerInfo
             // 
-            this.BTN_updateCustomerInfo.Enabled = false;
             this.BTN_updateCustomerInfo.Location = new System.Drawing.Point(81, 124);
             this.BTN_updateCustomerInfo.Name = "BTN_updateCustomerInfo";
             this.BTN_updateCustomerInfo.Size = new System.Drawing.Size(101, 31);

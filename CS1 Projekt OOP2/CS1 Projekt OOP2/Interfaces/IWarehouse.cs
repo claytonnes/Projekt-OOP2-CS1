@@ -40,7 +40,7 @@ namespace CS1_Projekt_OOP2.Interfaces
         void AddNewProduct(string name, double price, int stock);
         void UpdateProductInformation(int id, string name, double price, int stock);
         IEnumerable<Product> ReturnAllProductsWithZeroStock();
-
+        Order AdjustOrder(Order o);
 
 
 
