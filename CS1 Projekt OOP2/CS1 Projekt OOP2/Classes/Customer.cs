@@ -9,8 +9,6 @@ namespace CS1_Projekt_OOP2
 {
     public class Customer
     {
-        //Ask Christer
-        internal static int Count; // Increases every time a new customer is created
 
         private int _number;    // set value is unique and non-negative
         private string _name;   // non-empty value
