@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
@@ -86,6 +87,11 @@ namespace CS1_Projekt_OOP2
 
         public List<OrderLine> Items { 
             get { return _items; }
-            set { _items = value; } }
+            set 
+            {
+                if (value.Count < 1)
+                    throw new ArgumentException("You need to add products to create an order.");
+                else _items = value;
+            } }
     }
 }
