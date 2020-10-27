@@ -13,6 +13,8 @@ namespace CS1_Projekt_OOP2
         private string _name; // får inte vara null or empty
         private double _price; //får inte vara mindre än 0
         private int _stock; // får inte vara mindre än 0
+        private DateTime _firstAvailable;
+        private DateTime _nextStocking;
 
         public Product()
         {
@@ -25,7 +27,7 @@ namespace CS1_Projekt_OOP2
             Price = price;
             Stock = stock;
             NextStocking = DateTime.Now.AddDays(7);
-            FirstAvailable = NextStocking.AddDays(1);
+            FirstAvailable = DateTime.Now;
         }
 
         public int Code
@@ -60,10 +62,16 @@ namespace CS1_Projekt_OOP2
             return Name;
         }
 
-        //Hårdkodad data
-        public DateTime FirstAvailable { get; set; }
-        //Hårdkodad data
-        public DateTime NextStocking { get; set; }
+        public DateTime NextStocking {
+            get { return _nextStocking; }
+            set { _nextStocking = value;  } 
+        }
+
+        public DateTime FirstAvailable {
+            get { return _firstAvailable; }
+            set { _firstAvailable = value;  }
+        }
+
 
     }
 }

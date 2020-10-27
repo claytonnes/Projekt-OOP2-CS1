@@ -14,15 +14,50 @@ using System.Windows.Forms.VisualStyles;
 
 namespace CS1_Projekt_OOP2.Classes
 {
-
+    /// <summary>
+    /// Delegate type used for handling change in the warehouse.
+    /// </summary>
     public delegate void ChangeHandler();
 
+    /// <summary>
+    /// Warehouse class which handles all data actions and keeps a catalogue of customers, orders and products.
+    /// Also deals with json-orders.
+    /// </summary>
     class Warehouse : IWarehouse
     {
-        public List<Product> Products { get; set; }
-        public List<Order> Orders { get; set; }
-        public List<Customer> Customers { get; set; }
+        private List<Product> _products;
+        private List<Order> _orders;
+        private List<Customer> _customers;
 
+        /// <summary>
+        /// Property defining how retrieving and assigning data from/to _products works.
+        /// </summary>
+        public List<Product> Products 
+        {
+            get { return _products; }
+            set { _products = value; } 
+        }
+
+        /// <summary>
+        /// Property defining how retrieving and assigning data from/to _orders works.
+        /// </summary>
+        public List<Order> Orders 
+        {
+            get { return _orders; }
+            set { _orders = value; }
+        }
+
+        /// <summary>
+        /// Property defining how retrieving and assigning data from/to _orders works.
+        /// </summary>
+        public List<Customer> Customers { 
+            get{ return _customers; }
+            set { _customers = value; }
+        }
+
+        /// <summary>
+        /// Constructor initializing lists: Products, Orders and Customers.
+        /// </summary>
         public Warehouse()
         {
             Products = new List<Product>();
@@ -31,8 +66,15 @@ namespace CS1_Projekt_OOP2.Classes
             AddTestData();
         }
 
+        /// <summary>
+        /// Event of type ChangeHandler
+        /// </summary>
         public event ChangeHandler WarehouseChanged;
 
+
+        /// <summary>
+        /// Raises event WarehouseChanged when called upon.
+        /// </summary>
         public void RaiseWarehouseChanged()
         {
             WarehouseChanged?.Invoke();
@@ -84,17 +126,35 @@ namespace CS1_Projekt_OOP2.Classes
 
         #region Customer-related methods
 
+        /// <summary>
+        /// Returns a Customer from the list of Customers using customerId for the search
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Customer GetCustomerById(int id)
         {
             return Customers.Find(x => x.Number == id);
         }
 
+        /// <summary>
+        /// Adds a new customer to the list of customers and raises WarehouseChanged to update GUI.
+        /// </summary>
+        /// <param name="_name"></param>
+        /// <param name="_phone"></param>
+        /// <param name="_email"></param>
         public void AddNewCustomer(string _name, string _phone, string _email)
         {
             Customers.Add(new Customer(Customers.Count, _name, _phone, _email));
             RaiseWarehouseChanged();
         }
 
+        /// <summary>
+        /// Updates an existing customers information.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="phone"></param>
+        /// <param name="email"></param>
         public void UpdateCustomerInformation(int id, string name, string phone, string email)
         {
             Customer c = GetCustomerById(id);
@@ -111,17 +171,34 @@ namespace CS1_Projekt_OOP2.Classes
 
         #region Order-related methods
 
+        /// <summary>
+        /// Returns an order from the list of orders using the order number for the search.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Specific Order</returns>
         public Order GetOrderById(int id)
         {
             return Orders.Find(x => x.Number == id);
         }
 
+        /// <summary>
+        /// Adds a new order to the list of orders
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <param name="deliveryAddress"></param>
+        /// <param name="orderLines"></param>
+        /// <param name="paymentCompleted"></param>
         public void AddNewOrder(Customer customer, string deliveryAddress, List<OrderLine> orderLines, bool paymentCompleted)
         {
             Orders.Add(new Order(Orders.Count, customer, deliveryAddress, orderLines, paymentCompleted));
             RaiseWarehouseChanged();
         }
 
+        /// <summary>
+        /// Processes all orders in Orders. 
+        /// If an order mentions a product which does not exist in the product list and payment is completed -> Refund
+        /// If an order has all its products, FirstAvailable is met and is not dispatched -> Dispatched
+        /// </summary>
         public void ProcessOrders()
         {
 
@@ -151,6 +228,11 @@ namespace CS1_Projekt_OOP2.Classes
             RaiseWarehouseChanged();
         }
 
+        /// <summary>
+        /// Returns an IEnumerable<Order> of a specific customer's active orders.
+        /// </summary>
+        /// <param name="customerID"></param>
+        /// <returns>IEnumerable<Order> of a specific customer's active orders</returns>
         public IEnumerable<Order> ReturnCustomersActiveOrders(int customerID)
         {
             IEnumerable<Order> activeUserOrders = Orders.Where
@@ -160,6 +242,12 @@ namespace CS1_Projekt_OOP2.Classes
             return activeUserOrders;
         }
 
+        /// <summary>
+        /// Returns an IEnumerable<Order> of a specific customer's archived orders.
+        /// Archived orders = atleast 30 days old & dispatched.
+        /// </summary>
+        /// <param name="customerID"></param>
+        /// <returns></returns>
         public IEnumerable<Order> ReturnCustomersArchivedOrders(int customerID)
         {
             IEnumerable<Order> archivedUserOrders = Orders.Where
@@ -167,12 +255,21 @@ namespace CS1_Projekt_OOP2.Classes
                 (o.Dispatched == true && o.OrderDate.Subtract(DateTime.Now).TotalDays >= 30));
             return archivedUserOrders;
         }
+
+        /// <summary>
+        /// Returns all orders from Orders with Dispatched = true
+        /// </summary>
+        /// <returns>IEnumerable<Order> of orders with Dispatched = true</returns>
         public IEnumerable<Order> ReturnDispatchedOrders()
         {
             IEnumerable<Order> dispatchedOrders = Orders.Where(o => o.Dispatched == true).OrderBy(o => o.OrderDate);
             return dispatchedOrders;
         }
 
+        /// <summary>
+        /// Returns all orders from Orders with Dispatched = false
+        /// </summary>
+        /// <returns>IEnumerable<Order> of orders with Dispatched = false</returns>
         public IEnumerable<Order> ReturnPendingOrders()
         {
             IEnumerable<Order> dispatchedOrders = Orders.Where(o => o.Dispatched == false).OrderBy(o => o.OrderDate);
@@ -180,7 +277,9 @@ namespace CS1_Projekt_OOP2.Classes
         }
 
         #endregion
-
+        /// <summary>
+        /// Adds testdata.
+        /// </summary>
         public void AddTestData()
         {
             // Test-data
@@ -211,16 +310,23 @@ namespace CS1_Projekt_OOP2.Classes
 
             List<OrderLine> items = new List<OrderLine>();
             OrderLine item = new OrderLine(Products[0], 11);
-            Products[0].FirstAvailable = new DateTime(2020, 6, 3, 22, 15,0);
-            Products[3].FirstAvailable = new DateTime(2020, 6, 3, 22, 15, 0);
             items.Add(item);
             AddNewOrder(Customers[0], "Leveransvägen 1", items, true);
+            Products[1].FirstAvailable = DateTime.Now.AddDays(1);
 
             //Testdata för att visa att pending/dispatched-sorteringen fungerar.
             AddNewOrder(Customers[0], "Vägvägen11", items, true);
             Orders[1].Dispatched = true;         
         }
 
+        /// <summary>
+        /// Adjusts orders received by json-files.
+        /// Checks if there is a collison if OrderNumbers
+        /// Assigns the order with an actual reference to the customer
+        /// Assigs the order with references to actual products.
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns>Adjusted Order with correct references.</returns>
         public Order AdjustOrder(Order o)
         {
             TryOrderNumber(o.Number);
@@ -232,12 +338,18 @@ namespace CS1_Projekt_OOP2.Classes
             return o;
         }
 
+        //Checks if the json-orders order number already exists and throws exception if it does.
         private void TryOrderNumber(int orderNumber)
         {
             if (Orders.Any(o => o.Number == orderNumber))
                 throw new Exception("Error adding order from JSON-file: order number already exists.");
         }
 
+        /// <summary>
+        /// Initializes a FileSystemWatcher and subscribes Fsw_Created to it.
+        /// Keeps track if new orders arrive in neworders.
+        /// </summary>
+        /// <param name="form"></param>
         public void WatchNewOrders(Form form)
         {
             if (!System.IO.Directory.Exists("./neworders"))
@@ -251,6 +363,7 @@ namespace CS1_Projekt_OOP2.Classes
             fsw.EnableRaisingEvents = true;
         }
 
+        //Deserializes the json-order and tries adjusting and adding it. Deletes the json-file after.
         private void Fsw_Created(object sender, FileSystemEventArgs e)
         {
             try
