@@ -83,18 +83,35 @@ namespace CS1_Projekt_OOP2.Classes
 
 
         #region Product-related methods
-
+        /// <summary>
+        /// Returns a product given a products product code
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Specific Product</returns>
         public Product GetProductById(int id)
         {
             return Products.Find(x => x.Code == id);
         }
 
+        /// <summary>
+        /// Adds a new product to Products
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="price"></param>
+        /// <param name="stock"></param>
         public void AddNewProduct(string name, double price, int stock)
         {
             Products.Add(new Product(Products.Count, name, price, stock));
             RaiseWarehouseChanged();
         }
 
+        /// <summary>
+        /// Updates an existing product's information
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="price"></param>
+        /// <param name="stock"></param>
         public void UpdateProductInformation(int id, string name, double price, int stock)
         {
             Product p = GetProductById(id);
@@ -106,6 +123,12 @@ namespace CS1_Projekt_OOP2.Classes
             RaiseWarehouseChanged();
         }
 
+        /// <summary>
+        /// Takes in a List<OrderLine>
+        /// Removes the stock for each product equal to the orderlines count.
+        /// Does this for every orderline in the order.
+        /// </summary>
+        /// <param name="order"></param>
         public void DeductOrderLineCountFromProductStock(List<OrderLine> order)
         {
             foreach (OrderLine orderLine in order)
@@ -114,6 +137,11 @@ namespace CS1_Projekt_OOP2.Classes
             }
         }
 
+        /// <summary>
+        /// Looks for all products with stock = 0
+        /// Returns an IEnumerable<Product> with Products where Stock = 0
+        /// </summary>
+        /// <returns>IEnumerable<Product> with Products where Stock = 0</returns>
         public IEnumerable<Product> ReturnAllProductsWithZeroStock()
         {
             IEnumerable<Product> stockZeroProducts = Products.Where(p => p.Stock == 0);
