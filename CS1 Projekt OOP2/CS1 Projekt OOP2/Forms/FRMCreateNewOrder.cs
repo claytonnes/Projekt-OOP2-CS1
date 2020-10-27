@@ -89,9 +89,9 @@ namespace CS1_Projekt_OOP2.Forms
                 productCount = 0;
                 TXTProductCount.Text = productCount.ToString();
             }
-            catch(Exception exception)
+            catch
             {
-                MessageBox.Show("Add number of products");
+                MessageBox.Show("You need to add atleast one product.");
             }
             
         }
@@ -109,9 +109,7 @@ namespace CS1_Projekt_OOP2.Forms
             catch(Exception exception)
             {
                 MessageBox.Show(exception.Message);
-            }
-            
-            
+            }                       
         }
 
         //Method for getting added OrderLines from listbox.

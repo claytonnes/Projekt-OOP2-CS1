@@ -280,7 +280,7 @@ namespace CS1_Projekt_OOP2.Classes
         {
             IEnumerable<Order> archivedUserOrders = Orders.Where
                 (o => o.Customer.Number == customerID &&
-                (o.Dispatched == true && o.OrderDate.Subtract(DateTime.Now).TotalDays >= 30));
+                (o.Dispatched == true && DateTime.Now.Subtract(o.OrderDate).TotalDays >= 30));
             return archivedUserOrders;
         }
 
@@ -344,7 +344,14 @@ namespace CS1_Projekt_OOP2.Classes
 
             //Testdata för att visa att pending/dispatched-sorteringen fungerar.
             AddNewOrder(Customers[0], "Vägvägen11", items, true);
-            Orders[1].Dispatched = true;         
+            Orders[1].Dispatched = true;
+
+            items.Clear();
+            items.Add(new OrderLine(Products[1], 3));
+            AddNewOrder(Customers[0], "Archivedgatan 11", items, true);
+            Orders[2].Dispatched = true;
+            Orders[2].OrderDate = new DateTime(2008, 5, 1, 8, 30, 52);
+
         }
 
         /// <summary>
