@@ -117,12 +117,20 @@ namespace CS1_Projekt_OOP2.Forms
         //Method for getting added OrderLines from listbox.
         private List<OrderLine> GetOrderlinesFromLST()
         {
-            List<OrderLine> products = new List<OrderLine>();
-            foreach (OrderLine ol in LST_Selected.Items)
+            if(LST_Selected.Items.Count == 0)
             {
-                products.Add(ol);
+                throw new ArgumentException("You need to add products to an order");
             }
-            return products;
+            else
+            {
+                List<OrderLine> products = new List<OrderLine>();
+                foreach (OrderLine ol in LST_Selected.Items)
+                {
+                    products.Add(ol);
+                }
+                return products;
+            }
+            
         }
 
         private void BTN_increment_Click(object sender, EventArgs e)

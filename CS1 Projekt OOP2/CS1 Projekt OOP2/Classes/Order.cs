@@ -87,11 +87,7 @@ namespace CS1_Projekt_OOP2
 
         public List<OrderLine> Items { 
             get { return _items; }
-            set 
-            {
-                if (value.Count < 1)
-                    throw new ArgumentException("You need to add products to create an order.");
-                else _items = value;
-            } }
+            set {_items = value;} 
+        }
     }
 }
