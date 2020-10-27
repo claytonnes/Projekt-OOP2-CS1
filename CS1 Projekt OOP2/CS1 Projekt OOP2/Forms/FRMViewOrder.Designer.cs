@@ -35,6 +35,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.LBL_customerId = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.LBL_customerEmail = new System.Windows.Forms.Label();
             this.LBL_deliveryAdress = new System.Windows.Forms.Label();
             this.LBL_customerPhone = new System.Windows.Forms.Label();
@@ -50,8 +52,8 @@
             this.LBL_orderNumber = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.LBL_customerId = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.LBL_earliestDispatch = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ItemListGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -72,7 +74,7 @@
             // 
             this.LBL_paymentStatus.AutoSize = true;
             this.LBL_paymentStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_paymentStatus.Location = new System.Drawing.Point(6, 81);
+            this.LBL_paymentStatus.Location = new System.Drawing.Point(6, 107);
             this.LBL_paymentStatus.Name = "LBL_paymentStatus";
             this.LBL_paymentStatus.Size = new System.Drawing.Size(97, 13);
             this.LBL_paymentStatus.TabIndex = 27;
@@ -137,6 +139,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer information";
             // 
+            // LBL_customerId
+            // 
+            this.LBL_customerId.AutoSize = true;
+            this.LBL_customerId.Location = new System.Drawing.Point(77, 23);
+            this.LBL_customerId.Name = "LBL_customerId";
+            this.LBL_customerId.Size = new System.Drawing.Size(35, 13);
+            this.LBL_customerId.TabIndex = 32;
+            this.LBL_customerId.Text = "label1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(6, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(22, 13);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "Id:";
+            // 
             // LBL_customerEmail
             // 
             this.LBL_customerEmail.AutoSize = true;
@@ -177,7 +198,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 107);
+            this.label3.Location = new System.Drawing.Point(6, 129);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 29;
@@ -187,7 +208,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 151);
+            this.label8.Location = new System.Drawing.Point(6, 147);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(99, 13);
             this.label8.TabIndex = 30;
@@ -216,7 +237,7 @@
             // 
             this.LBL_paymentCompleted.AutoSize = true;
             this.LBL_paymentCompleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_paymentCompleted.Location = new System.Drawing.Point(111, 81);
+            this.LBL_paymentCompleted.Location = new System.Drawing.Point(111, 107);
             this.LBL_paymentCompleted.Name = "LBL_paymentCompleted";
             this.LBL_paymentCompleted.Size = new System.Drawing.Size(41, 13);
             this.LBL_paymentCompleted.TabIndex = 33;
@@ -226,7 +247,7 @@
             // 
             this.LBL_paymentRefunded.AutoSize = true;
             this.LBL_paymentRefunded.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_paymentRefunded.Location = new System.Drawing.Point(111, 107);
+            this.LBL_paymentRefunded.Location = new System.Drawing.Point(111, 129);
             this.LBL_paymentRefunded.Name = "LBL_paymentRefunded";
             this.LBL_paymentRefunded.Size = new System.Drawing.Size(48, 13);
             this.LBL_paymentRefunded.TabIndex = 34;
@@ -236,7 +257,7 @@
             // 
             this.LBL_dispatched.AutoSize = true;
             this.LBL_dispatched.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_dispatched.Location = new System.Drawing.Point(111, 151);
+            this.LBL_dispatched.Location = new System.Drawing.Point(111, 147);
             this.LBL_dispatched.Name = "LBL_dispatched";
             this.LBL_dispatched.Size = new System.Drawing.Size(48, 13);
             this.LBL_dispatched.TabIndex = 35;
@@ -263,6 +284,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.LBL_earliestDispatch);
+            this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.LBL_dispatched);
             this.groupBox2.Controls.Add(this.LBL_orderNumber);
@@ -289,24 +312,25 @@
             this.label1.TabIndex = 39;
             this.label1.Text = "Products in order:";
             // 
-            // label2
+            // label10
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(22, 13);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "Id:";
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(6, 77);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(105, 13);
+            this.label10.TabIndex = 38;
+            this.label10.Text = "Earliest dispatch:";
             // 
-            // LBL_customerId
+            // LBL_earliestDispatch
             // 
-            this.LBL_customerId.AutoSize = true;
-            this.LBL_customerId.Location = new System.Drawing.Point(77, 23);
-            this.LBL_customerId.Name = "LBL_customerId";
-            this.LBL_customerId.Size = new System.Drawing.Size(35, 13);
-            this.LBL_customerId.TabIndex = 32;
-            this.LBL_customerId.Text = "label1";
+            this.LBL_earliestDispatch.AutoSize = true;
+            this.LBL_earliestDispatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBL_earliestDispatch.Location = new System.Drawing.Point(111, 77);
+            this.LBL_earliestDispatch.Name = "LBL_earliestDispatch";
+            this.LBL_earliestDispatch.Size = new System.Drawing.Size(41, 13);
+            this.LBL_earliestDispatch.TabIndex = 39;
+            this.LBL_earliestDispatch.Text = "label2";
             // 
             // FRMViewOrder
             // 
@@ -354,5 +378,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label LBL_customerId;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LBL_earliestDispatch;
+        private System.Windows.Forms.Label label10;
     }
 }

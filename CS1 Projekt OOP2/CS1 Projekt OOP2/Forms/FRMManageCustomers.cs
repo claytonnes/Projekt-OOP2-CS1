@@ -203,7 +203,7 @@ namespace CS1_Projekt_OOP2.Forms
                 if (row.Cells[0].Value != null)
                 {
                     int orderId = (int)row.Cells[0].Value;
-                    FRMViewOrder viewOrder = new FRMViewOrder(warehouse.GetOrderById(orderId));
+                    FRMViewOrder viewOrder = new FRMViewOrder(warehouse.GetOrderById(orderId), warehouse);
                     viewOrder.Show();
                 }
             }
@@ -216,7 +216,7 @@ namespace CS1_Projekt_OOP2.Forms
                 if (row.Cells[0].Value != null)
                 {
                     int orderId = (int)row.Cells[0].Value;
-                    FRMViewOrder viewOrder = new FRMViewOrder(warehouse.GetOrderById(orderId));
+                    FRMViewOrder viewOrder = new FRMViewOrder(warehouse.GetOrderById(orderId), warehouse);
                     viewOrder.Show();
                 }
             }

@@ -115,7 +115,7 @@ namespace CS1_Projekt_OOP2
                 if (row.Cells[0].Value != null)
                 {
                     int orderId = (int)row.Cells[0].Value;
-                    FRMViewOrder viewOrder = new FRMViewOrder(wh.GetOrderById(orderId));
+                    FRMViewOrder viewOrder = new FRMViewOrder(wh.GetOrderById(orderId), wh);
                     viewOrder.Show();
                 }
             }
@@ -129,7 +129,7 @@ namespace CS1_Projekt_OOP2
                 if (row.Cells[0].Value != null)
                 {
                     int orderId = (int)row.Cells[0].Value;
-                    FRMViewOrder viewOrder = new FRMViewOrder(wh.GetOrderById(orderId));
+                    FRMViewOrder viewOrder = new FRMViewOrder(wh.GetOrderById(orderId), wh);
                     viewOrder.Show();
                 }
             }

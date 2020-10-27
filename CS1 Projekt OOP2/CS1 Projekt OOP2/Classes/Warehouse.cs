@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
@@ -257,6 +258,42 @@ namespace CS1_Projekt_OOP2.Classes
         }
 
         /// <summary>
+        /// Checks if products for and entire order is in stock.
+        /// Returns true if all are in stock, returns false if not.
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns>Returns true if all are in stock, returns false if not.</returns>
+        private bool CheckProductsInStock(Order o)
+        {
+            return o.Items.All(a => a.Count <= a.Product.Stock);
+        }
+
+        /// <summary>
+        /// Method calculating if an orders 
+        /// </summary>
+        /// <param name="orderNumber"></param>
+        /// <returns></returns>
+        public DateTime EarliestDispatchTime(int orderNumber)
+        {
+            Order o = GetOrderById(orderNumber);
+            DateTime latestFirstAvailable =
+                o.Items.Select(a => a.Product).Max(a => a.FirstAvailable);
+
+            if (!CheckProductsInStock(o))
+            {
+                DateTime latestRestocking =
+                o.Items.Select(a => a.Product).Max(a => a.NextStocking);
+
+                if (latestRestocking > latestFirstAvailable)
+                    return latestRestocking;
+                else return latestFirstAvailable;
+            }
+            else if (latestFirstAvailable > DateTime.Now)
+                return latestFirstAvailable;
+            else return o.OrderDate;
+        }
+
+        /// <summary>
         /// Returns an IEnumerable<Order> of a specific customer's active orders.
         /// </summary>
         /// <param name="customerID"></param>
@@ -265,7 +302,7 @@ namespace CS1_Projekt_OOP2.Classes
         {
             IEnumerable<Order> activeUserOrders = Orders.Where
                 (o => o.Customer.Number == customerID &&
-                (o.Dispatched == false || o.OrderDate.Subtract(DateTime.Now).TotalDays < 30));
+                (o.Dispatched == false || DateTime.Now.Subtract(o.OrderDate).TotalDays < 30));
 
             return activeUserOrders;
         }
@@ -275,7 +312,7 @@ namespace CS1_Projekt_OOP2.Classes
         /// Archived orders = atleast 30 days old & dispatched.
         /// </summary>
         /// <param name="customerID"></param>
-        /// <returns></returns>
+        /// <returns>IEnumerable<Order> of a specific customer's archived orders</returns>
         public IEnumerable<Order> ReturnCustomersArchivedOrders(int customerID)
         {
             IEnumerable<Order> archivedUserOrders = Orders.Where
@@ -347,7 +384,7 @@ namespace CS1_Projekt_OOP2.Classes
             Orders[1].Dispatched = true;
 
             items.Clear();
-            items.Add(new OrderLine(Products[1], 3));
+            items.Add(new OrderLine(Products[0], 3));
             AddNewOrder(Customers[0], "Archivedgatan 11", items, true);
             Orders[2].Dispatched = true;
             Orders[2].OrderDate = new DateTime(2008, 5, 1, 8, 30, 52);

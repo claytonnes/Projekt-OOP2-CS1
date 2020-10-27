@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CS1_Projekt_OOP2.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +13,14 @@ namespace CS1_Projekt_OOP2.Forms
 {
     public partial class FRMViewOrder : Form
     {
-
+        IWarehouse warehouse;
         Order order; 
-        public FRMViewOrder(Order o)
+        public FRMViewOrder(Order o, IWarehouse warehouse)
         {
             InitializeComponent();
 
             order = o;
-
+            this.warehouse = warehouse;
             UpdateLabels();
             UpdateItemList();
 
@@ -36,6 +37,7 @@ namespace CS1_Projekt_OOP2.Forms
             LBL_customerEmail.Text = order.Customer.Email;
             LBL_deliveryAdress.Text = order.DeliveryAddress;
 
+            LBL_earliestDispatch.Text = warehouse.EarliestDispatchTime(order.Number).ToString();
             LBL_orderNumber.Text = order.Number.ToString();
             LBL_orderDate.Text = order.OrderDate.ToString();
             LBL_paymentCompleted.Text = GetStyledStatusValue(LBL_paymentCompleted, order.PaymentCompleted);
@@ -72,7 +74,7 @@ namespace CS1_Projekt_OOP2.Forms
             ItemListGridView.Columns.Add("Col1", "Product");
             ItemListGridView.Columns.Add("Col2", "Amount");
             ItemListGridView.Columns.Add("Col3", "Currently in stock:");
-            ItemListGridView.Columns.Add("Col4", "Available on:");
+            ItemListGridView.Columns.Add("Col4", "First available:");
 
             if(!order.Items.Any(a => a.Product == null))
                 foreach (OrderLine ol in order.Items)

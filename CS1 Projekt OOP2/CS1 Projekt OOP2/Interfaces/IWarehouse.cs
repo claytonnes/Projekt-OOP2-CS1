@@ -27,6 +27,7 @@ namespace CS1_Projekt_OOP2.Interfaces
         void AddNewOrder(Customer customer, string deliveryAddress, List<OrderLine> orderLines, bool paymentCompleted);
         IEnumerable<Order> ReturnDispatchedOrders();
         IEnumerable<Order> ReturnPendingOrders();
+        DateTime EarliestDispatchTime(int orderNumber);
 
 
 

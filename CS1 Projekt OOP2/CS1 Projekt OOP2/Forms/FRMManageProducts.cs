@@ -51,10 +51,11 @@ namespace CS1_Projekt_OOP2.Forms
             ProductGridView.Columns.Add("Col2", "Product name");
             ProductGridView.Columns.Add("Col3", "Price");
             ProductGridView.Columns.Add("Col4", "Stock");
+            ProductGridView.Columns.Add("Col5", "Next restock");
 
             foreach (Product p in warehouse.Products)
             {
-                ProductGridView.Rows.Add(p.Code, p.Name, p.Price, p.Stock);
+                ProductGridView.Rows.Add(p.Code, p.Name, p.Price, p.Stock, p.NextStocking);
             }
         }
 
@@ -67,10 +68,11 @@ namespace CS1_Projekt_OOP2.Forms
             ProductGridView.Columns.Add("Col2", "Product name");
             ProductGridView.Columns.Add("Col3", "Price");
             ProductGridView.Columns.Add("Col4", "Stock");
+            ProductGridView.Columns.Add("Col5", "Next restock");
 
             foreach (Product p in products)
             {
-                ProductGridView.Rows.Add(p.Code, p.Name, p.Price, p.Stock);
+                ProductGridView.Rows.Add(p.Code, p.Name, p.Price, p.Stock, p.NextStocking);
             }
         }
 
