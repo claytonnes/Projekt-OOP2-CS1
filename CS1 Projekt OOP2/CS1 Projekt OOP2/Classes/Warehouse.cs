@@ -273,7 +273,7 @@ namespace CS1_Projekt_OOP2.Classes
         /// </summary>
         /// <param name="o"></param>
         /// <returns>Returns true if all are in stock, returns false if not.</returns>
-        private bool CheckProductsInStock(Order o)
+        private bool ProductsInStock(Order o)
         {
             return o.Items.All(a => a.Count <= a.Product.Stock);
         }
@@ -282,17 +282,32 @@ namespace CS1_Projekt_OOP2.Classes
         /// Method calculating if an orders earliest dispatch time if all products exist in product catalogue
         /// </summary>
         /// <param name="orderNumber"></param>
+
+        /// <returns></returns>
+ 
+
+        public DateTime GetEarliestDispatchTime(int orderNumber)
+
         /// <returns>Earliest dispatch time for an order.</returns>
-        public DateTime EarliestDispatchTime(int orderNumber)
+        
+
         {
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            
+
+
             Order o = GetOrderById(orderNumber);
             DateTime latestFirstAvailable =
                 o.Items.Select(a => a.Product).Max(a => a.FirstAvailable);
 
-            if (!CheckProductsInStock(o))
-            {
-                DateTime latestRestocking =
+            DateTime latestRestocking =
                 o.Items.Select(a => a.Product).Max(a => a.NextStocking);
+
+            if (!StockIsEnoughForAllProductsInOlderOrdersAndThis(o))
+            {
+                
 
                 if (latestRestocking > latestFirstAvailable)
                     return latestRestocking;
@@ -302,6 +317,49 @@ namespace CS1_Projekt_OOP2.Classes
                 return latestFirstAvailable;
             else return o.OrderDate;
         }
+
+        private bool StockIsEnoughForAllProductsInOlderOrdersAndThis(Order o)
+        {
+            foreach(OrderLine ol in o.Items)
+            {
+                if(!StockIsEnoughForOneProductInOlderOrdersAndThis(ol.Product, o))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private bool StockIsEnoughForOneProductInOlderOrdersAndThis(Product p, Order o)
+        {
+            List<Order> allRelevantOrders = Orders.Where(order => !order.Dispatched &&
+                                                                  !order.PaymentRefunded
+                                                                   ).ToList();
+
+            int sumOfProductAmountToBeDispatched = 0;
+
+            foreach(Order currentOrder in allRelevantOrders)
+            {
+                
+                sumOfProductAmountToBeDispatched += GetAmountOfProductInOrder(p, o);
+                if (currentOrder.Number == o.Number) break;
+            }
+
+            return p.Stock >= sumOfProductAmountToBeDispatched;
+        }
+
+        private int GetAmountOfProductInOrder(Product p, Order o)
+        {
+            int sum = 0;
+            foreach(OrderLine ol in o.Items)
+            {
+                sum += ol.Product.Code == p.Code ? ol.Count : 0; 
+            }
+            return sum;
+        }
+
+
+
 
         /// <summary>
         /// Returns an IEnumerable<Order> of a specific customer's active orders.
@@ -352,10 +410,8 @@ namespace CS1_Projekt_OOP2.Classes
         }
 
         #endregion
-        /// <summary>
-        /// Adds testdata.
-        /// </summary>
-        public void AddTestData()
+
+        private void AddTestData()
         {
             // Test-data
             AddNewProduct("Shampoo", 24.99, 21);
@@ -379,25 +435,66 @@ namespace CS1_Projekt_OOP2.Classes
             AddNewCustomer("Bruce", "018-75345", "batman@wayneenterprises.com");
             AddNewCustomer("Joakim", "018-24572", "getdatmoney@jva.com");
 
+            Customer test = new Customer() { Number = 99, Name = "testperson", Email = "test@test", Phone = "000000" };
+
+            OrderLine ol1 = new OrderLine() { Product = GetProductById(6), Count = 3 };
+            OrderLine ol2 = new OrderLine() { Product = GetProductById(6), Count = 1 };
+            OrderLine ol3 = new OrderLine() { Product = GetProductById(0), Count = 1 };
+            OrderLine ol4 = new OrderLine() { Product = GetProductById(0), Count = 1 };
+            OrderLine ol5 = new OrderLine() { Product = GetProductById(6), Count = 1 };
+
+
+
+            //Visar att earliestDispatch fungerar och att Stock krävs
+            Order testOrder1 = new Order(0, test, " ", new List<OrderLine> { ol1 }, true);
+            Order testOrder2 = new Order(1, test, " ", new List<OrderLine> { ol2 }, true);
+
+            //Visar att paymentComplete måste vara true
+            Order testOrder3 = new Order(2, test, " ", new List<OrderLine> { ol3 }, true);
+            Order testOrder4 = new Order(3, test, " ", new List<OrderLine> { ol4 }, false);
+
+            //Visar att om refunded => blir inte dispatched
+            Order testOrder5 = new Order(4, test, " ", new List<OrderLine> { ol3 }, true);
+            testOrder5.PaymentRefunded = true;
+
+            //Visar att om dispatched => visas i nedre listan
+            Order testOrder6 = new Order(5, test, " ", new List<OrderLine> { ol3 }, true);
+            testOrder6.Dispatched = true;
+
+            //Visar att om produkten inte finns i Products så refundas ordern
+            Product foreignProduct = new Product(999, "Specialized tool", 0, 0);
+            OrderLine badOrderLine = new OrderLine(foreignProduct, 1);
+
+            Order testOrder7 = new Order(6, test, " ", new List<OrderLine> { badOrderLine }, true);
+
+            Orders.Add(testOrder1);
+            Orders.Add(testOrder2);
+            Orders.Add(testOrder3);
+            Orders.Add(testOrder4);
+            Orders.Add(testOrder5);
+            Orders.Add(testOrder6);
+            Orders.Add(testOrder7);
 
 
 
 
-            List<OrderLine> items = new List<OrderLine>();
-            OrderLine item = new OrderLine(Products[0], 11);
-            items.Add(item);
-            AddNewOrder(Customers[0], "Leveransvägen 1", items, true);
-            Products[1].FirstAvailable = DateTime.Now.AddDays(1);
 
-            //Testdata för att visa att pending/dispatched-sorteringen fungerar.
-            AddNewOrder(Customers[0], "Vägvägen11", items, true);
-            Orders[1].Dispatched = true;
 
-            items.Clear();
-            items.Add(new OrderLine(Products[0], 3));
-            AddNewOrder(Customers[0], "Archivedgatan 11", items, true);
-            Orders[2].Dispatched = true;
-            Orders[2].OrderDate = new DateTime(2008, 5, 1, 8, 30, 52);
+            //List<OrderLine> items = new List<OrderLine>();
+            //OrderLine item = new OrderLine(Products[0], 11);
+            //items.Add(item);
+            //AddNewOrder(Customers[0], "Leveransvägen 1", items, true);
+            //Products[1].FirstAvailable = DateTime.Now.AddDays(1);
+
+            ////Testdata för att visa att pending/dispatched-sorteringen fungerar.
+            //AddNewOrder(Customers[0], "Vägvägen11", items, true);
+            //Orders[1].Dispatched = true;
+
+            //items.Clear();
+            //items.Add(new OrderLine(Products[0], 3));
+            //AddNewOrder(Customers[0], "Archivedgatan 11", items, true);
+            //Orders[2].Dispatched = true;
+            //Orders[2].OrderDate = new DateTime(2008, 5, 1, 8, 30, 52);
 
         }
 
