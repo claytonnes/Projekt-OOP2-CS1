@@ -27,11 +27,12 @@ namespace CS1_Projekt_OOP2.Interfaces
         void AddNewOrder(Customer customer, string deliveryAddress, List<OrderLine> orderLines, bool paymentCompleted);
         IEnumerable<Order> ReturnDispatchedOrders();
         IEnumerable<Order> ReturnPendingOrders();
-        DateTime EarliestDispatchTime(int orderNumber);
+        DateTime GetEarliestDispatchTime(int orderNumber);
 
 
 
-        Customer  GetCustomerById(int id);
+
+        Customer GetCustomerById(int id);
         void AddNewCustomer(string name, string phone, string email);
         void UpdateCustomerInformation(int id, string name, string phone, string email);
         IEnumerable<Order> ReturnCustomersArchivedOrders(int customerID);
