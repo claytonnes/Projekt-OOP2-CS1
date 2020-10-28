@@ -444,26 +444,26 @@ namespace CS1_Projekt_OOP2.Classes
 
 
             //Visar att earliestDispatch fungerar och att Stock krävs
-            Order testOrder1 = new Order(0, test, " ", new List<OrderLine> { ol1 }, true);
-            Order testOrder2 = new Order(1, test, " ", new List<OrderLine> { ol2 }, true);
+            Order testOrder1 = new Order(0, Customers[0], "Nymanvägen 11", new List<OrderLine> { ol1 }, true);
+            Order testOrder2 = new Order(1, Customers[0], "Nymanvägen 11", new List<OrderLine> { ol2 }, true);
 
             //Visar att paymentComplete måste vara true
-            Order testOrder3 = new Order(2, test, " ", new List<OrderLine> { ol3 }, true);
-            Order testOrder4 = new Order(3, test, " ", new List<OrderLine> { ol4 }, false);
+            Order testOrder3 = new Order(2, Customers[1], "Engvallskurvan 22", new List<OrderLine> { ol3 }, true);
+            Order testOrder4 = new Order(3, Customers[1], "Envallskruvan 22", new List<OrderLine> { ol4 }, false);
 
             //Visar att om refunded => blir inte dispatched
-            Order testOrder5 = new Order(4, test, " ", new List<OrderLine> { ol3 }, true);
+            Order testOrder5 = new Order(4, Customers[2], "Bleckertsjö 7", new List<OrderLine> { ol3 }, true);
             testOrder5.PaymentRefunded = true;
 
             //Visar att om dispatched => visas i nedre listan
-            Order testOrder6 = new Order(5, test, " ", new List<OrderLine> { ol3 }, true);
+            Order testOrder6 = new Order(5, Customers[3], "Birganderträsk 1", new List<OrderLine> { ol3 }, true);
             testOrder6.Dispatched = true;
 
             //Visar att om produkten inte finns i Products så refundas ordern
             Product foreignProduct = new Product(999, "Specialized tool", 0, 0);
             OrderLine badOrderLine = new OrderLine(foreignProduct, 1);
 
-            Order testOrder7 = new Order(6, test, " ", new List<OrderLine> { badOrderLine }, true);
+            Order testOrder7 = new Order(6, Customers[4], "Bergsjöland 22", new List<OrderLine> { badOrderLine }, true);
 
             Orders.Add(testOrder1);
             Orders.Add(testOrder2);

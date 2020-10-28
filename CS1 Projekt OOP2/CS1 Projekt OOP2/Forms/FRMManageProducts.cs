@@ -80,34 +80,51 @@ namespace CS1_Projekt_OOP2.Forms
         {
             foreach (DataGridViewRow row in ProductGridView.SelectedRows)
             {
+                int productId = int.Parse(row.Cells[0].Value.ToString());
+                bool nonEmpty = true;
+                bool correctInput = true;
+                string productName = TXT_editName.Text;
+                double productPrice;
+                int productStock;
+                string feedbackString = "Input error: ";
+
                 if (row.Cells[0].Value != null)
                 {
-                    bool inputCorrect = true;
-
-
-                    int productId = int.Parse(row.Cells[0].Value.ToString());
-                    string updatedName = TXT_editName.Text;
-                    double updatedPrice;
-                    int updatedStock;
-                   
-                   
-                    if (!double.TryParse(TXT_editPrice.Text, out updatedPrice))
+                    if ((TXT_editName.Text == "" || TXT_editName.Text == null) ||
+                        (TXT_editPrice.Text == "" || TXT_editPrice.Text == null) ||
+                        (TXT_editStock.Text == "" || TXT_editStock.Text == null))
                     {
-                        inputCorrect = false;
-                        MessageBox.Show("Please enter a numeric value as a price");
+                        MessageBox.Show("Please fill out all fields: Name, Price, Stock");
+                        nonEmpty = false;
                     }
 
-                    if (!int.TryParse(TXT_editStock.Text, out updatedStock))
+                    if (!double.TryParse(TXT_editPrice.Text, out productPrice))
                     {
-                        inputCorrect = false;
-                        MessageBox.Show("Please enter a number in the Stock field");
+                        correctInput = false;
+                        feedbackString += "\nPrice has to be a numeric value";
                     }
 
-                    if (inputCorrect)
+                    if (TXT_editPrice.Text.Contains(','))
+                    {
+                        correctInput = false;
+                        feedbackString += "\nPlease use a '.' as a decimal instead of a ','";
+                    }
+
+                    if (!int.TryParse(TXT_editStock.Text, out productStock))
+                    {
+                        correctInput = false;
+                        feedbackString += "\nStock has to be an integer";
+                    }
+
+                    if (!correctInput && nonEmpty)
+                    {
+                        MessageBox.Show(feedbackString);
+                    }
+                    else if (correctInput && nonEmpty)
                     {
                         try
                         {
-                            warehouse.UpdateProductInformation(productId, updatedName, updatedPrice, updatedStock);
+                            warehouse.UpdateProductInformation( productId, productName, productPrice, productStock);
                         }
                         catch (Exception exception)
                         {
@@ -118,26 +135,46 @@ namespace CS1_Projekt_OOP2.Forms
             }
         }
 
-        private void BTN_createNewCustomer_Click(object sender, EventArgs e)
+        private void BTN_createNewProduct_Click(object sender, EventArgs e)
         {
-            bool inputCorrect = true;
+            bool nonEmpty = true;
+            bool correctInput = true;
             string productName = TXT_newName.Text;
             double productPrice;
             int productStock;
+            string feedbackString = "Input error: ";
+
+            if ((TXT_newName.Text == "" || TXT_newName.Text == null)||
+                (TXT_newPrice.Text == "" || TXT_newPrice.Text == null)||
+                (TXT_newStock.Text == "" || TXT_newStock.Text == null))
+            {
+                MessageBox.Show("Please fill out all fields: Name, Price, Stock");
+                nonEmpty = false;
+            }
 
             if (!double.TryParse(TXT_newPrice.Text, out productPrice))
             {
-                inputCorrect = false;
-                MessageBox.Show("Please enter a numeric value as a price");
+                correctInput = false;
+                feedbackString += "\nPrice has to be a numeric value";
             }
 
-            if(!int.TryParse(TXT_newStock.Text, out productStock))
+            if (TXT_newPrice.Text.Contains(','))
             {
-                inputCorrect = false;
-                MessageBox.Show("Please enter a number in the Stock field");
+                correctInput = false;
+                feedbackString += "\nPlease use a '.' as a decimal instead of a ','";
             }
 
-            if (inputCorrect)
+            if (!int.TryParse(TXT_newStock.Text, out productStock))
+            {
+                correctInput = false;
+                feedbackString += "\nStock has to be an integer";
+            }
+
+            if(!correctInput && nonEmpty)
+            {
+                MessageBox.Show(feedbackString);
+            }
+            else if(correctInput && nonEmpty)
             {
                 try
                 {
@@ -147,7 +184,7 @@ namespace CS1_Projekt_OOP2.Forms
                 {
                     MessageBox.Show(exception.Message);
                 }
-            }              
+            }
         }
 
         private void BTN_StockZero_Click(object sender, EventArgs e)
