@@ -307,8 +307,6 @@ namespace CS1_Projekt_OOP2.Classes
 
             if (!StockIsEnoughForAllProductsInOlderOrdersAndThis(o))
             {
-                
-
                 if (latestRestocking > latestFirstAvailable)
                     return latestRestocking;
                 else return latestFirstAvailable;

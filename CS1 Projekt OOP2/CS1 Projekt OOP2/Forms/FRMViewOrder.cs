@@ -36,9 +36,6 @@ namespace CS1_Projekt_OOP2.Forms
             LBL_customerPhone.Text = order.Customer.Phone;
             LBL_customerEmail.Text = order.Customer.Email;
             LBL_deliveryAdress.Text = order.DeliveryAddress;
-
-
-            LBL_earliestDispatch.Text = warehouse.GetEarliestDispatchTime(order.Number).ToString();
             LBL_orderNumber.Text = order.Number.ToString();
 
             if (warehouse.TryOrderProducts(order))
