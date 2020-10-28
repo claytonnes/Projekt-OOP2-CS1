@@ -152,16 +152,10 @@ namespace CS1_Projekt_OOP2.Forms
                 nonEmpty = false;
             }
 
-            if (!double.TryParse(TXT_newPrice.Text, out productPrice))
+            if (!double.TryParse(TXT_newPrice.Text.Replace(',', '.'), out productPrice))
             {
                 correctInput = false;
                 feedbackString += "\nPrice has to be a numeric value";
-            }
-
-            if (TXT_newPrice.Text.Contains(','))
-            {
-                correctInput = false;
-                feedbackString += "\nPlease use a '.' as a decimal instead of a ','";
             }
 
             if (!int.TryParse(TXT_newStock.Text, out productStock))
