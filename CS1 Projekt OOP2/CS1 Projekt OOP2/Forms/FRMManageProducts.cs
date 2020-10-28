@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -98,7 +99,7 @@ namespace CS1_Projekt_OOP2.Forms
                         nonEmpty = false;
                     }
 
-                    if (!double.TryParse(TXT_editPrice.Text.Replace(',','.'), out productPrice))
+                    if (!double.TryParse(TXT_editPrice.Text.Replace(',','.'), NumberStyles.Any, new CultureInfo("en-US"), out productPrice))
                     {
                         correctInput = false;
                         feedbackString += "\nPrice has to be a numeric value";
@@ -146,7 +147,7 @@ namespace CS1_Projekt_OOP2.Forms
                 nonEmpty = false;
             }
 
-            if (!double.TryParse(TXT_newPrice.Text.Replace(',', '.'), out productPrice))
+            if (!double.TryParse(TXT_newPrice.Text.Replace(',', '.'), NumberStyles.Any, new CultureInfo("en-US"), out productPrice ))
             {
                 correctInput = false;
                 feedbackString += "\nPrice has to be a numeric value";
