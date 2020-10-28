@@ -174,7 +174,7 @@ namespace CS1_Projekt_OOP2.Forms
 
                     if(string.IsNullOrEmpty(updatedName)|| string.IsNullOrEmpty(updatedPhone)|| string.IsNullOrEmpty(updatedEmail))
                     {
-                        MessageBox.Show("Provide valid information");
+                        MessageBox.Show("Please fill out all fields: Name, Phone and Email.");
                         return;
                     } 
 

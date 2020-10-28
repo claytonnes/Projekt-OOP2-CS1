@@ -23,7 +23,7 @@ namespace CS1_Projekt_OOP2.Forms
             this.warehouse = warehouse;
             UpdateLabels();
             UpdateItemList();
-
+            warehouse.WarehouseChanged += UpdateLabels;
             ItemListGridView.RowHeadersVisible = false;
             ItemListGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
@@ -73,18 +73,16 @@ namespace CS1_Projekt_OOP2.Forms
 
         private void UpdateItemList()
         {
+            ItemListGridView.Rows.Clear();
             ItemListGridView.Columns.Add("Col1", "Product");
             ItemListGridView.Columns.Add("Col2", "Amount");
             ItemListGridView.Columns.Add("Col3", "Currently in stock:");
             ItemListGridView.Columns.Add("Col4", "First available:");
-
             if(warehouse.TryOrderProducts(order))
                 foreach (OrderLine ol in order.Items)
                 {
                     ItemListGridView.Rows.Add(ol.Product.Name, ol.Count, ol.Product.Stock, ol.Product.FirstAvailable);
                 }
-        }
-
-       
+        }      
     }
 }
