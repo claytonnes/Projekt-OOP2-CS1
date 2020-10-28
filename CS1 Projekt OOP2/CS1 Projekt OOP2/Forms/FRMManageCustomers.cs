@@ -152,7 +152,7 @@ namespace CS1_Projekt_OOP2.Forms
             }
             catch(Exception)
             {
-                MessageBox.Show("Please enter name, phone and email.");
+                MessageBox.Show("Please fill out all fields: Name, Phone and Email.");
             }
             
         }
