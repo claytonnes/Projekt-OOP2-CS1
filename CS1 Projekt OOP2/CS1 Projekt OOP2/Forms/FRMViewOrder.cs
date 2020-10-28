@@ -79,11 +79,12 @@ namespace CS1_Projekt_OOP2.Forms
             ItemListGridView.Columns.Add("Col1", "Product");
             ItemListGridView.Columns.Add("Col2", "Amount");
             ItemListGridView.Columns.Add("Col3", "Currently in stock:");
-            ItemListGridView.Columns.Add("Col4", "First available:");
+            ItemListGridView.Columns.Add("Col4", "Next Restocking:");
+            ItemListGridView.Columns.Add("Col5", "First Available");
             if(warehouse.TryOrderProducts(order))
                 foreach (OrderLine ol in order.Items)
                 {
-                    ItemListGridView.Rows.Add(ol.Product.Name, ol.Count, ol.Product.Stock, ol.Product.FirstAvailable);
+                    ItemListGridView.Rows.Add(ol.Product.Name, ol.Count, ol.Product.Stock, ol.Product.NextStocking, ol.Product.FirstAvailable);
                 }
         }      
     }
