@@ -242,7 +242,7 @@ namespace CS1_Projekt_OOP2.Classes
         {
 
             IEnumerable<Order> ordersToRefund =
-               Orders.Where(a => a.Items.Any(b => b.Product == null)
+               Orders.Where(a => a.Items.Any(b => b.Product == null || !Products.Contains(b.Product))
                && a.PaymentCompleted == true);
 
             foreach(Order o in ordersToRefund)
