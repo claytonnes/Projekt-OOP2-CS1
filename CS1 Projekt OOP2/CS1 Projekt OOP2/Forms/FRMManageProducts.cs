@@ -98,16 +98,10 @@ namespace CS1_Projekt_OOP2.Forms
                         nonEmpty = false;
                     }
 
-                    if (!double.TryParse(TXT_editPrice.Text, out productPrice))
+                    if (!double.TryParse(TXT_editPrice.Text.Replace(',','.'), out productPrice))
                     {
                         correctInput = false;
                         feedbackString += "\nPrice has to be a numeric value";
-                    }
-
-                    if (TXT_editPrice.Text.Contains(','))
-                    {
-                        correctInput = false;
-                        feedbackString += "\nPlease use a '.' as a decimal instead of a ','";
                     }
 
                     if (!int.TryParse(TXT_editStock.Text, out productStock))
