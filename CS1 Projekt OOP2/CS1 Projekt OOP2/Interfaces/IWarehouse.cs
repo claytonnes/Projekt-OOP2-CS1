@@ -43,6 +43,7 @@ namespace CS1_Projekt_OOP2.Interfaces
         void UpdateProductInformation(int id, string name, double price, int stock);
         IEnumerable<Product> ReturnAllProductsWithZeroStock();
         Order AdjustOrder(Order o);
+        bool TryOrderProducts(Order o);
         void WatchNewOrders(System.Windows.Forms.Form form);
 
 
