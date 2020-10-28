@@ -17,8 +17,6 @@ namespace CS1_Projekt_OOP2.Forms
 
     public partial class FRMCreateNewOrder : Form
     {
-        private IWarehouse wh;
-        private FRMManageCustomers customerForm;
         int productCount;
         private IWarehouse warehouse;
         private FRMMain FrmMain; 

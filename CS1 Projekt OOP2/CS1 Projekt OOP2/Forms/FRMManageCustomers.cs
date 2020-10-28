@@ -20,7 +20,6 @@ namespace CS1_Projekt_OOP2.Forms
         Customer currentCustomer;
         IEnumerable<Order> activeOrders;
         IEnumerable<Order> archivedOrders;
-        Order currentOrder;
 
 
 
