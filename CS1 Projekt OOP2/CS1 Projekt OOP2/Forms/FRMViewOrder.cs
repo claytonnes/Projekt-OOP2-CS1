@@ -37,8 +37,15 @@ namespace CS1_Projekt_OOP2.Forms
             LBL_customerEmail.Text = order.Customer.Email;
             LBL_deliveryAdress.Text = order.DeliveryAddress;
 
+
             LBL_earliestDispatch.Text = warehouse.GetEarliestDispatchTime(order.Number).ToString();
             LBL_orderNumber.Text = order.Number.ToString();
+
+            if (warehouse.TryOrderProducts(order))
+                LBL_earliestDispatch.Text = warehouse.GetEarliestDispatchTime(order.Number).ToString();
+            else LBL_earliestDispatch.Text = "N/A";
+           LBL_orderNumber.Text = order.Number.ToString();
+
             LBL_orderDate.Text = order.OrderDate.ToString();
             LBL_paymentCompleted.Text = GetStyledStatusValue(LBL_paymentCompleted, order.PaymentCompleted);
             LBL_paymentRefunded.Text = GetStyledStatusValue(LBL_paymentRefunded, order.PaymentRefunded);
@@ -76,7 +83,7 @@ namespace CS1_Projekt_OOP2.Forms
             ItemListGridView.Columns.Add("Col3", "Currently in stock:");
             ItemListGridView.Columns.Add("Col4", "First available:");
 
-            if(!order.Items.Any(a => a.Product == null))
+            if(warehouse.TryOrderProducts(order))
                 foreach (OrderLine ol in order.Items)
                 {
                     ItemListGridView.Rows.Add(ol.Product.Name, ol.Count, ol.Product.Stock, ol.Product.FirstAvailable);

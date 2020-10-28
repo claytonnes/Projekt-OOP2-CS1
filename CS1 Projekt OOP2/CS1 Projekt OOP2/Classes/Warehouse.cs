@@ -224,6 +224,16 @@ namespace CS1_Projekt_OOP2.Classes
         }
 
         /// <summary>
+        /// If any product in the order has a Product which is null, returns false, else return true
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns>true if no null, false if null exists</returns>
+        public bool TryOrderProducts(Order o)
+        {
+            return !o.Items.Any(a => a.Product == null);
+        }
+
+        /// <summary>
         /// Processes all orders in Orders. 
         /// If an order mentions a product which does not exist in the product list and payment is completed -> Refund
         /// If an order has all its products, FirstAvailable is met and is not dispatched -> Dispatched
@@ -269,13 +279,18 @@ namespace CS1_Projekt_OOP2.Classes
         }
 
         /// <summary>
-        /// Method calculating if an orders 
+        /// Method calculating if an orders earliest dispatch time if all products exist in product catalogue
         /// </summary>
         /// <param name="orderNumber"></param>
+
         /// <returns></returns>
  
 
         public DateTime GetEarliestDispatchTime(int orderNumber)
+
+        /// <returns>Earliest dispatch time for an order.</returns>
+        
+
         {
             Console.WriteLine("");
             Console.WriteLine("");
