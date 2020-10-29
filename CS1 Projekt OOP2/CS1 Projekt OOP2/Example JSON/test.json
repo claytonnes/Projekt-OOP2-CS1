@@ -1,0 +1,17 @@
+{
+"Number":999,
+"Customer":{"Number":2,"Name":"Victor","Phone":"018-34567","Email":"virre@test.com"},
+"OrderDate":"2020-10-26T12:20:46.2573684+01:00",
+"DeliveryAddress":"Birganderkurvan 7",
+"PaymentCompleted":true,
+"PaymentRefunded":false,
+"Dispatched":false,
+"Items":[
+	{
+	"Product":{"Code":3,"Price":11.9,"Stock":21,"Name":"Canned tuna","FirstAvailable":"2020-06-03T22:15:00","NextStocking":"2020-11-02T12:20:46.2513837+01:00"},"Count":4}, {"Product":{"Code":3,"Price":11.9,"Stock":21,"Name":"Canned tuna","FirstAvailable":"2020-06-03T22:15:00","NextStocking":"2020-11-02T12:20:46.2513837+01:00"},
+	"Count":4
+	}
+	]
+}
+
+

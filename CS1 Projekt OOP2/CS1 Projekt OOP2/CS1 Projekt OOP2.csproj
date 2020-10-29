@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3C200F5B-B95B-4C28-9B9F-4054309FA28E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>CS1_Projekt_OOP2</RootNamespace>
     <AssemblyName>CS1 Projekt OOP2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -156,7 +156,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\teamwork.png" />
     <None Include="Resources\customerIcon.png" />
     <None Include="Resources\teamwork.png" />
     <None Include="Resources\packages.png" />
@@ -166,6 +165,8 @@
     <None Include="Resources\checklist.png" />
     <Content Include="todo.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Example JSON\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
