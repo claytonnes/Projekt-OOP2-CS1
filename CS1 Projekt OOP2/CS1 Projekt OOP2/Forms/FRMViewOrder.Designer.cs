@@ -51,9 +51,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.LBL_orderNumber = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.LBL_earliestDispatch = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ItemListGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -63,6 +63,7 @@
             // 
             this.ItemListGridView.AllowUserToAddRows = false;
             this.ItemListGridView.AllowUserToDeleteRows = false;
+            this.ItemListGridView.AllowUserToResizeRows = false;
             this.ItemListGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ItemListGridView.Location = new System.Drawing.Point(22, 230);
             this.ItemListGridView.Name = "ItemListGridView";
@@ -303,14 +304,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Order information";
             // 
-            // label1
+            // LBL_earliestDispatch
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 214);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 13);
-            this.label1.TabIndex = 39;
-            this.label1.Text = "Products in order:";
+            this.LBL_earliestDispatch.AutoSize = true;
+            this.LBL_earliestDispatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBL_earliestDispatch.Location = new System.Drawing.Point(111, 77);
+            this.LBL_earliestDispatch.Name = "LBL_earliestDispatch";
+            this.LBL_earliestDispatch.Size = new System.Drawing.Size(41, 13);
+            this.LBL_earliestDispatch.TabIndex = 39;
+            this.LBL_earliestDispatch.Text = "label2";
             // 
             // label10
             // 
@@ -322,15 +324,14 @@
             this.label10.TabIndex = 38;
             this.label10.Text = "Earliest dispatch:";
             // 
-            // LBL_earliestDispatch
+            // label1
             // 
-            this.LBL_earliestDispatch.AutoSize = true;
-            this.LBL_earliestDispatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_earliestDispatch.Location = new System.Drawing.Point(111, 77);
-            this.LBL_earliestDispatch.Name = "LBL_earliestDispatch";
-            this.LBL_earliestDispatch.Size = new System.Drawing.Size(41, 13);
-            this.LBL_earliestDispatch.TabIndex = 39;
-            this.LBL_earliestDispatch.Text = "label2";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 214);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "Products in order:";
             // 
             // FRMViewOrder
             // 
@@ -342,7 +343,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ItemListGridView);
             this.Name = "FRMViewOrder";
-            this.Text = "FRMViewOrder";
+            this.Text = "Order view";
             ((System.ComponentModel.ISupportInitialize)(this.ItemListGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

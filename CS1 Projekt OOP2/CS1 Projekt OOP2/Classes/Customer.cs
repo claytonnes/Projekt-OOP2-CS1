@@ -10,66 +10,70 @@ namespace CS1_Projekt_OOP2
     public class Customer
     {
 
-        private int _number;    // set value is unique and non-negative
-        private string _name;   // non-empty value
-        private string _phone;  // non-empty value
-        private string _email;  // non-empty value
+        private int _number;    
+        private string _name;   
+        private string _phone;  
+        private string _email;  
 
         public Customer() 
         {
         }
 
-        public Customer(int nmb, string nm, string phn, string em)
+        /// <summary>
+        /// Initializes a new instance of the Customer class.
+        /// </summary>
+        /// <param name="nmb"></param>
+        /// <param name="nm"></param>
+        /// <param name="phn"></param>
+        /// <param name="em"></param>
+        public Customer(int number, string name, string phone, string email)
         {
-            Number = nmb; Name = nm;
-            Phone = phn; Email = em;
+            Number = number;
+            Name = name;
+            Phone = phone;
+            Email = email;
         }
+
+        /// <summary>
+        /// Sets or gets the unique identifier of a Customer object
+        /// </summary>
         public int Number 
         {
             get { return _number; }
             set { _number = (value < 0) ? throw new ArgumentOutOfRangeException() : value; } 
         }
+
+        /// <summary>
+        /// Sets or gets the name of a Customer object
+        /// </summary>
         public string Name {
             get { return _name; }
-            set
-            {
-                if (value == null || value == "")
-                    throw new NullValueException(" Pleas enter your name.");
-                else
-                    _name = value;
-            }
+            set { _name = (value == null || value == "") ? throw new NullValueException("Please enter a name.") : value; }
         }
+
+        /// <summary>
+        /// Sets or gets the telephone number of a Customer object
+        /// </summary>
         public string Phone 
         {
             get { return _phone; }
-            set
-            {
-                if (value == null || value == "")
-                    throw new NullValueException("Please enter phone number.");
-                else
-                    _phone = value;
-            }
-        } 
+            set { _phone = (value == null || value == "") ? throw new NullValueException("Please enter a name.") : value; }
+        }
+
+        /// <summary>
+        /// Sets or gets the email address of a Customer object
+        /// </summary>
         public string Email 
         {
             get { return _email; }
-            set
-            {
-                if (value == null || value == "")
-                    throw new NullValueException(" Please enter email. ");
-                else
-                    _email = value;
-            }
+            set { _email = (value == null || value == "") ? throw new NullValueException("Please enter a name.") : value; }
+
         }
         public override string ToString()
         {
             return Name;
         }
 
-        internal static int Max(Func<object, object> p)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     [Serializable]

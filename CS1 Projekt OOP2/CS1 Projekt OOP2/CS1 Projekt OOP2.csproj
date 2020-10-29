@@ -162,6 +162,8 @@
     <None Include="Resources\packages.png" />
     <None Include="Resources\cogwheel.png" />
     <None Include="Resources\plus.png" />
+    <None Include="Resources\warehouse.png" />
+    <None Include="Resources\checklist.png" />
     <Content Include="todo.txt" />
   </ItemGroup>
   <ItemGroup />

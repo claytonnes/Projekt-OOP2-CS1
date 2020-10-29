@@ -12,24 +12,36 @@ using System.Windows.Forms;
 
 namespace CS1_Projekt_OOP2.Forms
 {
+
+    /// <summary>
+    /// Form class to enable a GUI for creating, updating and viewing Product information.
+    /// </summary>
     public partial class FRMManageProducts : Form
     {
         private IWarehouse warehouse;
+
+        /// <summary>
+        /// Initializes an instance of the ManageProducts Form.
+        /// </summary>
+        /// <param name="wh"></param>
         public FRMManageProducts(IWarehouse wh)
         {
             InitializeComponent();
             warehouse = wh;
             warehouse.WarehouseChanged += UpdateTable;
-            UpdateTable();
+            
+            //Setting the form Icon
+            Bitmap bmp = CS1_Projekt_OOP2.Properties.Resources.packages;
+            this.Icon = Icon.FromHandle(bmp.GetHicon());
 
+            //Configuring the form's datagridview objects.
             ProductGridView.RowHeadersVisible = false;
             ProductGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ProductGridView.CellClick += new DataGridViewCellEventHandler(ProductGridView_CellClick);
-            Bitmap bmp = CS1_Projekt_OOP2.Properties.Resources.packages;
-            this.Icon = Icon.FromHandle(bmp.GetHicon());
+            UpdateTable();
         }
 
-        public void ProductGridView_CellClick(object sender, EventArgs e)
+        private void ProductGridView_CellClick(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in ProductGridView.SelectedRows)
             {
@@ -43,7 +55,7 @@ namespace CS1_Projekt_OOP2.Forms
             }
         }
 
-        public void UpdateTable()
+        private void UpdateTable()
         {
             ProductGridView.Rows.Clear();
             ProductGridView.Columns.Clear();
@@ -60,7 +72,7 @@ namespace CS1_Projekt_OOP2.Forms
             }
         }
 
-        public void UpdateTable(IEnumerable<Product> products)
+        private void UpdateTable(IEnumerable<Product> products)
         {
             ProductGridView.Rows.Clear();
             ProductGridView.Columns.Clear();

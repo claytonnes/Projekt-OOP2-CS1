@@ -13,7 +13,9 @@ using System.Windows.Forms;
 namespace CS1_Projekt_OOP2.Forms
 {
 
-
+    /// <summary>
+    /// Initializes an instance of the ManageCustomers Form which enables a GUI for creating, updating and viewing Customer information.
+    /// </summary>
     public partial class FRMManageCustomers : Form
     {
         IWarehouse warehouse;
@@ -21,9 +23,10 @@ namespace CS1_Projekt_OOP2.Forms
         IEnumerable<Order> activeOrders;
         IEnumerable<Order> archivedOrders;
 
-
-
-
+        /// <summary>
+        /// Initializes an instance of the ManageCustomers Form.
+        /// </summary>
+        /// <param name="wh"></param>
         public FRMManageCustomers(IWarehouse wh)
         {
             InitializeComponent();
@@ -32,14 +35,14 @@ namespace CS1_Projekt_OOP2.Forms
             warehouse.WarehouseChanged += UpdateOrderTables;
             UpdateCustomerTable();
 
+            //Setting the form Icon
             Bitmap bmp = CS1_Projekt_OOP2.Properties.Resources.teamwork;
             this.Icon = Icon.FromHandle(bmp.GetHicon());
 
 
-
+            //Configuring the form's datagridview-objects.
             CustomerGridView.RowHeadersVisible = false;
             CustomerGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-           // CustomerGridView.CellClick += new DataGridViewCellEventHandler(CustomerGridView_CellClick);
             CustomerGridView.EnableHeadersVisualStyles = false;
 
             ActiveOrdersGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -47,15 +50,7 @@ namespace CS1_Projekt_OOP2.Forms
 
         }
 
-     
-
-        
-
-
-       
-
-
-        public void CustomerGridView_CellClick(object sender, EventArgs e)
+        private void CustomerGridView_CellClick(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in CustomerGridView.SelectedRows)
             {
@@ -75,20 +70,7 @@ namespace CS1_Projekt_OOP2.Forms
             }
         }
 
-        //public void UpdateOrderTables()
-        //{
-        //    ActiveOrdersGridView.Rows.Clear();
-        //    ActiveOrdersGridView.Columns.Clear();
-            
-        //    ArchivedOrdersGridView.Rows.Clear();
-        //    ArchivedOrdersGridView.Columns.Clear();
-
-
-        //    ActiveOrdersGridView.DataSource = activeOrders.ToList();
-        //    ArchivedOrdersGridView.DataSource = archivedOrders.ToList();
-        //}
-
-        public void UpdateOrderTables()
+        private void UpdateOrderTables()
         {
             ActiveOrdersGridView.Rows.Clear();
             ActiveOrdersGridView.Columns.Clear();
@@ -123,8 +105,7 @@ namespace CS1_Projekt_OOP2.Forms
                 }
         }
 
-
-        public void UpdateCustomerTable()
+        private void UpdateCustomerTable()
         {
             CustomerGridView.Rows.Clear();
             CustomerGridView.Columns.Clear();
@@ -157,8 +138,6 @@ namespace CS1_Projekt_OOP2.Forms
             
         }
 
-
-
         private void BTN_updateCustomerInfo_Click_1(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in CustomerGridView.SelectedRows)
@@ -188,11 +167,6 @@ namespace CS1_Projekt_OOP2.Forms
 
                 }
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //Delete???
         }
 
         private void ActiveOrdersGridView_CellClick(object sender, DataGridViewCellEventArgs e)

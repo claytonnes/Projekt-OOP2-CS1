@@ -14,13 +14,21 @@ using System.Windows.Forms;
 namespace CS1_Projekt_OOP2.Forms
 {
     
-
+    /// <summary>
+    /// Form class to enable a GUI for creating and placing new Orders.
+    /// </summary>
     public partial class FRMCreateNewOrder : Form
     {
         int productCount;
         private IWarehouse warehouse;
         private FRMMain FrmMain; 
 
+        /// <summary>
+        /// Initializes an instance of the Form.
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="wh"></param>
+        /// <remarks>An instance of its parent form is passed to access the neighbouring ManageCustomers Form through a button press in this GUI.</remarks>
         public FRMCreateNewOrder(FRMMain parent, IWarehouse wh)
         { 
             InitializeComponent();
@@ -32,6 +40,7 @@ namespace CS1_Projekt_OOP2.Forms
             warehouse.WarehouseChanged += UpdateProductList;
             this.FrmMain = parent; 
 
+            //Setting the form Icon
             Bitmap bmp = CS1_Projekt_OOP2.Properties.Resources.plus;
             this.Icon = Icon.FromHandle(bmp.GetHicon());
         }
@@ -109,8 +118,7 @@ namespace CS1_Projekt_OOP2.Forms
                 MessageBox.Show(exception.Message);
             }                       
         }
-
-        //Method for getting added OrderLines from listbox.
+        
         private List<OrderLine> GetOrderlinesFromLST()
         {
             if(LST_Selected.Items.Count == 0)

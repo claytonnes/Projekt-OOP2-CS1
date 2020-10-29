@@ -15,20 +15,31 @@ using System.Text.Json;
 
 namespace CS1_Projekt_OOP2
 {
+    /// <summary>
+    /// The root Form which loads at project startup.
+    /// </summary>
     public partial class FRMMain : Form
     {
-        private IWarehouse wh;
+        private IWarehouse warehouse;
         private FRMManageCustomers customerForm;
         private FRMManageProducts productForm;
         private FRMCreateNewOrder newOrderForm;
 
+        /// <summary>
+        /// Initializes an instance of the Main Form at project startup.
+        /// </summary>
+        /// <param name="wh"></param>
         public FRMMain(IWarehouse wh)
         {
             InitializeComponent();
-            this.wh = wh;
+            warehouse = wh;
             wh.WarehouseChanged += UpdateTables;
             wh.WatchNewOrders(this);
             UpdateTables();
+
+            //Setting the form Icon
+            Bitmap bmp = CS1_Projekt_OOP2.Properties.Resources.warehouse;
+            this.Icon = Icon.FromHandle(bmp.GetHicon());
         }
 
         private void FRMMain_Load(object sender, EventArgs e)
@@ -49,13 +60,13 @@ namespace CS1_Projekt_OOP2
             }
             else
             {
-                newOrderForm = new FRMCreateNewOrder(this, wh);
+                newOrderForm = new FRMCreateNewOrder(this, warehouse);
                 newOrderForm.FormClosed += (o, ea) => newOrderForm = null;
                 newOrderForm.Show();
             }
         }
 
-        public void OpenFRMCustomers ()
+        internal void OpenFRMCustomers ()
         {
         if (customerForm != null)
             {
@@ -64,11 +75,12 @@ namespace CS1_Projekt_OOP2
             }
             else
             {
-                customerForm = new FRMManageCustomers(wh);
+                customerForm = new FRMManageCustomers(warehouse);
                 customerForm.FormClosed += (o, ea) => customerForm = null;
                 customerForm.Show();
             }
         }
+
         private void BTN_OpenFRMCustomers_Click_1(object sender, EventArgs e)
         {
             OpenFRMCustomers();
@@ -84,7 +96,7 @@ namespace CS1_Projekt_OOP2
             }
             else
             {
-                productForm = new FRMManageProducts(wh);
+                productForm = new FRMManageProducts(warehouse);
                 productForm.FormClosed += (o, ea) => productForm = null;
                 productForm.Show();
             }
@@ -93,12 +105,10 @@ namespace CS1_Projekt_OOP2
         private void UpdateTables()
         {
 
-            PendingOrdersGridView.DataSource = wh.ReturnPendingOrders().ToList();
-            DispatchedOrdersGridView.DataSource = wh.ReturnDispatchedOrders().ToList();
+            PendingOrdersGridView.DataSource = warehouse.ReturnPendingOrders().ToList();
+            DispatchedOrdersGridView.DataSource = warehouse.ReturnDispatchedOrders().ToList();
             ChangeRowColor();
         }
-
-
 
         private void ChangeRowColor()
         {
@@ -115,12 +125,11 @@ namespace CS1_Projekt_OOP2
                 if (row.Cells[0].Value != null)
                 {
                     int orderId = (int)row.Cells[0].Value;
-                    FRMViewOrder viewOrder = new FRMViewOrder(wh.GetOrderById(orderId), wh);
+                    FRMViewOrder viewOrder = new FRMViewOrder(warehouse.GetOrderById(orderId), warehouse);
                     viewOrder.Show();
                 }
             }
         }
-
 
         private void DispatchedOrdersGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -129,7 +138,7 @@ namespace CS1_Projekt_OOP2
                 if (row.Cells[0].Value != null)
                 {
                     int orderId = (int)row.Cells[0].Value;
-                    FRMViewOrder viewOrder = new FRMViewOrder(wh.GetOrderById(orderId), wh);
+                    FRMViewOrder viewOrder = new FRMViewOrder(warehouse.GetOrderById(orderId), warehouse);
                     viewOrder.Show();
                 }
             }
@@ -137,7 +146,7 @@ namespace CS1_Projekt_OOP2
 
         private void BTNProcessOrders_Click(object sender, EventArgs e)
         {
-            wh.ProcessOrders();
+            warehouse.ProcessOrders();
         }
 
     }

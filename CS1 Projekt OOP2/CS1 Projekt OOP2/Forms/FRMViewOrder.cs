@@ -11,10 +11,20 @@ using System.Windows.Forms;
 
 namespace CS1_Projekt_OOP2.Forms
 {
+
+    /// <summary>
+    /// Form class which enables a GUI to view Order information.
+    /// </summary>
     public partial class FRMViewOrder : Form
     {
         IWarehouse warehouse;
         Order order; 
+
+        /// <summary>
+        /// Initializes an instance of the ViewOrder Form.
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="warehouse"></param>
         public FRMViewOrder(Order o, IWarehouse warehouse)
         {
             InitializeComponent();
@@ -24,10 +34,15 @@ namespace CS1_Projekt_OOP2.Forms
             UpdateLabels();
             UpdateItemList();
             warehouse.WarehouseChanged += UpdateLabels;
+
+            //Setting the form Icon
+            Bitmap bmp = CS1_Projekt_OOP2.Properties.Resources.checklist;
+            this.Icon = Icon.FromHandle(bmp.GetHicon());
+
+            //Configures the form's datagridview.
             ItemListGridView.RowHeadersVisible = false;
             ItemListGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
-
 
         private void UpdateLabels()
         {

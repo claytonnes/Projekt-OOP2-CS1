@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -31,34 +32,12 @@ namespace CS1_Projekt_OOP2.Classes
         private List<Customer> _customers;
 
         /// <summary>
-        /// Property defining how retrieving and assigning data from/to _products works.
+        /// Initializes a new instance of the Warehouse class.
         /// </summary>
-        public List<Product> Products 
-        {
-            get { return _products; }
-            set { _products = value; } 
-        }
-
-        /// <summary>
-        /// Property defining how retrieving and assigning data from/to _orders works.
-        /// </summary>
-        public List<Order> Orders 
-        {
-            get { return _orders; }
-            set { _orders = value; }
-        }
-
-        /// <summary>
-        /// Property defining how retrieving and assigning data from/to _orders works.
-        /// </summary>
-        public List<Customer> Customers { 
-            get{ return _customers; }
-            set { _customers = value; }
-        }
-
-        /// <summary>
-        /// Constructor initializing lists: Products, Orders and Customers.
-        /// </summary>
+        /// <remarks>At initialization this constructor:<br></br>
+        /// (1) Initializes one list for our each of our three main datatypes: Products, Orders and Customers.<br></br>
+        /// (2) Generates testdata 
+        /// </remarks>
         public Warehouse()
         {
             Products = new List<Product>();
@@ -73,14 +52,35 @@ namespace CS1_Projekt_OOP2.Classes
         public event ChangeHandler WarehouseChanged;
 
 
+        #region Properties
+
         /// <summary>
-        /// Raises event WarehouseChanged when called upon.
+        /// Sets or gets the list of Products available to Order.
         /// </summary>
-        public void RaiseWarehouseChanged()
+        public List<Product> Products 
         {
-            WarehouseChanged?.Invoke();
+            get { return _products; }
+            set { _products = value; } 
         }
 
+        /// <summary>
+        /// Sets or gets the list of all created and imported Orders.
+        /// </summary>
+        public List<Order> Orders 
+        {
+            get { return _orders; }
+            set { _orders = value; }
+        }
+
+        /// <summary>
+        /// Sets or gets the list of all created customers.
+        /// </summary>
+        public List<Customer> Customers { 
+            get{ return _customers; }
+            set { _customers = value; }
+        }
+
+        #endregion
 
 
         #region Product-related methods
@@ -124,8 +124,10 @@ namespace CS1_Projekt_OOP2.Classes
             RaiseWarehouseChanged();
         }
 
+
+
         /// <summary>
-        /// Takes in a List<OrderLine>
+        /// Takes in a OrderLine-list
         /// Removes the stock for each product equal to the orderlines count.
         /// Does this for every orderline in the order.
         /// </summary>
@@ -139,10 +141,10 @@ namespace CS1_Projekt_OOP2.Classes
         }
 
         /// <summary>
-        /// Looks for all products with stock = 0
-        /// Returns an IEnumerable<Product> with Products where Stock = 0
+        /// Looks for all Products with Stock = 0
+        /// 
         /// </summary>
-        /// <returns>IEnumerable<Product> with Products where Stock = 0</returns>
+        /// <returns>IEnumerable:Product with Products where Stock = 0</returns>
         public IEnumerable<Product> ReturnAllProductsWithZeroStock()
         {
             IEnumerable<Product> stockZeroProducts = Products.Where(p => p.Stock == 0);
@@ -150,7 +152,6 @@ namespace CS1_Projekt_OOP2.Classes
         }
 
         #endregion
-
 
 
         #region Customer-related methods
@@ -197,14 +198,13 @@ namespace CS1_Projekt_OOP2.Classes
         #endregion
 
 
-
         #region Order-related methods
 
         /// <summary>
         /// Returns an order from the list of orders using the order number for the search.
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>Specific Order</returns>
+        /// <returns>Specific order</returns>
         public Order GetOrderById(int id)
         {
             return Orders.Find(x => x.Number == id);
@@ -234,8 +234,8 @@ namespace CS1_Projekt_OOP2.Classes
         }
 
         /// <summary>
-        /// Processes all orders in Orders. 
-        /// If an order mentions a product which does not exist in the product list and payment is completed -> Refund
+        /// Processes all orders in Orders. <br></br>
+        /// If an order mentions a product which does not exist in the product list and payment is completed -> Refund<br></br>
         /// If an order has all its products, FirstAvailable is met and is not dispatched -> Dispatched
         /// </summary>
         public void ProcessOrders()
@@ -278,14 +278,19 @@ namespace CS1_Projekt_OOP2.Classes
             return o.Items.All(a => a.Count <= a.Product.Stock);
         }
 
+
+
         /// <summary>
-        /// Method calculating if an orders earliest dispatch time if all products exist in product catalogue
+        /// Gets the earliest date and time an order can be dispatched.
         /// </summary>
         /// <param name="orderNumber"></param>
-
-        /// <returns></returns>
- 
-
+        /// <returns>A DateTime reference representing when an Order can earliest be dispatched.</returns>
+        /// <remarks>
+        /// The returned DateTime is based on:<br></br>
+        /// (1) If the stock will last for the given order if all pending orders with higher priority(i.e. OrderDate) are processed first. <br></br>
+        /// (2) When the next stocking of all the products in the given order is.<br></br>
+        /// (3) When all the products in the given order are available for the first time.
+        /// </remarks>
         public DateTime GetEarliestDispatchTime(int orderNumber)
 
         /// <returns>Earliest dispatch time for an order.</returns>
@@ -316,6 +321,7 @@ namespace CS1_Projekt_OOP2.Classes
             else return o.OrderDate;
         }
 
+        //Helper for GetEarliestDispatchTime()
         private bool StockIsEnoughForAllProductsInOlderOrdersAndThis(Order o)
         {
             foreach(OrderLine ol in o.Items)
@@ -328,6 +334,7 @@ namespace CS1_Projekt_OOP2.Classes
             return true;
         }
 
+        //Helper for GetEarliestDispatchTime()
         private bool StockIsEnoughForOneProductInOlderOrdersAndThis(Product p, Order o)
         {
             List<Order> allRelevantOrders = Orders.Where(order => !order.Dispatched &&
@@ -346,6 +353,7 @@ namespace CS1_Projekt_OOP2.Classes
             return p.Stock >= sumOfProductAmountToBeDispatched;
         }
 
+        //Helper for GetEarlistDispatchTime()
         private int GetAmountOfProductInOrder(Product p, Order o)
         {
             int sum = 0;
@@ -357,13 +365,11 @@ namespace CS1_Projekt_OOP2.Classes
         }
 
 
-
-
         /// <summary>
-        /// Returns an IEnumerable<Order> of a specific customer's active orders.
+        /// Returns an IEnumerable:Order of a specific customer's active orders.
         /// </summary>
         /// <param name="customerID"></param>
-        /// <returns>IEnumerable<Order> of a specific customer's active orders</returns>
+        /// <returns>IEnumerable:Order of a specific customer's active orders</returns>
         public IEnumerable<Order> ReturnCustomersActiveOrders(int customerID)
         {
             IEnumerable<Order> activeUserOrders = Orders.Where
@@ -374,11 +380,11 @@ namespace CS1_Projekt_OOP2.Classes
         }
 
         /// <summary>
-        /// Returns an IEnumerable<Order> of a specific customer's archived orders.
-        /// Archived orders = atleast 30 days old & dispatched.
+        /// Returns an IEnumerable:Order of a specific customer's archived orders. <br></br>
+        /// Archived orders are at least 30 days old and dispatched.
         /// </summary>
         /// <param name="customerID"></param>
-        /// <returns>IEnumerable<Order> of a specific customer's archived orders</returns>
+        /// <returns>IEnumerable:Order of a specific customer's archived orders</returns>
         public IEnumerable<Order> ReturnCustomersArchivedOrders(int customerID)
         {
             IEnumerable<Order> archivedUserOrders = Orders.Where
@@ -390,7 +396,7 @@ namespace CS1_Projekt_OOP2.Classes
         /// <summary>
         /// Returns all orders from Orders with Dispatched = true
         /// </summary>
-        /// <returns>IEnumerable<Order> of orders with Dispatched = true</returns>
+        /// <returns>IEnumerable:Order of orders with Dispatched = true</returns>
         public IEnumerable<Order> ReturnDispatchedOrders()
         {
             IEnumerable<Order> dispatchedOrders = Orders.Where(o => o.Dispatched == true).OrderBy(o => o.OrderDate);
@@ -400,7 +406,7 @@ namespace CS1_Projekt_OOP2.Classes
         /// <summary>
         /// Returns all orders from Orders with Dispatched = false
         /// </summary>
-        /// <returns>IEnumerable<Order> of orders with Dispatched = false</returns>
+        /// <returns>IEnumerable:Order of orders with Dispatched = false</returns>
         public IEnumerable<Order> ReturnPendingOrders()
         {
             IEnumerable<Order> dispatchedOrders = Orders.Where(o => o.Dispatched == false).OrderBy(o => o.OrderDate);
@@ -409,6 +415,20 @@ namespace CS1_Projekt_OOP2.Classes
 
         #endregion
 
+
+        #region Utilities
+
+        /// <summary>
+        /// Raises event WarehouseChanged when called.
+        /// </summary>
+        public void RaiseWarehouseChanged()
+        {
+            WarehouseChanged?.Invoke();
+        }
+
+        /// <summary>
+        /// Adds testdata for the Lists: Products, Customers, Orders.
+        /// </summary>
         private void AddTestData()
         {
             // Test-data
@@ -496,24 +516,7 @@ namespace CS1_Projekt_OOP2.Classes
 
         }
 
-        /// <summary>
-        /// Adjusts orders received by json-files.
-        /// Checks if there is a collison if OrderNumbers
-        /// Assigns the order with an actual reference to the customer
-        /// Assigs the order with references to actual products.
-        /// </summary>
-        /// <param name="o"></param>
-        /// <returns>Adjusted Order with correct references.</returns>
-        public Order AdjustOrder(Order o)
-        {
-            TryOrderNumber(o.Number);
-            o.Customer = GetCustomerById(o.Customer.Number);
-            foreach (OrderLine ol in o.Items)
-            {
-                ol.Product = GetProductById(ol.Product.Code);
-            }
-            return o;
-        }
+        
 
         //Checks if the json-orders order number already exists and throws exception if it does.
         private void TryOrderNumber(int orderNumber)
@@ -558,5 +561,28 @@ namespace CS1_Projekt_OOP2.Classes
             }
             File.Delete(e.FullPath);
         }
+
+
+        /// <summary>
+        /// Adjusts orders received by json-files.
+        /// Checks if there is a collison if OrderNumbers
+        /// Assigns the order with an actual reference to the customer
+        /// Assigs the order with references to actual products.
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns>Adjusted Order with correct references.</returns>
+        public Order AdjustOrder(Order o)
+        {
+            TryOrderNumber(o.Number);
+            o.Customer = GetCustomerById(o.Customer.Number);
+            foreach (OrderLine ol in o.Items)
+            {
+                ol.Product = GetProductById(ol.Product.Code);
+            }
+            return o;
+        }
+
+        #endregion
     }
 }
+
